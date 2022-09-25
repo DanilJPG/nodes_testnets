@@ -14,6 +14,7 @@ Step 0A - Запуск полного узла / валидатора с исп�
 ```
 #Обновляем репозитории
 sudo apt update && sudo apt upgrade -y
+
 #Устанавливаем необходимые утилиты
 sudo apt install curl build-essential git wget jq make gcc tmux nvme-cli -y
 ```
@@ -52,6 +53,7 @@ wget -O $HOME/.deweb/config/genesis.json "https://raw.githubusercontent.com/dewe
 ```
 Проверка версии:
 sha256sum ~/.deweb/config/genesis.json 
+
 5316dc5abf1bc46813b673e920cb6faac06850c4996da28d343120ee0d713ab9  /root/.deweb/config/genesis.json
 ```
 
@@ -120,6 +122,7 @@ dewebd q bank balances <deweb1...>
 sudo systemctl stop dewebd
 rm $HOME/.deweb/config/addrbook.json
 dewebd unsafe-reset-all
+
 #перезагружаем ноду
 sudo systemctl restart dewebd && journalctl -u dewebd -f -o cat
 После синхронизации, идем в дискорд просим токены(канал #faucet), 1 dws = 1000000 udws
@@ -162,6 +165,7 @@ dewebd tx bank send <name_wallet> <deweb1...> 10000000udws --fees 555udws -y
 # удаляем addrbook и очищаем данные
 rm $HOME/.deweb/config/addrbook.json
 dewebd unsafe-reset-all
+
 # удаляем бинарные файлы, после чего необходимо снова инициализировать ноду
 rm -rf ~/.deweb
 ```
