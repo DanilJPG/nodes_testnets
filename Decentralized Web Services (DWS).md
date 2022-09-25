@@ -171,5 +171,5 @@ rm -rf ~/.deweb
 ```
 dewebd tx gov vote 1 yes --from <name_wallet> --fees 555udws
 ```
-Дискорд проекта
-Explorer
+Explorer: https://dws.explorers.guru/validators
+Discord: https://discord.gg/g3cWTrJ4
