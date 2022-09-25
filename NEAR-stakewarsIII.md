@@ -567,4 +567,3 @@ cd $HOME && \
 rm -rf .near nearcore && \
 rm -rf $(which neard)
 ```
-```
