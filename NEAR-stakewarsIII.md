@@ -557,6 +557,33 @@ sudo systemctl start neard && journalctl -n 100 -f -u neard | ccze -A
 ```
 journalctl -n 100 -f -u neard|ccze -A| grep INFO
 ```
+### Challange 9 ( Проверка безотказной работы-uptime)
+```
+#Проверьте, открыт ли порт 3030
+sudo iptables -L | grep 3030
+
+#Откройте порт, если он не открыт
+sudo iptables -A INPUT -p tcp --dport 3030 -j ACCEPT
+```
+
+```
+#Использование iptables-persistent
+sudo apt install iptables-persistent
+#Использование файлов
+iptables-save > /etc/iptables/rules.v4
+ip6tables-save > /etc/iptables/rules.v6
+#Убедитесь, что порт открыт, посетив
+http://<IP Address>:3030/status
+```
+#### Ожидаем:
+![image](https://user-images.githubusercontent.com/57448493/192142759-3cf8a178-bfd5-4c47-9b79-f3ae8907d754.png)
+
+#### Заполняем форму:https://docs.google.com/forms/d/e/1FAIpQLScp9JEtpk1Fe2P9XMaS9Gl6kl9gcGVEp3A5vPdEgxkHx3ABjg/viewform
+
+#### Challange 13 ( Проверка безотказной работы-uptime)
+```
+n/a
+```
 ### Удалить ноду
 ```
 sudo systemctl stop neard && \
@@ -567,3 +594,5 @@ cd $HOME && \
 rm -rf .near nearcore && \
 rm -rf $(which neard)
 ```
+
+
