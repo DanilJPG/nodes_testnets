@@ -8,15 +8,15 @@ Zeeka включит концепции, ранее использовавшие
 
 На данный момент возможно помогать проекту своими силами. Есть 3 формы для заполнения:
 
-1/ Форма для участника комьюнити (на модераторов)
+1. Форма для участника комьюнити (на модераторов):https://docs.google.com/forms/d/e/1FAIpQLSdz129RVXCPLIipF2evu5HDblo5iXdVBtk-3RO6XzKYCAVGlQ/viewform
 
-2/ Форма контрибуций
+2. Форма контрибуций:https://docs.google.com/forms/d/e/1FAIpQLSewVt8hRnRcufFOLCm9E9tNSeQ9FgWBjmygyIScA6_c5H7NPg/viewform
 
-3/ Подача заявки на тестнет
+3. Подача заявки на тестнет:https://docs.google.com/forms/d/e/1FAIpQLSdZVJmcL5X83zDUdRIJxuWiSi8hvmocEM7Ut8E0m97-cmdgcQ/alreadyresponded
 
-Официальный сайт
+Официальный сайт:https://zeeka.io/
 
-GitHub проекта
+GitHub проекта:https://github.com/zeeka-network/bazuka
 
 #### 1. Подготовка сервера
 ```
