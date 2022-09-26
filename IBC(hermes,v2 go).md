@@ -226,3 +226,209 @@ seid tx ibc-transfer transfer transfer channel-162 uptick1jqpaf0vgzlxvjx5meq8huw
 ```
 uptickd tx ibc-transfer transfer transfer channel-5 sei1828et4w3u52na4h8m3mp8r22vjylxeaa2zq5ed 666auptick --from $WALLET --fees 200auptick
 ```
+
+
+# g0 V2(между Stride и GAIA)
+
+Перед настройкой ретранслятора вам необходимо убедиться, что у вас уже есть:
+
+1.Полностью синхронизированные узлы RPC для каждого проекта Cosmos, к которому вы хотите подключиться
+
+2.Ваши кошельки должны быть пополнены через кран
+
+3. Точки RPC должны быть открыты и доступны из экземпляра ретранслятора (indexer=kv)
+
+#### 8.1 Настройка 
+
+#### STRIDE
+sed -i -e "s/^indexer *=.*/indexer = \"kv\"/" $HOME/.stride/config/config.toml
+# GAIA
+sed -i -e "s/^indexer *=.*/indexer = \"kv\"/" $HOME/.gaia/config/config.toml  
+RPC конфигурация нод проектов, находящихся вconfig.toml file:
+
+#### STRIDE
+laddr = "tcp://0.0.0.0:26657" in $HOME/.stride/config/config.toml
+#### GAIA
+laddr = "tcp://0.0.0.0:23657" in $HOME/.gaia/config/config.toml  
+RELAYER_ID='kjnodes|#8455'            # используйте свой ник из Discorda
+STRIDE_RPC_ADDR='127.0.0.1:26657'    # ресерчьте config.toml по слову laddr
+GAIA_RPC_ADDR='127.0.0.1:23657       # ресерчьте config.toml по слову laddr
+#### обновляемся
+sudo apt update && sudo apt upgrade -y
+#### установка зависимостей
+sudo apt install curl build-essential git wget jq make gcc tmux chrony -y
+#### Установка Go
+```
+if ! [ -x "$(command -v go)" ]; then
+  ver="1.18.3"
+  cd $HOME
+  wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+  sudo rm -rf /usr/local/go
+  sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+  rm "go$ver.linux-amd64.tar.gz"
+  echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+  source ~/.bash_profile
+fi
+```
+8.2 Загрузка и сборка бинарника и инициализация relayer go v2
+```
+git clone https://github.com/cosmos/relayer.git
+cd relayer && git checkout v2.0.0-rc4
+make install
+rly config init --memo $RELAYER_ID
+sudo mkdir $HOME/.relayer/chains
+sudo mkdir $HOME/.relayer/paths
+```
+#### 8.3 Создаем сервисные файлы для каждой цепочки
+
+#### Создаем конфиг файл для STRIDE
+```
+sudo tee $HOME/.relayer/chains/stride.json > /dev/null <<EOF
+{
+  "type": "cosmos",
+  "value": {
+    "key": "wallet",
+    "chain-id": "STRIDE-TESTNET-4",
+    "rpc-addr": "http://${STRIDE_RPC_ADDR}",
+    "account-prefix": "stride",
+    "keyring-backend": "test",
+    "gas-adjustment": 1.2,
+    "gas-prices": "0.000ustrd",
+    "gas": 200000,
+    "timeout": "20s",
+    "trusting-period": "8h",
+    "output-format": "json",
+    "sign-mode": "direct"
+  }
+}
+EOF
+```
+#### Создаем конфиг файл для GAIA
+```
+sudo tee $HOME/.relayer/chains/gaia.json > /dev/null <<EOF
+{
+  "type": "cosmos",
+  "value": {
+    "key": "wallet",
+    "chain-id": "GAIA",
+    "rpc-addr": "http://${GAIA_RPC_ADDR}",
+    "account-prefix": "cosmos",
+    "keyring-backend": "test",
+    "gas-adjustment": 1.2,
+    "gas-prices": "0.000uatom",
+    "gas": 200000,
+    "timeout": "20s",
+    "trusting-period": "8h",
+    "output-format": "json",
+    "sign-mode": "direct"
+  }
+}
+EOF
+```
+#### Загрузка каждого конфиг файла в рестранслятор
+```
+rly chains add --file=$HOME/.relayer/chains/stride.json stride
+rly chains add --file=$HOME/.relayer/chains/gaia.json gaia
+```
+#### check
+```
+rly chains list
+```
+Ожидаем:
+![image](https://user-images.githubusercontent.com/57448493/192292679-7fdc6ec2-75dc-4e52-bb3e-685f3cfc1454.png)
+
+
+#### Загружаем кошельки в рестранслятор 
+```
+rly keys restore stride wallet "вставляем мнемонику кошелька STRIDE"
+rly keys restore gaia wallet "вставляем мнемонику кошелька GAIA"
+```
+#### Проверка, должны на выходе появится ваши суммы на кошельках
+```
+rly q balance stride
+rly q balance gaia
+Создаем json файл с путем STRIDE-TESTNET-4 и GAIA
+sudo tee $HOME/.relayer/paths/stride-gaia.json > /dev/null <<EOF
+{
+  "src": {
+    "chain-id": "STRIDE-TESTNET-4",
+    "client-id": "07-tendermint-0",
+    "connection-id": "connection-0"
+  },
+  "dst": {
+    "chain-id": "GAIA",
+    "client-id": "07-tendermint-0",
+    "connection-id": "connection-0"
+  },
+  "src-channel-filter": {
+    "rule": "allowlist",
+    "channel-list": ["channel-0", "channel-1", "channel-2", "channel-3", "channel-4"]
+  }
+}
+EOF
+```
+#### Добавляем этот путь в relayer
+```
+rly paths add STRIDE-TESTNET-4 GAIA stride-gaia --file $HOME/.relayer/paths/stride-gaia.json
+```
+#### Проверка пути
+```
+rly paths list
+```
+Ожидаем:
+![image](https://user-images.githubusercontent.com/57448493/192292725-188ebd7f-0fe5-4a9b-b471-b450b8ea2241.png)
+
+
+#### Создаем сервисный файл
+```
+sudo tee /etc/systemd/system/relayerd.service > /dev/null <<EOF
+[Unit]
+Description=GO Relayer v2 Service
+After=network.target
+[Service]
+Type=simple
+User=$USER
+ExecStart=$(which rly) start stride-gaia -p events
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+#### 8.5 Запуск
+
+#### Если до этого вы использовали relyer через hermes, то останавливаем его 
+```
+sudo systemctl stop hermesd
+sudo systemctl disable hermesd
+```
+#### Запускаем relayer go v2
+```
+sudo systemctl daemon-reload
+sudo systemctl enable relayerd
+sudo systemctl start relayerd
+```
+#### наблюдаем за логами
+```
+journalctl -u relayerd -f -o cat
+```
+![image](https://user-images.githubusercontent.com/57448493/192293173-f1e0005c-32ec-46b4-8168-aef17c01c319.png)
+
+Переходим в любой эксплорер, находим свой кошелек и ищем информацию о клиенте relayer go v2.
+
+Форкаем репозиторий 
+![image](https://user-images.githubusercontent.com/57448493/192292802-adab095e-9b8a-49d3-948b-58a0671a5e5f.png)
+
+
+Переходим в форканный репозиторий и добавляем файл (либо создаем новый) с путями, для каждого пути свой файл соответсвенно
+```
+relayer/configs/stride/chains/gaia.json
+relayer/configs/stride/chains/stride.json
+relayer/configs/stride/paths/stride-gaia.json
+```
+![image](https://user-images.githubusercontent.com/57448493/192292876-b443719e-d5d5-4627-986f-7bbbb98460b5.png)
+![image](https://user-images.githubusercontent.com/57448493/192292937-261c292d-eb7e-4f91-bb7c-5e9ac85675e4.png)
+![image](https://user-images.githubusercontent.com/57448493/192292958-46764ebe-ba3a-4ef9-84d2-350591425c0b.png)
+
+
