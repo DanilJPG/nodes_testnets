@@ -242,7 +242,7 @@ uptickd tx ibc-transfer transfer transfer channel-5 sei1828et4w3u52na4h8m3mp8r22
 
 #### STRIDE
 sed -i -e "s/^indexer *=.*/indexer = \"kv\"/" $HOME/.stride/config/config.toml
-# GAIA
+#### GAIA
 sed -i -e "s/^indexer *=.*/indexer = \"kv\"/" $HOME/.gaia/config/config.toml  
 RPC конфигурация нод проектов, находящихся вconfig.toml file:
 
