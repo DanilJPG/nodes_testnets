@@ -47,7 +47,7 @@ statesetd keys add key-name
 ```
 statesetd add-genesis-account $(statesetd keys show key-name -a) 10000000000ustate
 ```
-#### Наполняем аккаунт
+#### Наполняем аккаунт, замените на свои данные
 ```
 statesetd gentx CUZDANisimi 9000000000ustate \
   --commission-max-change-rate "0.05" \
@@ -55,8 +55,8 @@ statesetd gentx CUZDANisimi 9000000000ustate \
   --commission-rate "0.01" \
   --chain-id=stateset-1-testnet \
   --moniker "`moniker-name`" \
-  --identity "`keybasedeki no`" \
-  --website "`site twitter felen`" \
-  --details "`kafana gore bisiler yaz`" \
-  --security-contact="`mail adresi yaz`"
+  --identity "`<>`" \
+  --website "`<ссылка>`" \
+  --details "`<описание>`" \
+  --security-contact="`e-mail`"
 ```
