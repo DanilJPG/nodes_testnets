@@ -66,25 +66,26 @@ seeds=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.ollo/config/config.toml
 ```
 
-
+#### Создаем сервисный файл
 ```
 sudo tee /etc/systemd/system/ollod.service > /dev/null <<EOF
 [Unit]
 Description=ollod
 After=network-online.target
-```
-```
+
 [Service]
 User=$USER
 ExecStart=$(which ollod) start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
-```
 [Install]
+
 WantedBy=multi-user.target
-EOF
-                     
+EOF           
+```
+
+#### Запуск
 ```
 sudo systemctl daemon-reload && \
 sudo systemctl enable ollod && \
