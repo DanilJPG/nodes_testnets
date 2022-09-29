@@ -31,11 +31,16 @@ make install
 ```
 ollod init --chain-id "ollo-testnet-0" "garfield"
 ```
+```
+sha256sum ~/.ollo/config/genesis.json
+257123e2c824fba30786a3db6c0f4ff22ea63ec7bcaea7db47c0d333c0cbcaf5  /root/.ollo/config/genesis.json
+```
 #### Создаем кошелек
 ```
 ollod keys add <name_wallet> --keyring-backend os
 ollod keys add <name_wallet> --recover --keyring-backend os
 ```
+#### Check wallet
 ollod keys list
 #### Скачиваем генезис
 ```
