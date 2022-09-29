@@ -29,7 +29,7 @@ make install
 
 #### Инициализируем
 ```
-ollod init --chain-id "ollo-testnet-0" "garfield'
+ollod init --chain-id "ollo-testnet-0" "garfield"
 ```
 #### Создаем кошелек
 ```
