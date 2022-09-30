@@ -44,7 +44,7 @@ ollod keys add <name_wallet> --recover --keyring-backend os
 ollod keys list
 #### Скачиваем генезис
 ```
-wget $HOME/.ollod/config/genesis.json https://raw.githubusercontent.com/OllO-Station/ollo/master/networks/ollo-testnet-0/genesis.json
+wget -qO $HOME/.ollo/config/genesis.json https://github.com/AlexToTheMoon/AM-Solutions/raw/main/ollo-genesis.json
 ```
 Скачиваем адресбук
 ```
