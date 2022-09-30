@@ -61,7 +61,7 @@ sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:2
 
 sed -i '/\[statesync\]/,+3 s/enable = false/enable = true/' ~/.ollo/config/config.toml
 
-peers="0b4474bc96d72586e1be1860db731522d05fdeef@181.41.142.78:11523"
+peers="489daf96446f104d822fae34cd4aa7a9b5cebf65@65.21.131.215:26626"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.ollo/config/config.toml
 
 seeds=""
