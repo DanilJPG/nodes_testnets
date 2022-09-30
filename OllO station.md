@@ -41,7 +41,9 @@ ollod keys add <name_wallet> --keyring-backend os
 ollod keys add <name_wallet> --recover --keyring-backend os
 ```
 #### Check wallet
+```
 ollod keys list
+```
 #### Скачиваем генезис
 ```
 wget -qO $HOME/.ollo/config/genesis.json https://github.com/AlexToTheMoon/AM-Solutions/raw/main/ollo-genesis.json
