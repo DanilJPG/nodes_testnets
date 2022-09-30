@@ -95,3 +95,18 @@ sudo systemctl restart ollod && sudo journalctl -u ollod -f -o cat
 ```
 journalctl -fu ollod -o cat
 ```
+#### Полезные команды
+```
+# проверить блоки
+ollod status 2>&1 | jq ."SyncInfo"."latest_block_height"
+
+# проверить логи
+journalctl -u ollod -f -o cat
+journalctl --lines=100 --follow --unit ollod
+
+# проверить статус
+curl localhost:26657/status
+
+# проверить баланс
+ollod q bank balances <address>
+```
