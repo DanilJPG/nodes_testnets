@@ -95,6 +95,46 @@ sudo systemctl restart ollod && sudo journalctl -u ollod -f -o cat
 ```
 journalctl -fu ollod -o cat
 ```
+#### STATE SYNC 
+```
+sudo systemctl stop ollod
+
+SNAP_RPC="http://161.97.82.203:29987"; \
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash); \
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.ollo/config/config.toml
+
+wget -qO $HOME/.ollo/config/addrbook.json https://github.com/AlexToTheMoon/AM-Solutions/raw/main/ollo-addrbook.json
+ollod tendermint unsafe-reset-all --home $HOME/.ollo --keep-addr-book
+
+sudo systemctl restart ollod
+journalctl -u ollod -f -o cat
+
+#switch off state sync after sync
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1false|" $HOME/.ollo/config/config.toml
+```
+ 
+
+#### CREATE VALIDATOR
+```
+ ollod tx staking create-validator \
+ --amount=1000000utollo \
+ --pubkey=$(ollod tendermint show-validator) \
+ --moniker="<MONIKER>" \
+ --chain-id="<CHAIN-ID>" \
+ --from=<KEY-NAME> \
+ --commission-rate=0.05 \
+ --commission-max-rate=0.2 \
+ --commission-max-change-rate=0.05 \
+ --min-self-delegation=1 \
+--gas=auto
+ ```
 #### Полезные команды
 ```
 # проверить блоки
