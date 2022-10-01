@@ -152,3 +152,13 @@ curl localhost:26657/status
 # проверить баланс
 ollod q bank balances <address>
 ```
+#### Удаление 
+```
+sudo systemctl stop ollod && \
+sudo systemctl disable ollod && \
+rm /etc/systemd/system/ollod.service && \
+sudo systemctl daemon-reload && \
+cd $HOME && \
+rm -rf .ollod ollo && \
+rm -rf $(which ollod)
+```
