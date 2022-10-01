@@ -156,11 +156,11 @@ ollod q bank balances <address>
 ```
 #### Удаление 
 ```
-sudo systemctl stop ollod && \
-sudo systemctl disable ollod && \
-rm /etc/systemd/system/ollod.service && \
-sudo systemctl daemon-reload && \
-cd $HOME && \
-rm -rf .ollo ollo && \
-rm -rf $(which ollod)
+sudo systemctl stop ollod
+sudo systemctl disable ollod
+sudo rm /etc/systemd/system/ollo* -rf
+sudo rm $(which ollod) -rf
+sudo rm $HOME/.ollo* -rf
+sudo rm $HOME/ollo -rf
+sed -i '/OLLO_/d' ~/.bash_profile
 ```
