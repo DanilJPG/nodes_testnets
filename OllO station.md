@@ -5,7 +5,7 @@ apt update && apt upgrade -y
 
 #### Устанавливаем зависимости
 ```
-sudo apt-get install curl git make gcc liblz4-tool build-essential jq -y
+apt install curl build-essential git wget jq make gcc tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
 ```
 
 #### Установка GO
@@ -50,7 +50,7 @@ wget -qO $HOME/.ollo/config/genesis.json https://github.com/AlexToTheMoon/AM-Sol
 ```
 Скачиваем адресбук
 ```
-wget $HOME/.ollod/config/addrbook.json https://raw.githubusercontent.com/OllO-Station/ollo/master/networks/ollo-testnet-0/addrbook.json
+wget $HOME/.ollo/config/addrbook.json https://raw.githubusercontent.com/OllO-Station/ollo/master/networks/ollo-testnet-0/addrbook.json
 ```
 #### Настраиваем кофинг файл
 ```
@@ -161,6 +161,6 @@ sudo systemctl disable ollod && \
 rm /etc/systemd/system/ollod.service && \
 sudo systemctl daemon-reload && \
 cd $HOME && \
-rm -rf .ollod ollo && \
+rm -rf .ollo ollo && \
 rm -rf $(which ollod)
 ```
