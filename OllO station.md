@@ -57,7 +57,7 @@ wget $HOME/.ollod/config/addrbook.json https://raw.githubusercontent.com/OllO-St
 sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.ollo/config/app.toml
 
 external_address=$(wget -qO- eth0.me)
-sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.ollod/config/config.toml
+sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.ollo/config/config.toml
 
 sed -i '/\[statesync\]/,+3 s/enable = false/enable = true/' ~/.ollo/config/config.toml
 
