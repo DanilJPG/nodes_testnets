@@ -45,8 +45,8 @@ go version
 ### 3. Загрузка и формирование бинарника: 
 ```
 cd $HOME
-git clone -b v1.0.3 https://github.com/haqq-network/haqq
-cd haqq
+git clone https://github.com/haqq-network/haqq && cd haqq
+git checkout v1.1.0
 make install
 haqqd version:
 "1.0.3" 58215364d5be4c9ab2b17b2a80cf89f10f6de38a
