@@ -12,6 +12,15 @@
 
 Проект планирует предоставлять инновации и занимается благотворительностью, создание приложений на Tendermint облегчит создание и мониторинг систем. Свойства ETH помогут масштабироваться и увеличить скорость отклика и транзакций клиентов в будущем.
 
+#### Обновление 27.09.2022 на высоте 256200
+```
+sudo systemctl stop haqqd
+cd $HOME && rm -rf haqq
+git clone https://github.com/haqq-network/haqq && cd haqq
+git checkout v1.1.0
+make install
+sudo systemctl restart haqqd && sudo journalctl -u haqqd -f -o cat
+```
 #### Обновление 04.10.2022 на высоте 355555
 ```
 cd && rm -rf haqq
