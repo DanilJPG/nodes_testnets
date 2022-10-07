@@ -127,6 +127,34 @@ dewebd unsafe-reset-all
 sudo systemctl restart dewebd && journalctl -u dewebd -f -o cat
 После синхронизации, идем в дискорд просим токены(канал #faucet), 1 dws = 1000000 udws
 ```
+#### State Sync 
+```
+sudo systemctl stop dewebd
+
+cp $HOME/.deweb/data/priv_validator_state.json $HOME/.deweb/priv_validator_state.json.backup
+dewebd tendermint unsafe-reset-all --home $HOME/.deweb --keep-addr-book
+
+SNAP_RPC="https://dws-testnet.nodejumper.io:443"
+
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+
+peers="c5b45045b0555c439d94f4d81a5ec4d1a578f98c@dws-testnet.nodejumper.io:27656"
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.deweb/config/config.toml
+
+sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.deweb/config/config.toml
+
+mv $HOME/.deweb/priv_validator_state.json.backup $HOME/.deweb/data/priv_validator_state.json
+
+sudo systemctl restart dewebd
+sudo journalctl -u dewebd -f --no-hostname -o cat
+```
 #### Ставим валидатора(одной командой), необходимо заменить <name_wallet> и <name_moniker> на те, которые вы хотите:
 ```
 dewebd tx staking create-validator \
