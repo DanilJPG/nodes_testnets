@@ -15,11 +15,11 @@ haqqd tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000aIS
 #### validator decoration
 ```
 haqqd tx staking edit-validator \
---identity=3162A31DFBF2AD6B \
---details="bisey yaz" \
---website="site twitter felen yaz" \
---chain-id=haqq_54211-2 \
---from=CUZDANADI \
+--identity 3162A31DFBF2AD6B \
+--details "напишите что нибудь о себе" \
+--website "можно вставить ссылку на твиттер" \
+--chain-id haqq_54211-2 \
+--from <имя кошелька> \
 --yes
 ```
 #### voting
