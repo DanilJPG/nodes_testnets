@@ -148,3 +148,13 @@ empowerd tx staking unbond <addr_valoper> 1000000umpwr --from $WALLET --fees 500
 # отправить монеты на другой адрес
 empowerd tx bank send $WALLET <address> 1000000umpwr --fees 5000umpwr -y
 ```
+#### Delete
+```
+systemctl stop empowerd && \
+systemctl disable empowerd && \
+rm /etc/systemd/system/empowerd.service && \
+systemctl daemon-reload && \
+cd $HOME && \
+rm -rf .empowerchain empowerchain && \
+rm -rf $(which empowerd)
+```
