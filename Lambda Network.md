@@ -34,7 +34,8 @@ lambdavm config chain-id lambda_92000-1
 ```
 wget -O /root/.lambdavm/config//genesis.json "https://raw.githubusercontent.com/LambdaIM/mainnet/main/lambda_92000-1/genesis.json"
 #check
-sha256sum genesis.json
+
+`sha256sum genesis.json`
 # 1ff02001539bc1e9828fe170006f055c04df280c61c4ca9ecc9e7b6a272b7777  genesis.json
 ```
 
