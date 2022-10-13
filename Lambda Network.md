@@ -49,3 +49,27 @@ sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.lambd
 SEEDS=`curl -sL https://raw.githubusercontent.com/LambdaIM/mainnet/main/lambda_92000-1/seeds.txt | awk '{print $1}' | paste -s -d, -`
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" ~/.lambdavm/config/config.toml
 ```
+
+#### Создаем сервисный файл
+```
+sudo tee /etc/systemd/system/lambdavm.service > /dev/null <<EOF
+[Unit]
+Description=lambdavm
+After=network-online.target
+[Service]
+User=$USER
+ExecStart=$(which lambdavm) start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+#### Запуск
+```
+systemctl daemon-reload && \
+systemctl enable lambdavm && \
+systemctl restart lambdavm && journalctl -u lambdavm -f -o cat
+```
