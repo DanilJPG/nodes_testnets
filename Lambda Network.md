@@ -73,3 +73,14 @@ systemctl daemon-reload && \
 systemctl enable lambdavm && \
 systemctl restart lambdavm && journalctl -u lambdavm -f -o cat
 ```
+
+#### Удаление
+```
+systemctl stop lambdavm && \
+systemctl disable lambdavm && \
+rm /etc/systemd/system/lambdavm.service && \
+systemctl daemon-reload && \
+cd $HOME && \
+rm -rf .lambdavm lambdavm && \
+rm -rf $(which lambdavm)
+```
