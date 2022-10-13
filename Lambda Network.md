@@ -74,6 +74,21 @@ systemctl enable lambdavm && \
 systemctl restart lambdavm && journalctl -u lambdavm -f -o cat
 ```
 
+#### Создание валидатора 
+```
+lambdavm tx staking create-validator \
+--amount 1000000000000000000ulamb \
+--pubkey $(lambdavm tendermint show-validator) \
+--moniker "garfield" \
+--chain-id lambda_92000-1 \
+--commission-rate "0.05" \
+--min-self-delegation "1000000" \
+--commission-max-rate "0.20" \
+--commission-max-change-rate "0.01" \
+--from garfield_wallet \
+--gas=auto \
+--fees 5000ulamb
+```
 #### Удаление
 ```
 systemctl stop lambdavm && \
