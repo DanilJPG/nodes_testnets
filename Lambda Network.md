@@ -107,6 +107,44 @@ lambdavm keys unsafe-export-eth-key garfield_wallet
 #экспортировать кошелек из метамаска
 lambdavm keys unsafe-import-eth-key [account name] [private key]
 ```
+#### Полезные команды
+```
+# проверить блоки
+lambdavm status 2>&1 | jq ."SyncInfo"."latest_block_height"
+
+# проверить логи
+journalctl -u lambdavm -f -o cat
+
+# проверить статус
+curl localhost:26657/status
+
+# проверить баланс
+lambdavm q bank balances <address>
+
+# проверить pubkey валидатора
+empowerd tendermint show-validator
+```
+
+#### Транзакции
+```
+# собрать реварды со всех валидаторов, которым делегировали (без комиссии)
+lambdavm tx distribution withdraw-all-rewards --from <name_wallet> --fees 5000ulamb -y
+
+# собрать реварды c отдельного валидатора или реварды + комиссию со своего валидатора
+lambdavm tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 5000ulamb --commission -y
+
+# заделегировать себе в стейк еще (так отправляется 1 монетa)
+lambdavm tx staking delegate <valoper_address> 1000000ulamb --from <name_wallet> --fees 5000ulamb -y
+
+# ределегирование на другого валидатора
+lambdavm tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000ulamb --from <name_wallet> --fees 5000ulamb -y
+
+# unbond 
+lambdavm tx staking unbond <addr_valoper> 1000000ulamb --from <name_wallet> --fees 5000ulamb -y
+
+# отправить монеты на другой адрес
+lambdavm tx bank send <name_wallet> <address> 1000000ulamb --fees 5000umpwr -y
+```
 
 #### Удаление
 ```
