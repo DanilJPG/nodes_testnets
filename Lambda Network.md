@@ -89,6 +89,21 @@ lambdavm tx staking create-validator \
 --gas=auto \
 --fees 5000ulamb
 ```
+#### Wallet 
+```
+# создать кошелек
+empowerd keys add $WALLET --keyring-backend os
+
+# восстановить кошелек (после команды вставить seed)
+empowerd keys add $WALLET --recover --keyring-backend os
+
+# экспорт в метамаск(просмотр закрытого ключа)
+lambdavm keys unsafe-export-eth-key garfield_wallet
+
+#экспортировать кошелек из метамаска
+lambdavm keys unsafe-import-eth-key [account name] [private key]
+```
+
 #### Удаление
 ```
 systemctl stop lambdavm && \
