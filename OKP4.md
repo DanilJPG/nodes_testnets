@@ -21,3 +21,20 @@ config/node_key.json: Private key to use for node authentication in the p2p prot
 config/priv_validator_key: Private key to use as a validator in the consensus protocol.
 data: The node's database.
 ```
+
+
+```
+sudo tee /etc/systemd/system/okp4d.service > /dev/null <<EOF
+[Unit]
+Description=okp4d
+After=network-online.target
+[Service]
+User=$USER
+ExecStart=$(which okp4d) start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target
+EOF
+```
