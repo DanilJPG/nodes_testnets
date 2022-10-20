@@ -118,3 +118,36 @@ docker logs -f ursula
 #### Переходим на платформу, делаем стейк, вставляем в воркер адрес наш сгенерированный 
 https://test-staking.nulink.org/
 https://123.45.678:9151- вставляем наш ip
+
+
+#### Update 20/10/2022
+```
+docker kill ursula
+docker rm ursula
+```
+```
+export NULINK_KEYSTORE_PASSWORD=mevcutşifreniz
+
+export NULINK_OPERATOR_ETH_PASSWORD=mevcutşifreniz
+```
+#### Last version installation
+```
+docker pull nulink/nulink:latest
+```
+#### Start
+```
+docker run --restart on-failure -d \
+--name ursula \
+-p 9151:9151 \
+-v /root/nulink:/code \
+-v /root/nulink:/home/circleci/.local/share/nulink \
+-e NULINK_KEYSTORE_PASSWORD \
+-e NULINK_OPERATOR_ETH_PASSWORD \
+nulink/nulink nulink ursula run --no-block-until-ready
+```
+#### Check
+```
+apt install screen
+screen -S log
+docker logs -f ursula
+```
