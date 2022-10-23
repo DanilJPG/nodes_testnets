@@ -90,3 +90,32 @@ cd $HOME && \
 rm -rf .bazuka && \
 rm -rf $(which bazuka)
 ```
+
+#### Update version 
+```
+rm ~/.bazuka.yaml
+sudo systemctl stop zeeka 
+cd bazuka
+git pull origin master
+cargo install --path
+```
+
+#### Полезные команды
+```
+Useful commands:
+bazuka deposit Deposit funds to a Zero-Contract
+
+bazuka help Prints this message or the help of the given subcommand(s)
+
+bazuka init Initialize node/wallet
+
+bazuka node Run node
+
+bazuka rsend Send funds through a regular-transaction
+
+bazuka status Get status of a node
+
+bazuka withdraw Withdraw funds from a Zero-Contract
+
+bazuka zsend Send funds through a zero-transaction
+```
