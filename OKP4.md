@@ -44,7 +44,7 @@ data: The node's database.
 ```
 #### Скачиваем генезис
 ```
-wget $HOME/.okp4d/config/genesis.json "https://raw.githubusercontent.com/okp4/networks/main/chains/nemeton/genesis.json"
+wget $HOME/.okp4d/config/genesis.json "https://github.com/okp4/networks/blob/main/chains/nemeton/genesis.json"
 ```
 #### Заполняем конфиг файл
 ```
