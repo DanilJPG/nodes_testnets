@@ -84,6 +84,22 @@ systemctl enable okp4d && \
 systemctl restart okp4d && journalctl -u okp4d -f -o cat
 ```
 
+#### Создание валидатора
+```
+okp4d tx staking create-validator \
+--chain-id okp4-nemeton \
+--moniker "garfield" \
+--identity "0393473F5F0C6667" \
+--details "Delegate and buy lasagna" \
+--commission-rate 0.05 \
+--commission-max-rate 0.2 \
+--commission-max-change-rate 0.1 \
+--min-self-delegation "1000000" \
+--amount 1000000uknow \
+--pubkey $(okp4d tendermint show-validator) \
+--from <name_wallet> \
+--fees 555uknow
+```
 #### Сброс 
 ```
 systemctl stop okp4d
