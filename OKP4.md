@@ -27,8 +27,8 @@ okp4d version
 ```
 #### Инициализация
 ```
-okp4d init garfield --chain-id okp4-testnet-1 \
-okp4d config chain-id okp4-testnet-1
+okp4d init garfield --chain-id okp4-nemeton \
+okp4d config chain-id okp4-nemeton
 ```
 
 ```
@@ -98,4 +98,13 @@ systemctl stop okp4d
 rm $HOME/.okp4d/config/addrbook.json
 okp4d tendermint unsafe-reset-all --home $HOME/.okp4d --keep-addr-book
 ```
-
+#### Удаление
+```
+systemctl stop okp4d && \
+systemctl disable okp4d && \
+rm /etc/systemd/system/okp4d.service && \
+systemctl daemon-reload && \
+cd $HOME && \
+rm -rf .okp4d okp4d && \
+rm -rf $(which okp4d)
+```
