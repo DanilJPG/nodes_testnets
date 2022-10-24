@@ -239,3 +239,12 @@ seid tx gov vote 1 yes --from <name_wallet> --fees 5550usei
 # внести депозит в предложение
 seid tx gov deposit 1 1000000usei --from <name_wallet> --fees 5550usei
 ```
+#### Edit validator 
+```
+BINARY tx staking edit-validator \
+  --chain-id "CHAIN_NAME" \
+  --moniker "MONIKER" \
+  --identity "IDENTITY" \
+  --details "DETAILS" \
+  --from "WALLET_NAME"
+```
