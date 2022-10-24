@@ -213,3 +213,13 @@ cd $HOME && \
 rm -rf .haqqd haqq && \
 rm -rf $(which haqqd)
 ```
+
+#### Edit validator 
+```
+BINARY tx staking edit-validator \
+  --chain-id "CHAIN_NAME" \
+  --moniker "MONIKER" \
+  --identity "IDENTITY" \
+  --details "DETAILS" \
+  --from "WALLET_NAME"
+```
