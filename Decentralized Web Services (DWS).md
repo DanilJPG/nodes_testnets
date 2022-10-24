@@ -201,5 +201,15 @@ rm -rf ~/.deweb
 ```
 dewebd tx gov vote 1 yes --from <name_wallet> --fees 555udws
 ```
+
+#### Edit validator 
+```
+BINARY tx staking edit-validator \
+  --chain-id "CHAIN_NAME" \
+  --moniker "MONIKER" \
+  --identity "IDENTITY" \
+  --details "DETAILS" \
+  --from "WALLET_NAME"
+```
 Explorer: https://dws.explorers.guru/validators
 Discord: https://discord.gg/g3cWTrJ4
