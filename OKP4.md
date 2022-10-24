@@ -100,3 +100,12 @@ cd $HOME && \
 rm -rf .okp4d okp4d && \
 rm -rf $(which okp4d)
 ```
+#### Edit validator 
+```
+BINARY tx staking edit-validator \
+  --chain-id "CHAIN_NAME" \
+  --moniker "MONIKER" \
+  --identity "IDENTITY" \
+  --details "DETAILS" \
+  --from "WALLET_NAME"
+```
