@@ -241,3 +241,12 @@ strided tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000u
 # собрать комиссионные + реварды
 strided tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 500ustrd --commission -y
 ```
+#### Edit validator 
+```
+BINARY tx staking edit-validator \
+  --chain-id "CHAIN_NAME" \
+  --moniker "MONIKER" \
+  --identity "IDENTITY" \
+  --details "DETAILS" \
+  --from "WALLET_NAME"
+```
