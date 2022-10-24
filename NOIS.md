@@ -116,3 +116,12 @@ noisd q bank balances <address>
 # вывести список кошельков
 noisd keys list
 ```
+#### Edit validator 
+```
+BINARY tx staking edit-validator \
+  --chain-id "CHAIN_NAME" \
+  --moniker "MONIKER" \
+  --identity "IDENTITY" \
+  --details "DETAILS" \
+  --from "WALLET_NAME"
+```
