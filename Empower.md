@@ -156,3 +156,12 @@ cd $HOME && \
 rm -rf .empowerchain empowerchain && \
 rm -rf $(which empowerd)
 ```
+#### Edit validator 
+```
+BINARY tx staking edit-validator \
+  --chain-id "CHAIN_NAME" \
+  --moniker "MONIKER" \
+  --identity "IDENTITY" \
+  --details "DETAILS" \
+  --from "WALLET_NAME"
+```
