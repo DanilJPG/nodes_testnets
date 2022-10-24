@@ -11,7 +11,7 @@ make install
 okp4d version
 2.2.0
 ```
-#### Init
+#### Инициализация
 ```
 okp4d init garfield --chain-id okp4-testnet-1 \
 okp4d config chain-id okp4-testnet-1
