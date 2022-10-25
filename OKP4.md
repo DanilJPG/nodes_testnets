@@ -100,6 +100,49 @@ okp4d tx staking create-validator \
 --from <name_wallet> \
 --fees 555uknow
 ```
+
+#### Полезные команды 
+```
+# проверить блоки
+okp4d status 2>&1 | jq ."SyncInfo"."latest_block_height"
+
+# проверить логи
+journalctl -u okp4d -f -o cat
+journalctl --lines=100 --follow --unit okp4d
+
+# проверить статус
+curl localhost:26657/status
+
+# проверить баланс
+okp4d q bank balances <address>
+
+# проверить pubkey валидатора
+okp4d tendermint show-validator
+```
+
+#### Комадны для валидатора
+```
+# собрать реварды со всех валидаторов, которым делегировали (без комиссии)
+okp4d tx distribution withdraw-all-rewards --from <name_wallet> --fees 500uknow -y
+
+# собрать реварды c отдельного валидатора или реварды + комиссию со своего валидатора
+okp4d tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 500uknow --commission -y
+
+# заделегировать себе или другому валидатору
+okp4d tx staking delegate <valoper_address> 1000000uknow --from <name_wallet> --fees 500uknow -y
+
+# ределегирование на другого валидатора
+okp4d tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000uknow --from <name_wallet> --fees 500uknow -y
+
+# unbond 
+okp4d tx staking unbond <addr_valop> 1000000uknow --from <name_wallet> --fees 500uknow -y
+
+# отправить монеты на другой адрес
+okp4d tx bank send <name_wallet> <address> 1000000uknow --fees 500uknow -y
+
+# выбраться из тюрьмы
+okp4d tx slashing unjail --from <name_wallet> --fees 500uknow -y
+```
 #### Сброс 
 ```
 systemctl stop okp4d
