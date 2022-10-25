@@ -133,6 +133,13 @@ export NULINK_OPERATOR_ETH_PASSWORD=mevcutşifreniz
 #### Last version installation
 ```
 docker pull nulink/nulink:latest
+
+####################################################
+latest: Pulling from nulink/nulink
+Digest: sha256:9607f6d91eab6c852ee17eb2210a0a51b73a0b3c8c6d0c8db1bea71bbf868337
+Status: Image is up to date for nulink/nulink:latest
+docker.io/nulink/nulink:latest
+
 ```
 #### Start
 ```
