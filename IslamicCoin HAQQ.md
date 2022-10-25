@@ -145,6 +145,12 @@ haqqd keys add <name_wallet> --keyring-backend os
 
 # восстановление
 haqqd keys add <name_wallet> --recover --keyring-backend os
+
+# экспорт в метамаск(просмотр закрытого ключа)
+haqqd keys unsafe-export-eth-key "name_wallet"
+
+#экспортировать кошелек из метамаска
+haqqd keys unsafe-import-eth-key [account name] [private key]
 ```
 
 #### 9. Валидатор 
