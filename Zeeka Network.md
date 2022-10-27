@@ -40,6 +40,14 @@ cd bazuka && cargo install --path
 ```
 /root/bazuka/target/release/bazuka -h
 ```
+#### Можно запустить с помощью этой команды или в соедующем шаге через сервисный файл
+```
+#Очистите состояние цепочки разработки::
+target/release/bazuka purge-chain --dev
+Start the development chain with detailed logging:
+
+RUST_LOG=debug RUST_BACKTRACE=1   target/release/bazuka node --listen '0.0.0.0:8765' --external 'IP:8765' --network chaos --db /root/.bazuka-chaos --bootstrap '152.228.155.120:8765' --bootstrap '154.12.231.150:8765' --discord-handle 'nickname'  -lruntime=debug --dev
+```
 #### 5.Инициализировать ноду
 ```
 bazuka init --seed '<Ваша мнемоника от любого кошелька где нет монет>' --network debug --node 127.0.0.1:8765
