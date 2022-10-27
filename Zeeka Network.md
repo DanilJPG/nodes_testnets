@@ -89,7 +89,8 @@ sudo systemctl restart zeeka
 bazuka node --listen 0.0.0.0:8765 --external [Ваш IP  адрес сервера]:8765
 zeeka_log
 ```
-![image](https://user-images.githubusercontent.com/57448493/192145776-1ea5c03c-de7a-4b97-8bbb-403e006622d5.png)
+![image](https://user-images.githubusercontent.com/57448493/198363637-75ff9f4e-0a34-4b93-a5ce-14bdd053033b.png)
+
 
 Скопируйте данные в надежное место!!!
 
