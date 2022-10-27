@@ -35,6 +35,11 @@ git clone https://github.com/zeeka-network/bazuka
 ```
 cd bazuka && cargo install --path
 ```
+
+#### Посмотреть software bazuka
+```
+/root/bazuka/target/release/bazuka -h
+```
 #### 5.Инициализировать ноду
 ```
 bazuka init --seed '<Ваша мнемоника от любого кошелька где нет монет>' --network debug --node 127.0.0.1:8765
