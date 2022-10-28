@@ -158,3 +158,26 @@ apt install screen
 screen -S log
 docker logs -f ursula
 ```
+#### Update
+
+Stop the running node in Docker
+```
+$ docker kill <container ID>
+
+$ docker rm <container ID>
+```
+ Pull the latest NuLink image.
+```
+$ docker pull nulink/nulink:latest
+```
+Re-launch the worker node.
+```
+$ docker run --restart on-failure -d \
+--name ursula \
+-p 9151:9151 \
+-v /root/nulink:/code \
+-v /root/nulink:/home/circleci/.local/share/nulink \
+-e NULINK_KEYSTORE_PASSWORD \
+-e NULINK_OPERATOR_ETH_PASSWORD \
+nulink/nulink nulink ursula run --no-block-until-ready
+```
