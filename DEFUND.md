@@ -72,5 +72,9 @@ systemctl restart defund && journalctl -u defund -f -o cat
 ```
 #### Wallet
 ```
+# создать кошелек
+defund keys add $WALLET --keyring-backend os
 
+# восстановить кошелек (после команды вставить seed)
+defund keys add $WALLET --recover --keyring-backend os
 ```
