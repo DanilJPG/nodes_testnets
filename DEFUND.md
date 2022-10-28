@@ -1,4 +1,4 @@
-### На данный момент времени 28.10 в 03-00 по МСК можно подать Gentx для отбора в актив сет
+### На данный момент времени 28.10 в 03-00 по МСК можно подать Gentx для отбора в актив сет до 29.10
 #### Обновляемся и устанавливаем зависимости
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
@@ -100,11 +100,15 @@ defund tx staking create-validator \
 ```
 Add/recover keys
 To create new keypair - make sure you save the mnemonics!
+```
 defundd keys add <key-name> 
-Instructions for Genesis Validators
+```
+ Instructions for Genesis Validators
 Create Gentx
 1. Add genesis account:
+``` 
 defundd add-genesis-account <key-name> 100000000ufetf
+```
 2. Create Gentx
 
 defundd gentx <key-name> 90000000ufetf \
