@@ -103,15 +103,15 @@ defund tx staking create-validator \
 ```
 Add/recover keys
 To create new keypair - make sure you save the mnemonics!
-```
+
 defundd keys add <key-name> 
-```
+
  Instructions for Genesis Validators
 Create Gentx
 1. Add genesis account:
-``` 
+
 defundd add-genesis-account <key-name> 100000000ufetf
-```
+
 2. Create Gentx
 
 defundd gentx <key-name> 90000000ufetf \
@@ -131,3 +131,13 @@ defundd gentx <key-name> 90000000ufetf \
 + Create a Pull Request to the main branch of the repository
 + Await further instruction!
 ```
+#### Delete 
+ ```
+sudo systemctl stop defund && \
+sudo systemctl disable defund && \
+rm /etc/systemd/system/defund.service && \
+sudo systemctl daemon-reload && \
+cd $HOME && \
+rm -rf .defund defund && \
+rm -rf $(which defund)
+ ```
