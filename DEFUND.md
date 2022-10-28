@@ -54,12 +54,14 @@ sudo tee /etc/systemd/system/defund.service > /dev/null <<EOF
 [Unit]
 Description=defund
 After=network-online.target
+
 [Service]
 User=$USER
 ExecStart=$(which defund) start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
+
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -73,10 +75,10 @@ systemctl restart defund && journalctl -u defund -f -o cat
 #### Wallet
 ```
 # создать кошелек
-defund keys add $WALLET --keyring-backend os
+defund keys add <name_wallet> --keyring-backend os
 
 # восстановить кошелек (после команды вставить seed)
-defund keys add $WALLET --recover --keyring-backend os
+defund keys add <name_wallet> --recover --keyring-backend os
 ```
 
 #### Validator
@@ -84,7 +86,7 @@ defund keys add $WALLET --recover --keyring-backend os
 defund tx staking create-validator \
 --amount 1000000ufetf \
 --pubkey $(defund tendermint show-validator) \
---moniker "garfield" \
+--moniker "<moniker>" \
 --chain-id defund-private-2 \
 --commission-rate "0.05" \
 --min-self-delegation "1000000" \
@@ -92,8 +94,8 @@ defund tx staking create-validator \
 --commission-max-change-rate "0.01" \
 --from garfield_wallet \
 --gas=auto \
---identity "0393473F5F0C6667" \ 
---details "Delegate and buy lasagna" \
+--identity "your keybase" \ 
+--details "Your validator motto" \
 --fees 5000ulamb
 ```
 #### Gentx
