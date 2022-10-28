@@ -78,3 +78,49 @@ defund keys add $WALLET --keyring-backend os
 # восстановить кошелек (после команды вставить seed)
 defund keys add $WALLET --recover --keyring-backend os
 ```
+
+#### Validator
+```
+defund tx staking create-validator \
+--amount 1000000ufetf \
+--pubkey $(defund tendermint show-validator) \
+--moniker "garfield" \
+--chain-id defund-private-2 \
+--commission-rate "0.05" \
+--min-self-delegation "1000000" \
+--commission-max-rate "0.20" \
+--commission-max-change-rate "0.01" \
+--from garfield_wallet \
+--gas=auto \
+--identity "0393473F5F0C6667" \ 
+--details "Delegate and buy lasagna" \
+--fees 5000ulamb
+```
+#### Gentx
+```
+Add/recover keys
+To create new keypair - make sure you save the mnemonics!
+defundd keys add <key-name> 
+Instructions for Genesis Validators
+Create Gentx
+1. Add genesis account:
+defundd add-genesis-account <key-name> 100000000ufetf
+2. Create Gentx
+
+defundd gentx <key-name> 90000000ufetf \
+--chain-id defund-private-2 \
+--moniker="<moniker>" \
+--commission-max-change-rate=0.01 \
+--commission-max-rate=0.20 \
+--commission-rate=0.05 \
+--details="XXXXXXXX" \
+--security-contact="XXXXXXXX" \
+--website="XXXXXXXX"
+
++ Submit PR with Gentx and peer id
++ Copy the contents of ${HOME}/.defund/config/gentx/gentx-XXXXXXXX.json.
++ Fork https://github.com/defund-labs/testnet
++ Create a file gentx-{{VALIDATOR_NAME}}.json under the defund-private-2/gentx/ folder in the forked repo, paste the copied text into the file.
++ Create a Pull Request to the main branch of the repository
++ Await further instruction!
+```
