@@ -1,8 +1,9 @@
 ### На данный момент времени 28.10 в 03-00 по МСК можно подать Gentx для отбора в актив сет до 29.10
 #### Обновляемся и устанавливаем зависимости
+```
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
-
+```
 #### Установка Go
 ```
 ver="1.19" && \
