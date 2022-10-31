@@ -18,8 +18,8 @@ Component	Minimum Requirement
 ```
 OS	Ubuntu 16.04
 ```
-```
 Component	Recommended Requirement
+```
 OS	Ubuntu 18.04 or higher
 ```
 
@@ -43,7 +43,7 @@ autoconf libtool curl zlib1g-dev sudo ruby libusb-1.0-0-dev \
 libcurl4-gnutls-dev pkg-config patch llvm-7-dev clang-7 vim-common jq libncurses5
 ```
 
-#### Download Inery Node package
+#### Загрузка пакета Inery Node
 ```
  git clone  https://github.com/inery-blockchain/inery-node
 ```
