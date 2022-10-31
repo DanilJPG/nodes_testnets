@@ -47,20 +47,20 @@ libcurl4-gnutls-dev pkg-config patch llvm-7-dev clang-7 vim-common jq libncurses
 ```
  git clone  https://github.com/inery-blockchain/inery-node
 ```
-Export bin path
+#### Export bin path
 
 After download is finished, go to inery.node directory
 ```
- cd inery-node
+cd inery-node
 ```
 Inside inery-node there is inery and inery.setup directories inery directory contains all binaries in order for blockchain protocol to work, those binaries path must be exported to OS enviroment
 ```
- ls    
+ls    
 inery inery.setup
 ```
 Go to inery.setup directory
 ```
- cd inery.setup
+cd inery.setup
 ```
 Inside inery.setup there is ine.py and tools directory
 
@@ -76,3 +76,37 @@ Script has written path to .bashrc file, now in order to work you paste this lin
 ```
 cd; source .bashrc; cd -
 ```
+#### Измените конфигурацию конфиг файла
+Вставьте свои данные
+```
+sudo nano tools/config.json
+
+"MASTER_ACCOUNT": {     
+"NAME": "AccountName",     
+"PUBLIC_KEY": "PublicKey",     
+"PRIVATE_KEY": "PrivateKey",     
+"PEER_ADDRESS": "IP:9010",     
+"HTTP_ADDRESS": "0.0.0.0:8888",     
+"HOST_ADDRESS": "0.0.0.0:9010" }
+```
+#### Запуск узла
+```
+screen -S inery
+./ine.py --master
+```
+#### Привязка пошелька и аккаунта
+```
+# Создание кошелька
+cd;  cline wallet create --file defaultWallet.txt
+
+# Разблокировка кошелька
+cline wallet unlock --password YOUR_WALLET_PASSWORD
+ 
+cline wallet import --private-key MASTER_PRIVATE_KEY
+  
+cline system regproducer ACCOUNT_NAME ACCOUNT_PUBLIC_KEY 0.0.0.0:9010
+  
+cline system makeprod approve ACCOUNT_NAME ACCOUNT_NAME
+```
+
+### Task 2
