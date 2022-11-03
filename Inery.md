@@ -128,7 +128,48 @@ output :
 Setting ABI... executed transaction: 11e840da507ac57c76bdcef13114cb7922037d7d53e53cf8685def8d9e7c4d0d 1280 bytes 390 us # inery <= inery::setabi {"account":"token22","abi":"0e696e6572793a3a6162692f312e310008076163636f756e7400010762616c616e636505...
 ```
 
+#### Создать валюту
+```
+cline push action token22 create '["token22", "10000.0000 TST"]' -p token22
 
+
+output:
+
+executed transaction: 8492c49f08d37a5522409ccbd73b7c3f61751639cad08d981135936dd61567aa 120 bytes 163 us # token22 <= token22::create {"issuer":"token22","maximum_supply":"10000.0000 TST"}
 ```
 
+#### Эмиссионный токен
+```
+cline push action token22 issue '["token22", "1000.0000 TST", "memo for issuing"]' -p token22
+```
+
+#### Transfer
+```
+cline push action token22 transfer '["token22", "test22", "1.0000 TST", "Here you go 1 TST :) "]' -p token22
+
+output:
+
+executed transaction: 5c820fef47c42a5b056d1b60741000aa90b621e89edf621bbf35c1263b9a460e 136 bytes 223 us # token22 <= token22::transfer {"from":"token22","to":"test22","quantity":"1.0000 TST","memo":"memo"} # test22 <= token22::transfer {"from":"token22","to":"test22","quantity":"1.0000 TST","memo":"memo"}
+```
+
+#### Check
+Проверьте баланс токена TST для учетной записи
+
+Получить баланс токена TST для токена контрактного счета 22
+
+```
+cline get currency balance token22 token22 TST
+
+output :
+
+999.0000 TST
+```
+Проверьте баланс токена TST для учетной записи test22
+
+```
+cline get currency balance token22 test22 TST
+
+output :
+
+1.000 TST
 ```
