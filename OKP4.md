@@ -1,3 +1,7 @@
+#### Подача резюме для участия в вознаграждаемом testnet
+```
+https://nemeton.okp4.network/
+```
 #### Обновляемся и скачиваем зависимости
 ```
 sudo apt update && sudo apt upgrade -y && \
