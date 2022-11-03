@@ -1,3 +1,15 @@
+#### Update 20.10
+```
+cd newrl
+
+screen -X -S newrl quit
+
+scripts/install.sh testnet
+
+screen -S newrl
+
+scripts/start.sh testnet
+```
 #### Updating and installing dependencies
 ```
 apt-get install update && apt-get upgrade -y && \
