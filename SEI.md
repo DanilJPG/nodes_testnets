@@ -1,3 +1,5 @@
+#### Active version 1.2.4beta
+
 #### Обновляем репозитории
 ```
 sudo apt update && sudo apt upgrade -y
