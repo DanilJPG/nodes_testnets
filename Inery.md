@@ -1,26 +1,16 @@
-Hardware Requirements
-Component	Minimum Requirement
+Требования к оборудованию
 ```
 CPU	Intel Core i3 or i5
 RAM	4 GB DDR4 RAM
 Storage	500 GB HDD
 Connection	100 Mbit/s port
 ```
-Component	Recommended Requirement
+Рекомендуемые требования к компонентам
 ```
 CPU	Intel Core i7-8700 Hexa-Core
 RAM	64 GB DDR4 RAM
 Storage	2 x 1 TB NVMe SSD
 Connection	1 Gbit/s port
-```
-Software Requirements
-Component	Minimum Requirement
-```
-OS	Ubuntu 16.04
-```
-Component	Recommended Requirement
-```
-OS	Ubuntu 18.04 or higher
 ```
 
 #### Подготовка(установка зависимостей,firewalld,открываем порты)
@@ -45,34 +35,32 @@ libcurl4-gnutls-dev pkg-config patch llvm-7-dev clang-7 vim-common jq libncurses
 ### Task 1
 #### Загрузка пакета Inery Node
 ```
- git clone  https://github.com/inery-blockchain/inery-node
+git clone  https://github.com/inery-blockchain/inery-node
 ```
-#### Export bin path
-
-After download is finished, go to inery.node directory
+После завершения загрузки перейдите в каталог inery.node
 ```
 cd inery-node
 ```
-Inside inery-node there is inery and inery.setup directories inery directory contains all binaries in order for blockchain protocol to work, those binaries path must be exported to OS enviroment
+Внутри inery-node есть каталоги inery и inery.setup Каталог inery содержит все двоичные файлы, чтобы протокол blockchain работал, путь к этим двоичным файлам должен быть экспортирован в среду операционной системы
 ```
 ls    
 inery inery.setup
 ```
-Go to inery.setup directory
+Перейдите в каталог inery.setup
 ```
 cd inery.setup
 ```
-Inside inery.setup there is ine.py and tools directory
+Внутри inery.setup есть ine.py и каталог инструментов
 
-Give ine.py script permission for execution with "chmod" command:
+Дать ine.py разрешение скрипта на выполнение с помощью команды "chmod":
 ```
 chmod +x ine.py
 ```
-To export path to local os envirment for inery binaries, inside inery.setup run ine.py script with --export options
+Чтобы экспортировать путь к локальной среде операционной системы для двоичных файлов inery, внутри inery.setup запустите ine.py сценарий с параметрами --export
 ```
 ./ine.py --export
 ```
-Script has written path to .bashrc file, now in order to work you paste this line in terminal, it will refresh envirmental path variable for current terminall session
+Обновление среды
 ```
 cd; source .bashrc; cd -
 ```
@@ -110,3 +98,37 @@ cline system makeprod approve ACCOUNT_NAME ACCOUNT_NAME
 ```
 
 ### Task 2
+Разблокировка кошелька
+```
+cline wallet unlock -n <name_wallet>
+
+```
+Мы возьмем контракт токена из уже существующего, скопировав код контракта inery.token и записав его в файлах wasm и abi, которые мы будем использовать позже для настройки контракта токена в нашей собственной учетной записи
+```
+cline get code inery.token -c token.wasm -a token.abi --wasm
+
+output :
+
+code hash: ac6fb455ea0a66a42fa9bc9aef61cfaf18109346795142194fe3b167dea3a97c сохранение wasm в токен.я сохранял abi в token.abi
+```
+
+```
+cline set code token22 token.wasm
+
+
+output :
+
+Reading WASM from /root/token.wasm... Setting Code... executed transaction: 31b009ed4010adc959e1d5177be0213a4a39e87668fe01f3e8ed076c5827a12d 7536 bytes 2281 us # inery <= inery::setcode {"account":"token22","vmtype":0,"vmversion":0,"code":"0061736d0100000001a0011b60000060017e0060027f7f...
+
+cline set code token22 token.abi
+
+
+output :
+
+Setting ABI... executed transaction: 11e840da507ac57c76bdcef13114cb7922037d7d53e53cf8685def8d9e7c4d0d 1280 bytes 390 us # inery <= inery::setabi {"account":"token22","abi":"0e696e6572793a3a6162692f312e310008076163636f756e7400010762616c616e636505...
+```
+
+
+```
+
+```
