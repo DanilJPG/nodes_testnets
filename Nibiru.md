@@ -98,19 +98,67 @@ journalctl -u nibidd -f -n 100
 ```
 
 
-#### Создаем кошелек
+#### Кошелек
+```
+# создать кошелек
+nibid keys add <name_wallet> --keyring-backend os
+
+# восстановить кошелек (после команды вставить seed)
+nibid keys add <name_wallet> --recover --keyring-backend os
 ```
 
+
+#### Создаем валидатора
+```
+nibid tx staking create-validator \
+--chain-id nibiru-testnet-1 \
+--commission-rate 0.05 \
+--commission-max-rate 0.2 \
+--commission-max-change-rate 0.1 \
+--min-self-delegation "1000000" \
+--amount 1000000unibi \
+--pubkey $(nibid tendermint show-validator) \
+--moniker "<name_moniker>" \
+--from <name_wallet> \
+--fees 5000unibi
 ```
 
 
-#### 
+#### Полезные команды
+```
+# проверить блоки
+nibid status 2>&1 | jq ."SyncInfo"."latest_block_height"
+
+# проверить логи
+journalctl -u nibid -f -o cat
+
+# проверить статус
+curl localhost:26657/status
+
+# проверить баланс
+nibid q bank balances <address>
+
+# собрать реварды со всех валидаторов, которым делегировали (без комиссии)
+nibid tx distribution withdraw-all-rewards --from <name_wallet> --fees 5000unibi -y
+
+# собрать реварды c отдельного валидатора или реварды + комиссию со своего валидатора
+nibid tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 5000unibi --commission -y
+
+# заделегировать себе в стейк еще (так отправляется 1 монетa)
+nibid tx staking delegate <valoper_address> 1000000unibi --from <name_wallet> --fees 5000unibi -y
+
+# ределегирование на другого валидатора
+nibid tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000unibi --from <name_wallet> --fees 5000unibi -y
+
 ```
 
+#### Delete
 ```
-
-
-#### 
-```
-
+systemctl stop nibid && \
+systemctl disable nibid && \
+rm /etc/systemd/system/nibid.service && \
+systemctl daemon-reload && \
+cd $HOME && \
+rm -rf .nibid nibiru && \
+rm -rf $(which nibid)
 ```
