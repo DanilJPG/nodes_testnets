@@ -102,6 +102,7 @@ cline system makeprod approve ACCOUNT_NAME ACCOUNT_NAME
 ```
 cline wallet unlock -n <name_wallet>
 
+password:...
 ```
 Мы возьмем контракт токена из уже существующего, скопировав код контракта inery.token и записав его в файлах wasm и abi, которые мы будем использовать позже для настройки контракта токена в нашей собственной учетной записи
 ```
@@ -130,7 +131,7 @@ Setting ABI... executed transaction: 11e840da507ac57c76bdcef13114cb7922037d7d53e
 
 #### Создать валюту
 ```
-cline push action token22 create '["token22", "10000.0000 TST"]' -p token22
+cline push action inery.token create '["<name>", "500000.0000 NOWI" , "creating my first tokens"]' -p <name>
 
 
 output:
