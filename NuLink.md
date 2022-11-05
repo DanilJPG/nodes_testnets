@@ -80,6 +80,10 @@ export NULINK_KEYSTORE_PASSWORD=SIFRENIZ
 
 export NULINK_OPERATOR_ETH_PASSWORD=SIFRENIZ
 ```
+#### Установка виртуальной машины
+```
+pip install virtualenv
+```
 #### Сохраняем пароли в docker,запуск
 ```
 docker run -it --rm \
