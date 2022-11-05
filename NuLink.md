@@ -99,7 +99,49 @@ pip install nulink-0.2.0-py3-none-any.whl
 ```
 #### Активация nulink 
 ```
+source /root/nulink-venv/bin/activate
+```
+#### python -c "import nulink"
+outpoot: ничего не должно быть
+#### Проверка работы
+```
+nulink --help
+sage: nulink [OPTIONS] COMMAND [ARGS]...
 
+
+  Top level command for all things nulink.
+
+
+Options:
+
+  --version       Echo the CLI version
+
+  --config-path   Echo the configuration root directory path
+
+  --logging-path  Echo the logging root directory path
+
+  --help          Show this message and exit.
+
+
+Commands:
+
+  alice     "Alice the Policy Authority" management commands.
+
+  bob       "Bob management commands.
+
+  bond      Bond an operator to a staking provider.
+
+  contacts  Lightweight contacts utility to store public keys of known...
+
+  enrico    "Enrico the Encryptor" management commands.
+
+  porter    Porter management commands.
+
+  status    Echo a snapshot of live NuLink Network metadata.
+
+  unbond    Unbonds an operator from an authorized staking provider.
+
+  ursula    "Ursula the Untrusted" PRE Re-encryption node management...
 ```
 #### Сохраняем пароли в docker,запуск
 ```
