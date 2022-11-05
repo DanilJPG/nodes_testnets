@@ -39,7 +39,16 @@ apt install screen
 screen -S newrl
 scripts/start.sh mainnet
 ```
+#### Backup
+```
+cd newrl
+python3 scripts/show_wallet.py
+```
 
+#### Добавление доверия для создания блоков
+```
+
+```
 #### Update testnet 20.10
 ```
 cd newrl
