@@ -84,6 +84,23 @@ export NULINK_OPERATOR_ETH_PASSWORD=SIFRENIZ
 ```
 pip install virtualenv
 ```
+#### Направляем пакеты
+```
+virtualenv /root/nulink-venv
+```
+#### Активируем виртуальную среду
+```
+source /root/nulink-venv/bin/activate
+```
+#### Работа с пакетами 
+```
+wget https://download.nulink.org/release/core/nulink-0.2.0-py3-none-any.whl
+pip install nulink-0.2.0-py3-none-any.whl
+```
+#### Активация nulink 
+```
+
+```
 #### Сохраняем пароли в docker,запуск
 ```
 docker run -it --rm \
