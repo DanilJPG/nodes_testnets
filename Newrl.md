@@ -13,7 +13,34 @@ sudo ufw allow 8456/tcp
 ```
 sudo ufw enable
 ```
-#### Update 20.10
+#### Обновление и подготовка сервера
+```
+sudo apt-get update && sudo apt-get upgrade \
+git clone https://github.com/git/git \
+```
+#### Python install
+```
+sudo apt update && sudo apt install python3.10-venv
+sudo apt update
+sudo apt install python3-venv python3-pip
+```
+#### Установка скрипта бинарника
+```
+cd newrl
+# остановка работы скрипта из тестнета
+screen -X -S newrl kill
+git clone https://github.com/newrlfoundation/newrl.git
+cd newrl
+scripts/install.sh mainnet
+```
+#### Запуск 
+```
+apt install screen
+screen -S newrl
+scripts/start.sh mainnet
+```
+
+#### Update testnet 20.10
 ```
 cd newrl
 
