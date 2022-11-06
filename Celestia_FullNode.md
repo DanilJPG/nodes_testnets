@@ -182,3 +182,25 @@ celestia-appd tx bank send <name_wallet> <address> 1000000utia --fees 5555utia -
 # выбраться из тюрьмы
 celestia-appd tx slashing unjail --from <name_wallet> --fees 5555utia -y
 ```
+#### Update
+```
+sudo systemctl stop celestia-appd && cd celestia-app
+git pull
+git checkout <>
+make install
+celestia-appd version
+```
+#### Delete
+```
+sudo systemctl stop celestia-appd && \
+sudo systemctl disable celestia-appd && \
+rm /etc/systemd/system/celestia-appd.service && \
+sudo systemctl daemon-reload && \
+cd $HOME && \
+rm -rf .celestia-app celestia-app && \
+rm -rf $(which celestia-appd)
+```
+#### Edit validator
+```
+
+```
