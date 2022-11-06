@@ -131,7 +131,7 @@ Setting ABI... executed transaction: 11e840da507ac57c76bdcef13114cb7922037d7d53e
 
 #### Создать валюту
 ```
-cline push action inery.token create '["<name>", "500000.0000 NOWI" , "creating my first tokens"]' -p <name>
+cline push action inery.token create '["<name>", "500000.0000 <name_token>" , "creating my first tokens"]' -p <name>
 
 
 output:
