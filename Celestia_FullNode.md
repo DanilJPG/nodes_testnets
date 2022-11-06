@@ -128,6 +128,18 @@ celestia-appd keys add <name_wallet> --keyring-backend os
 # восстановить кошелек (после команды вставить seed)
 celestia-appd keys add <name_wallet> --recover --keyring-backend os
 ```
+#### Prinning
+```
+PRUNING="custom"
+PRUNING_KEEP_RECENT="100"
+PRUNING_INTERVAL="10"
+
+sed -i -e "s/^pruning *=.*/pruning = \"$PRUNING\"/" $HOME/.celestia-app/config/app.toml
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \
+\"$PRUNING_KEEP_RECENT\"/" $HOME/.celestia-app/config/app.toml
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
+\"$PRUNING_INTERVAL\"/" $HOME/.celestia-app/config/app.toml
+```
 #### Validator
 ```
 celestia-appd tx staking create-validator \
