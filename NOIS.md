@@ -114,6 +114,20 @@ noisd q bank balances <address>
 # вывести список кошельков
 noisd keys list
 ```
+#### Валидатор 
+```
+# собрать реварды со всех валидаторов, которым делегировали (без комиссии)
+noisd tx distribution withdraw-all-rewards --from <name_wallet> --fees 5000unois -y
+
+# собрать реварды c отдельного валидатора или реварды + комиссию со своего валидатора
+noisd tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 5000unois --commission -y
+
+# заделегировать себе в стейк еще (так отправляется 1 монетa)
+noisd tx staking delegate <valoper_address> 1000000unois --from <name_wallet> --fees 5000unois -y
+
+# ределегирование на другого валидатора
+noisd tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000unois --from <name_wallet> --fees 5000unois -y
+```
 #### Edit validator 
 ```
 BINARY tx staking edit-validator \
