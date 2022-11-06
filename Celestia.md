@@ -142,4 +142,43 @@ celestia-appd tx staking create-validator \
 --from <name_wallet> \
 --fees 5550utia
 ```
-#### по
+#### Полезные команды
+```
+# проверить блоки
+celestia-appd status 2>&1 | jq ."SyncInfo"."latest_block_height"
+
+# проверить логи
+sudo journalctl -u celestia-appd -f -o cat
+
+# проверить статус
+curl localhost:26657/status
+
+# проверить баланс
+celestia-appd q bank balances <address>
+
+# вывести список кошельков
+celestia-appd keys list
+
+# показать ключ аккаунта
+celestia-appd keys show <name_wallet> --bech acc
+```
+#### Операции с валидатором
+```
+# собрать комиссионные + реварды
+celestia-appd tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 5555utia --commission -y
+
+# заделегировать себе в стейк еще (так отправляется 1 монетa)
+celestia-appd tx staking delegate <valoper_address> 1000000utia --from <name_wallet> --fees 5555utia -y
+
+# ределегирование на другого валидатора
+celestia-appd tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000utia --from <name_wallet> --fees 5555utia -y
+
+# unbond 
+celestia-appd tx staking unbond <addr_valoper> 1000000utia --from <name_wallet> --fees 5555utia -y
+
+# отправить монеты на другой адрес
+celestia-appd tx bank send <name_wallet> <address> 1000000utia --fees 5555utia -y
+
+# выбраться из тюрьмы
+celestia-appd tx slashing unjail --from <name_wallet> --fees 5555utia -y
+```
