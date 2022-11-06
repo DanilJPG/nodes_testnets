@@ -25,3 +25,18 @@ source $HOME/.bash_profile
 
 go version
 ```
+#### Установка Celestia App
+```
+cd $HOME
+rm -rf celestia-app
+git clone https://github.com/celestiaorg/celestia-app.git
+cd celestia-app
+git checkout v0.6.0
+make install
+```
+```
+celestia-appd version
+```
+```
+git clone https://github.com/celestiaorg/networks
+```
