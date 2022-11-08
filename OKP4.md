@@ -1,3 +1,5 @@
+Discord: https://discord.gg/tKqnRDZX
+WebSite: https://okp4.network/
 #### Подача резюме для участия в вознаграждаемом testnet
 ```
 https://nemeton.okp4.network/
