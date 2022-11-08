@@ -1,4 +1,8 @@
-#### Active version 1.2.4beta
+## SEI
+
+Discord: https://discord.gg/sei
+
+#### Active version 1.2.2beta
 
 #### Обновляем репозитории
 ```
