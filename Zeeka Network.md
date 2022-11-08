@@ -58,7 +58,7 @@ RUST_LOG=`RUST_LOG=info which bazuka` RUST_BACKTRACE=1 target/release/bazuka nod
 ```
 #### 5.Инициализировать ноду
 ```
-bazuka init --seed '<Ваша мнемоника от любого кошелька где нет монет>' --network debug --node 127.0.0.1:8765
+bazuka init --seed '<Ваша мнемоника от любого кошелька где нет монет>' --network chaos --node 127.0.0.1:8765
 ```
 Ожидаем:
 ![image](https://user-images.githubusercontent.com/57448493/192145821-fe01f241-8795-48d9-b9aa-72b25db18b7e.png)
