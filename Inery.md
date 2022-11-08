@@ -1,3 +1,6 @@
+Discord: https://discord.gg/GVBGr8uD
+
+Website: https://inery.io/
 Требования к оборудованию
 ```
 CPU	Intel Core i3 or i5
