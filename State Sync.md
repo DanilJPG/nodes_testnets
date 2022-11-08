@@ -14,9 +14,10 @@ snapshot-keep-recent = 2
 <bin> status
 
 # id":"f7aa6ffae725764f473b0d5627a664d3e3cd6164","listen_addr":"65.144.108.99:26656"
+```
 Example:
 ![image](https://user-images.githubusercontent.com/57448493/200609885-b30d9696-0837-4d96-8360-e2e492e36ab9.png)
-
+```
 # Получаем примерно такое f7aa6ffae725764f473b0d5627a664d3e3cd6164@65.144.108.99:26656
 Если нода работает перезагружаем ее 
 
