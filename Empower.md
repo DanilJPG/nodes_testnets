@@ -1,3 +1,5 @@
+## EmpowerChain
+
 Discord: https://discord.gg/AmHDfQdP
 
 Website: https://empower.eco/
@@ -152,6 +154,17 @@ empowerd tx staking unbond <addr_valoper> 1000000umpwr --from $WALLET --fees 500
 
 # отправить монеты на другой адрес
 empowerd tx bank send $WALLET <address> 1000000umpwr --fees 5000umpwr -y
+```
+#### Proposal
+```
+# список proposals
+empowerd q gov proposals
+
+# посмотреть результат голосования
+empowerd q gov proposals --voter <ADDRESS>
+
+# проголосовать за предложение 
+empowerd tx gov vote 1 yes --from <name_wallet> --fees 555umpwr
 ```
 #### Delete
 ```
