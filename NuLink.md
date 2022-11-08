@@ -189,9 +189,9 @@ docker kill ursula
 docker rm ursula
 ```
 ```
-export NULINK_KEYSTORE_PASSWORD=mevcutşifreniz
+export NULINK_KEYSTORE_PASSWORD=<password>
 
-export NULINK_OPERATOR_ETH_PASSWORD=mevcutşifreniz
+export NULINK_OPERATOR_ETH_PASSWORD=<password>
 ```
 #### Last version installation
 ```
