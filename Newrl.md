@@ -1,3 +1,7 @@
+## NEWRL
+
+Discord: https://discord.gg/B2P8PVv6
+
 #### mainnet
 ```
 sudo ufw status
