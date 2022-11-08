@@ -7,6 +7,7 @@ Explorers: https://celestia.explorers.guru/
 
 Github: https://github.com/celestiaorg
 
+Discord: https://discord.gg/celestiacommunity
 #### Обновление и установка "ключей" и утилит
 ```
 sudo apt update && sudo apt upgrade -y \
