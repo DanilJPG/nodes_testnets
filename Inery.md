@@ -1,3 +1,4 @@
+## Inery
 Discord: https://discord.gg/GVBGr8uD
 
 Website: https://inery.io/
