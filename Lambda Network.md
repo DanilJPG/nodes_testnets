@@ -1,5 +1,9 @@
 ## Lambda Mainnet
 
+Dicord: https://discord.gg/lambdanetwork
+
+Docs: https://docs.lambda.im/validators/testnet.html
+
 #### Обновляемся и устанавливаем зависимости
 ```
 sudo apt update && sudo apt upgrade -y && \
