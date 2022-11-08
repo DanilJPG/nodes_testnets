@@ -1,4 +1,5 @@
-## Установка полного узла
+## Celestia
+### Установка полного узла
 Website: https://celestia.org/
 
 Docs: https://docs.celestia.org/
