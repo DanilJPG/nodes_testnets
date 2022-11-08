@@ -1,3 +1,10 @@
+## STRIDE 
+
+Discord: https://discord.gg/stride-zone
+
+Website - https://stride.zone/
+
+Twitter - https://twitter.com/stride_zone
 #### Обновимся и установим зависимости
 ```
 sudo apt update && sudo apt upgrade -y
