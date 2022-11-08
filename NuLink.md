@@ -1,4 +1,4 @@
-Discord : https://discord.gg/ktDa35pU
+Discord : https://discord.gg/w964Qzre
 
 Twitter : https://twitter.com/NuLink_
 
