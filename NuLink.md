@@ -79,9 +79,9 @@ chmod -R 777 /root/nulink
  ```
 #### Создаем пароль
 ```
-export NULINK_KEYSTORE_PASSWORD=SIFRENIZ
+export NULINK_KEYSTORE_PASSWORD=<your password>
 
-export NULINK_OPERATOR_ETH_PASSWORD=SIFRENIZ
+export NULINK_OPERATOR_ETH_PASSWORD=<your password>
 ```
 #### Установка виртуальной машины
 ```
