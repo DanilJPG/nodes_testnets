@@ -7,6 +7,19 @@ Website: https://empower.eco/
 Децентрализация новой (циркулярной) экономики, чтобы каждый мог получить справедливую долю выгоды от того, что мир станет чище и лучше.При делегировании валидатору,вы не только зарабатываете на своей процентной ставке,также вы помогаете очистить природу от мусора.
 ![image](https://user-images.githubusercontent.com/57448493/200168721-ca5c593a-0054-4c69-9eeb-14243678f4fc.png)
 
+#### Empowerchain Testnet v0.0.2 Upgrade 11.11.2022
+Chain ID: altruistic-1
+
+The upgrade is scheduled for 580000.
+
+Cosmovisor manual build method
+Build the new binary verison
+```
+cd empowerchain
+git pull
+git checkout v0.0.2
+cd chain && make install
+```
 #### Обновление и установка зависимостей 
 ```
 sudo apt update && sudo apt upgrade -y && \
