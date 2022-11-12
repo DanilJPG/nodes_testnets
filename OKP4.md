@@ -4,6 +4,11 @@ Discord: https://discord.gg/tKqnRDZX
 Off.manual: https://docs.okp4.network/docs/nodes/introduction
 
 WebSite: https://okp4.network/
+
+Faucet:
+```
+https://faucet.okp4.network/
+```
 #### Подача резюме для участия в вознаграждаемом testnet
 ```
 https://nemeton.okp4.network/
