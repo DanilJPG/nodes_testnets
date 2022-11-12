@@ -3,6 +3,11 @@
 Discord: https://discord.gg/4sCtbbfc
 
 Website: https://nibiru.fi/
+
+Faucet: https://discord.com/channels/947911971515293759/984840062871175219
+```
+$request <address_wallet>
+```
 #### Обновление и установка утилит
 ```
 apt update && apt upgrade -y \
