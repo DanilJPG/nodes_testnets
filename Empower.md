@@ -4,6 +4,11 @@ Discord: https://discord.gg/AmHDfQdP
 
 Website: https://empower.eco/
 
+Faucet: https://discord.gg/T5N4V5qd 
+```
+$request <empower...> altruistic-1
+```
+
 Децентрализация новой (циркулярной) экономики, чтобы каждый мог получить справедливую долю выгоды от того, что мир станет чище и лучше.При делегировании валидатору,вы не только зарабатываете на своей процентной ставке,также вы помогаете очистить природу от мусора.
 ![image](https://user-images.githubusercontent.com/57448493/200168721-ca5c593a-0054-4c69-9eeb-14243678f4fc.png)
 
