@@ -79,3 +79,15 @@ snarkos account new
 Введите закрытый ключ учетной записи Aleo Prover:
 APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+snarkos --help
+
+OPTIONS:
+    -h, --help                     Print help information
+    -v, --verbosity <VERBOSITY>    Specify the verbosity [options: 0, 1, 2, 3] [default: 2]
+
+SUBCOMMANDS:
+    account    Команды для управления учетными записями Aleo
+    clean      Очищает хранилище узла snarkOS
+    help       Распечатайте это сообщение или справку из данной подкоманды(ов)
+    start      Запускает узел snarkOS
+    update     Обновление snarkOS
