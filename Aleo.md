@@ -66,10 +66,11 @@ snarkos account new
 Пожалуйста, не забудьте сохранить закрытый ключ учетной записи и ключ просмотра. Ниже приведен пример вывода:
 
  Attention - Remember to store this account private key and view key.
-
+```
   Private Key  APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me And Use In The Next Step
      View Key  AViewKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me
       Address  aleo1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me
+```     
 Затем, чтобы запустить узел проверки, из каталога snarkOS запустите:
 ```
 ./run-prover.sh
