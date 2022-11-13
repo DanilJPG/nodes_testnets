@@ -61,7 +61,7 @@ snarkos account new
 ```
 ./run-prover.sh
 ```
-When prompted, enter your Aleo private key:
+При появлении запроса введите свой закрытый ключ Aleo:
 ```
 Введите закрытый ключ учетной записи Aleo Prover:
 APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
