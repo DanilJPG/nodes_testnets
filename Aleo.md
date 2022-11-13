@@ -46,7 +46,7 @@ cargo install --path /root/snarkOS/
 
 Затем сгенерируйте адрес учетной записи Aleo:
 ```
-snarkos account new <acc_name>
+snarkos account new 
 ```
 Это приведет к созданию новой учетной записи Aleo в терминале.
 
