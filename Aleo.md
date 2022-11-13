@@ -80,7 +80,8 @@ snarkos account new
 APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 snarkos --help
-
+```
+```
 OPTIONS:
     -h, --help                     Print help information
     -v, --verbosity <VERBOSITY>    Specify the verbosity [options: 0, 1, 2, 3] [default: 2]
@@ -91,3 +92,4 @@ SUBCOMMANDS:
     help       Распечатайте это сообщение или справку из данной подкоманды(ов)
     start      Запускает узел snarkOS
     update     Обновление snarkOS
+```
