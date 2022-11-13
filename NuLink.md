@@ -247,3 +247,16 @@ $ docker run --restart on-failure -d \
 -e NULINK_OPERATOR_ETH_PASSWORD \
 nulink/nulink nulink ursula run --no-block-until-ready
 ```
+Если встретили ошибку:
+```
+Error: Gateway Time-out for url: https://data-seed-prebsc-2-s2.binance.org:8545
+```
+То выполните:
+```
+docker stop ursula
+```
+Перейдите в директорию /nulink,откройте ursula.json и замените значение в `eth_provider_uri` на "https://bsc-testnet.public.blastapi.io"
+Restart
+```
+docker restart ursula
+```
