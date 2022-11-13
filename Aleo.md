@@ -79,6 +79,8 @@ snarkos account new
 Введите закрытый ключ учетной записи Aleo Prover:
 APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+
+```
 snarkos --help
 ```
 ```
