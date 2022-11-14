@@ -66,9 +66,26 @@ screen -S newrl
 scripts/start.sh testnet
 
 ```
-Check: curl 'http://<server ip>:8456/get-node-info'
+Check: `curl 'http://<server ip>:8456/get-node-info'`
 ![image](https://user-images.githubusercontent.com/57448493/201596713-048fc01c-43c1-4327-a17a-c70fd6a286aa.png)
 
+ #### Update testnet 13.11 - 1.2.4 
+```
+cd newrl
+
+screen -X -S newrl quit
+
+scripts/install.sh testnet
+
+screen -S newrl
+
+scripts/start.sh testnet
+
+```
+Check: `curl 'http://<server ip>:8456/get-node-info'`
+ 
+![image](https://user-images.githubusercontent.com/57448493/201596713-048fc01c-43c1-4327-a17a-c70fd6a286aa.png)
+ 
 #### Updating and installing dependencies
 ```
 apt-get install update && apt-get upgrade -y && \
