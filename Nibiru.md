@@ -174,7 +174,7 @@ rm -rf $(which nibid)
 
 #### Если сущетсвуют проблемы связанные с подключением пиров или генезисом попробуйте сброс сети и начните с шага скачивания генезиса
 ```
-systemctl stop okp4d
-rm $HOME/.okp4d/config/addrbook.json
-okp4d tendermint unsafe-reset-all --home $HOME/.okp4d --keep-addr-book
+systemctl stop nibid
+rm $HOME/.nibid/config/addrbook.json
+nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
 ```
