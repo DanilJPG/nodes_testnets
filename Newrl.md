@@ -49,9 +49,6 @@ cd newrl
 python3 scripts/show_wallet.py
 ```
 
-#### Добавление доверия для создания блоков
-
-
 #### Update testnet 15.11 - 1.3.0 
 ```
 cd newrl
