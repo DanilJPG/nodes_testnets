@@ -159,7 +159,6 @@ nibid tx staking delegate <valoper_address> 1000000unibi --from <name_wallet> --
 
 # ределегирование на другого валидатора
 nibid tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000unibi --from <name_wallet> --fees 5000unibi -y
-
 ```
 
 #### Delete
@@ -171,4 +170,11 @@ systemctl daemon-reload && \
 cd $HOME && \
 rm -rf .nibid nibiru && \
 rm -rf $(which nibid)
+```
+
+#### Если сущетсвуют проблемы связанные с подключением пиров или генезисом попробуйте сброс сети и начните с шага скачивания генезиса
+```
+systemctl stop okp4d
+rm $HOME/.okp4d/config/addrbook.json
+okp4d tendermint unsafe-reset-all --home $HOME/.okp4d --keep-addr-book
 ```
