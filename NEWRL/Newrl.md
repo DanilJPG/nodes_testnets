@@ -49,44 +49,44 @@ cd newrl
 python3 scripts/show_wallet.py
 ```
 
-#### Update testnet 15.11 - 1.3.0 
+#### Update mainnet 15.11 - 1.3.0 
 ```
 cd newrl
 
 screen -X -S newrl quit
 
-scripts/install.sh testnet
+scripts/install.sh mainnet
 
 screen -S newrl
 
-scripts/start.sh testnet
+scripts/start.sh mainnet
 ```
 
-#### Update testnet 20.10 - 1.2.4 
+#### Update mainnet 20.10 - 1.2.4 
 ```
 cd newrl
 
 screen -X -S newrl quit
 
-scripts/install.sh testnet
+scripts/install.sh mainnet
 
 screen -S newrl
 
-scripts/start.sh testnet
+scripts/start.sh mainnet
 
 ```
 
- #### Update testnet 13.11 - 1.2.3 
+ #### Update mainnet 13.11 - 1.2.3 
 ```
 cd newrl
 
 screen -X -S newrl quit
 
-scripts/install.sh testnet
+scripts/install.sh mainnet
 
 screen -S newrl
 
-scripts/start.sh testnet
+scripts/start.sh mainnet
 
 ```
 Check: `curl 'http://<server ip>:8456/get-node-info'`
