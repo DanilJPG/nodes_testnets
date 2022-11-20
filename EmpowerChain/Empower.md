@@ -5,9 +5,9 @@
 --- | --- | ---
 
 Steps | Comments
---- | --- | ---
+--- | --- 
 [Upgrade](Empowerchain Testnet v0.0.2 Upgrade 11.11.2022) | Check the version, if necessary update to the appropriate height blocks
-[]() |
+[installing utilities](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=Updating%20and%20installing%20utilities) | server setup
 []() |
 []() |
 []() |
