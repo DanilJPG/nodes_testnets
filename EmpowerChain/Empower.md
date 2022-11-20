@@ -3,7 +3,8 @@
 
 [Discord](https://discord.gg/AmHDfQdP) | [Website](https://empower.eco/) | [Faucet](https://discord.gg/T5N4V5qd)
 --- | --- | ---
-
+Steps | Comments
+--- | ---
 ```Shell
 $request <empower...> altruistic-1
 ```
