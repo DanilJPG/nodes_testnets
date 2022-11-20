@@ -1,1 +1,67 @@
+#### Useful Commands
+```
+# проверить блоки
+empowerd status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
+# проверить логи
+journalctl -u empowerd -f -o cat
+
+# проверить статус
+curl localhost:26657/status
+
+# проверить баланс
+empowerd q bank balances <address>
+
+# проверить pubkey валидатора
+empowerd tendermint show-validator
+```
+#### For validator
+```
+# собрать реварды со всех валидаторов, которым делегировали (без комиссии)
+empowerd tx distribution withdraw-all-rewards --from $WALLET --fees 5000umpwr -y
+
+# собрать реварды c отдельного валидатора или реварды + комиссию со своего валидатора
+empowerd tx distribution withdraw-rewards <valoper_address> --from $WALLET --fees 5000umpwr --commission -y
+
+# заделегировать себе в стейк еще (так отправляется 1 монетa)
+empowerd tx staking delegate <valoper_address> 1000000umpwr --from $WALLET --fees 5000umpwr -y
+
+# ределегирование на другого валидатора
+empowerd tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000umpwr --from $WALLET --fees 5000umpwr -y
+
+# unbond 
+empowerd tx staking unbond <addr_valoper> 1000000umpwr --from $WALLET --fees 5000umpwr -y
+
+# отправить монеты на другой адрес
+empowerd tx bank send $WALLET <address> 1000000umpwr --fees 5000umpwr -y
+```
+#### Proposal
+```
+# список proposals
+empowerd q gov proposals
+
+# посмотреть результат голосования
+empowerd q gov proposals --voter <ADDRESS>
+
+# проголосовать за предложение 
+empowerd tx gov vote 1 yes --from <name_wallet> --fees 555umpwr
+```
+#### Delete
+```
+systemctl stop empowerd && \
+systemctl disable empowerd && \
+rm /etc/systemd/system/empowerd.service && \
+systemctl daemon-reload && \
+cd $HOME && \
+rm -rf .empowerchain empowerchain && \
+rm -rf $(which empowerd)
+```
+#### Edit validator 
+```
+BINARY tx staking edit-validator \
+  --chain-id "CHAIN_NAME" \
+  --moniker "MONIKER" \
+  --identity "IDENTITY" \
+  --details "DETAILS" \
+  --from "WALLET_NAME"
+```
