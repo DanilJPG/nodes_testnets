@@ -20,7 +20,7 @@ Steps | Comments
 [Validator](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=use%20the%20tap-,Validator,-empowerd%20tx%20staking) | Creating your node operator
 [State Sunc]() | Chain synchronization
 
-Decentralize the new (circular) economy so that everyone can get a fair share of the benefits of making the world a cleaner and better place. When you delegate to the Validator, you not only earn your interest rate, you also help clean up the environment.
+**Brief description:** *Decentralize the new (circular) economy so that everyone can get a fair share of the benefits of making the world a cleaner and better place. When you delegate to the Validator, you not only earn your interest rate, you also help clean up the environment*.
 
 ![image](https://user-images.githubusercontent.com/57448493/200168721-ca5c593a-0054-4c69-9eeb-14243678f4fc.png)
 
