@@ -6,7 +6,7 @@
 
 Steps | Comments
 --- | --- 
-[Upgrade](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=up%20the%20environment.-,Empowerchain%20Testnet%20v0.0.2%20Upgrade%2011.11.2022,-Chain%20ID%3A%20altruistic) | Check the version, if necessary update to the appropriate height blocks
+[Upgrade(https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=up%20the%20environment.-,Empowerchain%20Testnet%20v0.0.2%20Upgrade%2011.11.2022,-Chain%20ID%3A%20altruistic) | Check the version, if necessary update to the appropriate height blocks
 
 [installing utilities](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=Updating%20and%20installing%20utilities) | server setup
 
