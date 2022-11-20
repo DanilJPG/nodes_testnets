@@ -24,6 +24,7 @@ Decentralize the new (circular) economy so that everyone can get a fair share of
 
 ![image](https://user-images.githubusercontent.com/57448493/200168721-ca5c593a-0054-4c69-9eeb-14243678f4fc.png)
 
+***
 #### Empowerchain Testnet v0.0.2 Upgrade 11.11.2022
 Chain ID: altruistic-1
 
