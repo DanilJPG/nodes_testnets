@@ -20,7 +20,7 @@ The upgrade is scheduled for 580000.
 Cosmovisor manual build method
 Build the new binary verison
 
-```Bash
+```Shell
 cd empowerchain
 git pull
 git checkout v0.0.2
