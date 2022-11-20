@@ -9,7 +9,7 @@ Faucet: https://discord.gg/T5N4V5qd
 $request <empower...> altruistic-1
 ```
 
-Децентрализация новой (циркулярной) экономики, чтобы каждый мог получить справедливую долю выгоды от того, что мир станет чище и лучше.При делегировании валидатору,вы не только зарабатываете на своей процентной ставке,также вы помогаете очистить природу от мусора.
+Decentralize the new (circular) economy so that everyone can get a fair share of the benefits of making the world a cleaner and better place. When you delegate to the Validator, you not only earn your interest rate, you also help clean up the environment.
 ![image](https://user-images.githubusercontent.com/57448493/200168721-ca5c593a-0054-4c69-9eeb-14243678f4fc.png)
 
 #### Empowerchain Testnet v0.0.2 Upgrade 11.11.2022
@@ -25,14 +25,14 @@ git pull
 git checkout v0.0.2
 cd chain && make install
 ```
-#### Обновление и установка зависимостей 
+#### Updating and installing utilities 
 ```
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
-#### Установка GO
+#### Installing GO
 ```
-ver="1.19" && \
+ver="1.19.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
@@ -42,30 +42,23 @@ source $HOME/.bash_profile && \
 go version
 ```
 
-#### Добавление переменных 
-Замените `<NODENAME` , `<WALLET>` 
-```
-echo "export <NODENAME>=$NODENAME" » $HOME/.bash_profile
-echo "export <WALLET>=$WALLET" » $HOME/.bash_profile
-source $HOME/.bash_profile
-```
-#### Копирование репозитория
+#### Copying a repository
 ```
 cd $HOME && git clone https://github.com/empowerchain/empowerchain && \
 cd empowerchain/chain && \
 make install && \
 empowerd version --long | head
 ```
-#### Инициализация
+#### Initializing
 ```
 empowerd init $NODENAME --chain-id altruistic-1 && \
 empowerd config chain-id altruistic-1
 ```
-#### Скачиваем genesis
+#### Download genesis
 ```
 rm -rf $HOME/.empowerchain/config/genesis.json && cd $HOME/.empowerchain/config && wget $HOME/.empowerchain/config/genesis.json "https://raw.githubusercontent.com/empowerchain/empowerchain/main/testnets/altruistic-1/genesis.json"
 ```
-#### Правим конфиг 
+#### Fixing the configure 
 ```
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.empowerchain/config/config.toml
@@ -89,7 +82,7 @@ sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_rec
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.empowerchain/config/app.toml && \
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.empowerchain/config/app.toml
 ```
-#### Сервисный файл
+#### Service file
 ```
 sudo tee /etc/systemd/system/empowerd.service > /dev/null <<EOF
 [Unit]
@@ -107,13 +100,13 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 ```
-#### Запуск
+#### Launch
 ```
 systemctl daemon-reload && \
 systemctl enable empowerd && \
 systemctl restart empowerd && journalctl -u empowerd -f -o cat
 ```
-#### Создаем кошелек пока идет синхронизация 
+#### Create a wallet while synchronization is going on 
 ```
 # создать кошелек
 empowerd keys add $WALLET --keyring-backend os
@@ -121,8 +114,9 @@ empowerd keys add $WALLET --keyring-backend os
 # восстановить кошелек (после команды вставить seed)
 empowerd keys add $WALLET --recover --keyring-backend os
 ```
-Идем в дискорд и пользуемся краном 
-#### Валидатор
+Go to discord and use the tap 
+
+#### Validator
 ```
 empowerd tx staking create-validator \
 --chain-id altruistic-1 \
@@ -136,73 +130,7 @@ empowerd tx staking create-validator \
 --from $WALLET \
 --fees 5000umpwr
 ```
-#### Полезные команды
-```
-# проверить блоки
-empowerd status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
-# проверить логи
-journalctl -u empowerd -f -o cat
-
-# проверить статус
-curl localhost:26657/status
-
-# проверить баланс
-empowerd q bank balances <address>
-
-# проверить pubkey валидатора
-empowerd tendermint show-validator
-```
-#### Для validator
-```
-# собрать реварды со всех валидаторов, которым делегировали (без комиссии)
-empowerd tx distribution withdraw-all-rewards --from $WALLET --fees 5000umpwr -y
-
-# собрать реварды c отдельного валидатора или реварды + комиссию со своего валидатора
-empowerd tx distribution withdraw-rewards <valoper_address> --from $WALLET --fees 5000umpwr --commission -y
-
-# заделегировать себе в стейк еще (так отправляется 1 монетa)
-empowerd tx staking delegate <valoper_address> 1000000umpwr --from $WALLET --fees 5000umpwr -y
-
-# ределегирование на другого валидатора
-empowerd tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000umpwr --from $WALLET --fees 5000umpwr -y
-
-# unbond 
-empowerd tx staking unbond <addr_valoper> 1000000umpwr --from $WALLET --fees 5000umpwr -y
-
-# отправить монеты на другой адрес
-empowerd tx bank send $WALLET <address> 1000000umpwr --fees 5000umpwr -y
-```
-#### Proposal
-```
-# список proposals
-empowerd q gov proposals
-
-# посмотреть результат голосования
-empowerd q gov proposals --voter <ADDRESS>
-
-# проголосовать за предложение 
-empowerd tx gov vote 1 yes --from <name_wallet> --fees 555umpwr
-```
-#### Delete
-```
-systemctl stop empowerd && \
-systemctl disable empowerd && \
-rm /etc/systemd/system/empowerd.service && \
-systemctl daemon-reload && \
-cd $HOME && \
-rm -rf .empowerchain empowerchain && \
-rm -rf $(which empowerd)
-```
-#### Edit validator 
-```
-BINARY tx staking edit-validator \
-  --chain-id "CHAIN_NAME" \
-  --moniker "MONIKER" \
-  --identity "IDENTITY" \
-  --details "DETAILS" \
-  --from "WALLET_NAME"
-```
 #### State Sync
 ```
 sudo systemctl stop empowerd
