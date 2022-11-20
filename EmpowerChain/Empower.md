@@ -4,7 +4,7 @@
 [Discord](https://discord.gg/AmHDfQdP) | [Website](https://empower.eco/) | [Faucet](https://discord.gg/T5N4V5qd)
 --- | --- | ---
 
-```
+```Bash
 $request <empower...> altruistic-1
 ```
 
@@ -27,12 +27,12 @@ git checkout v0.0.2
 cd chain && make install
 ```
 #### Updating and installing utilities 
-```
+```Bash
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 #### Installing GO
-```
+```Bash
 ver="1.19.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
@@ -44,23 +44,23 @@ go version
 ```
 
 #### Copying a repository
-```
+```Bash
 cd $HOME && git clone https://github.com/empowerchain/empowerchain && \
 cd empowerchain/chain && \
 make install && \
 empowerd version --long | head
 ```
 #### Initializing
-```
+```Bash
 empowerd init $NODENAME --chain-id altruistic-1 && \
 empowerd config chain-id altruistic-1
 ```
 #### Download genesis
-```
+```Bash
 rm -rf $HOME/.empowerchain/config/genesis.json && cd $HOME/.empowerchain/config && wget $HOME/.empowerchain/config/genesis.json "https://raw.githubusercontent.com/empowerchain/empowerchain/main/testnets/altruistic-1/genesis.json"
 ```
 #### Fixing the configure 
-```
+```Bash
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.empowerchain/config/config.toml
 
@@ -73,7 +73,7 @@ seeds=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.empowerchain/config/config.toml
 ```
 #### Prunning `app.toml'
-```
+```Bash
 pruning="custom" && \
 pruning_keep_recent="100" && \
 pruning_keep_every="0" && \
@@ -84,7 +84,7 @@ sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.empowerchain/config/app.toml
 ```
 #### Service file
-```
+```Bash
 sudo tee /etc/systemd/system/empowerd.service > /dev/null <<EOF
 [Unit]
 Description=EmpowerChain Node
@@ -102,13 +102,13 @@ WantedBy=multi-user.target
 EOF
 ```
 #### Launch
-```
+```Bash
 systemctl daemon-reload && \
 systemctl enable empowerd && \
 systemctl restart empowerd && journalctl -u empowerd -f -o cat
 ```
 #### Create a wallet while synchronization is going on 
-```
+```Bash
 # создать кошелек
 empowerd keys add $WALLET --keyring-backend os
 
@@ -118,7 +118,7 @@ empowerd keys add $WALLET --recover --keyring-backend os
 Go to discord and use the tap 
 
 #### Validator
-```
+```Bash
 empowerd tx staking create-validator \
 --chain-id altruistic-1 \
 --commission-rate 0.05 \
@@ -134,7 +134,7 @@ empowerd tx staking create-validator \
 > Note please save the mnemonic and priv_validator_key.json file!
 
 #### State Sync
-```
+```Bash
 sudo systemctl stop empowerd
 
 cp $HOME/.empowerd/data/priv_validator_state.json $HOME/.empowerd/priv_validator_state.json.backup
