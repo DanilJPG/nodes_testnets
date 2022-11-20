@@ -26,7 +26,7 @@ Steps | Comments
 
 [Launch](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=user.target%0AEOF-,Launch,-systemctl%20daemon%2Dreload) | Start node 
 
-[wallet](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Create%20a%20wallet%20while%20synchronization%20is%20going%20on) | Creating and restoring a wallet
+[Wallet](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Create%20a%20wallet%20while%20synchronization%20is%20going%20on) | Creating and restoring a wallet
 
 [Validator](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=use%20the%20tap-,Validator,-empowerd%20tx%20staking) | Creating your node operator
 
