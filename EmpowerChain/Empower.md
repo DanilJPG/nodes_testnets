@@ -7,29 +7,17 @@
 Steps | Comments
 --- | --- |
 [Upgrade](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=up%20the%20environment.-,Empowerchain%20Testnet%20v0.0.2%20Upgrade%2011.11.2022,-Chain%20ID%3A%20altruistic) | Check the version, if necessary update to the appropriate height blocks
-
 [installing utilities](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=Updating%20and%20installing%20utilities) | server setup
-
 [Installing GO](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=liblz4%2Dtool%20%2Dy-,Installing%20GO,-ver%3D%22) | Go language is necessary to work with a binary file and unpack it
-
 [Copying a repository](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Copying%20a%20repository) | Cloning the GitHub repository of a project
-
 [Initializing](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=long%20%7C%20head-,Initializing,-empowerd%20init%20%24NODENAME) | To generate configuration files
-
 [Download genesis](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=id%20altruistic%2D1-,Download%20genesis,-rm%20%2Drf%20%24HOME) | The genesis stores the state of the chain
-
 [Fixing the configure](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Fixing%20the%20configure) | Making changes to config.toml
-
 [Prunning app.toml](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=config/config.toml-,Prunning%20%60app.toml%27,-pruning%3D%22) | 
-
 [Service file](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=config/app.toml-,Service%20file,-sudo%20tee%20/etc) | Creating a service file
-
 [Launch](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=user.target%0AEOF-,Launch,-systemctl%20daemon%2Dreload) | Start node 
-
 [Wallet](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Create%20a%20wallet%20while%20synchronization%20is%20going%20on) | Creating and restoring a wallet
-
 [Validator](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=use%20the%20tap-,Validator,-empowerd%20tx%20staking) | Creating your node operator
-
 [State Sunc]() | Chain synchronization
 
 Decentralize the new (circular) economy so that everyone can get a fair share of the benefits of making the world a cleaner and better place. When you delegate to the Validator, you not only earn your interest rate, you also help clean up the environment.
