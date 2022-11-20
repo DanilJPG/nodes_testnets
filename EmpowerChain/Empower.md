@@ -144,4 +144,5 @@ empowerd tx staking create-validator \
 --fees 5000umpwr
 ```
 > Note please save the mnemonic and priv_validator_key.json file!
-Track the height of blocks, node status, balance, you can use these [commands](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Useful%20Commands)
+
+*Track the height of blocks, node status, balance, you can use these [commands](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Useful%20Commands)*
