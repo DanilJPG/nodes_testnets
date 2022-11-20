@@ -131,7 +131,7 @@ empowerd tx staking create-validator \
 --from $WALLET \
 --fees 5000umpwr
 ```
-#### Note please save the mnemonic and priv_validator_key.json file!
+> Note please save the mnemonic and priv_validator_key.json file!
 
 #### State Sync
 ```
