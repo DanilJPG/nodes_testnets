@@ -10,6 +10,7 @@ $request <empower...> altruistic-1
 ```
 
 Decentralize the new (circular) economy so that everyone can get a fair share of the benefits of making the world a cleaner and better place. When you delegate to the Validator, you not only earn your interest rate, you also help clean up the environment.
+
 ![image](https://user-images.githubusercontent.com/57448493/200168721-ca5c593a-0054-4c69-9eeb-14243678f4fc.png)
 
 #### Empowerchain Testnet v0.0.2 Upgrade 11.11.2022
@@ -130,6 +131,7 @@ empowerd tx staking create-validator \
 --from $WALLET \
 --fees 5000umpwr
 ```
+#### Note please save the mnemonic and priv_validator_key.json file!
 
 #### State Sync
 ```
