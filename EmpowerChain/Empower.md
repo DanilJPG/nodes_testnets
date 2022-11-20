@@ -3,11 +3,18 @@
 
 [Discord](https://discord.gg/AmHDfQdP) | [Website](https://empower.eco/) | [Faucet](https://discord.gg/T5N4V5qd)
 --- | --- | ---
-Steps | Comments
 
-```Shell
-$request <empower...> altruistic-1
-```
+Steps | Comments
+--- | --- | ---
+[Upgrade](Empowerchain Testnet v0.0.2 Upgrade 11.11.2022) | Check the version, if necessary update to the appropriate height blocks
+[]() |
+[]() |
+[]() |
+[]() |
+[]() |
+[]() |
+[]() |
+[]() |
 
 Decentralize the new (circular) economy so that everyone can get a fair share of the benefits of making the world a cleaner and better place. When you delegate to the Validator, you not only earn your interest rate, you also help clean up the environment.
 
