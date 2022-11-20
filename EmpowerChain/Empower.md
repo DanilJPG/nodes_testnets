@@ -6,7 +6,7 @@
 
 Steps | Comments
 --- | --- 
-[Upgrade(https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=up%20the%20environment.-,Empowerchain%20Testnet%20v0.0.2%20Upgrade%2011.11.2022,-Chain%20ID%3A%20altruistic) | Check the version, if necessary update to the appropriate height blocks
+[Upgrade](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=up%20the%20environment.-,Empowerchain%20Testnet%20v0.0.2%20Upgrade%2011.11.2022,-Chain%20ID%3A%20altruistic) | Check the version, if necessary update to the appropriate height blocks
 
 [installing utilities](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=Updating%20and%20installing%20utilities) | server setup
 
@@ -18,8 +18,9 @@ Steps | Comments
 
 [Download genesis](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=id%20altruistic%2D1-,Download%20genesis,-rm%20%2Drf%20%24HOME) | The genesis stores the state of the chain
 
-[Fixing the configure](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Fixing%20the%20configure) |
-[Prunning `app.toml'](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=config/config.toml-,Prunning%20%60app.toml%27,-pruning%3D%22) | Making changes to config.toml
+[Fixing the configure](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Fixing%20the%20configure) | Making changes to config.toml
+
+[Prunning app.toml](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=config/config.toml-,Prunning%20%60app.toml%27,-pruning%3D%22) | 
 
 [Service file](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=config/app.toml-,Service%20file,-sudo%20tee%20/etc) | Creating a service file
 
