@@ -55,7 +55,7 @@ RUST_LOG=`RUST_LOG=info which bazuka` RUST_BACKTRACE=1 target/release/bazuka nod
 ```
 #### 5.Initialize a node
 ```
-bazuka init --seed '<Your mnemonics from any coin purse>' --network chaos --node 127.0.0.1:8765
+bazuka init --network groth --bootstrap 65.108.193.133:8765 --mnemonic "YOUR OLD MNEMONIC PHRASE"
 ```
 Expectation:
 ![image](https://user-images.githubusercontent.com/57448493/192145821-fe01f241-8795-48d9-b9aa-72b25db18b7e.png)
