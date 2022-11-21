@@ -86,8 +86,7 @@ Add a command to view the log of a node in the system as a variable
 ```
 zeeka_log
 ```
-![image](https://user-images.githubusercontent.com/57448493/198363637-75ff9f4e-0a34-4b93-a5ce-14bdd053033b.png)
-
+![Screenshot_2](https://user-images.githubusercontent.com/57448493/203043786-13920c84-4b91-44f5-829e-d87fdac7d60f.png)
 
 Copy the data to a safe place!!!
 
