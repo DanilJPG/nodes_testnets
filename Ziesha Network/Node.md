@@ -49,7 +49,7 @@ cd bazuka && cargo install --path
 
 #### 5.Initialize a node
 ```
-bazuka init --seed 'SEED' --network groth --node 127.0.0.1:8765 --bootstrap 23.34.12.45:8765 --bootstrap 34.56.78.23:8765
+bazuka init --listen 0.0.0.0:8765 --db ~/.bazuka --network groth --external 65.21.111.163:8765 --bootstrap 65.108.193.133:8765 --mnemonic "<mnemonic>"
 ```
 Expectation:
 ![image](https://user-images.githubusercontent.com/57448493/192145821-fe01f241-8795-48d9-b9aa-72b25db18b7e.png)
@@ -63,7 +63,7 @@ After=network.target
 
 [Service]
 User=$USER
-ExecStart=`RUST_LOG=info which bazuka` node --listen 0.0.0.0:8765 --external [IP address]:8765 --network debug --db ~/.bazuka-debug 
+ExecStart=`RUST_LOG=info which bazuka` node start --discord-handle <discord_handle> 
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
@@ -71,7 +71,6 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
-Замените [IP address] на ip вашего сервера
 ```
 #### 7.Run the service
 ```
@@ -85,7 +84,6 @@ Add a command to view the log of a node in the system as a variable
 ```
 #### View logs
 ```
-bazuka node --listen 0.0.0.0:8765 --external [Your server IP address]:8765
 zeeka_log
 ```
 ![image](https://user-images.githubusercontent.com/57448493/198363637-75ff9f4e-0a34-4b93-a5ce-14bdd053033b.png)
