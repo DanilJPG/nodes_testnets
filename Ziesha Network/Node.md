@@ -1,6 +1,7 @@
 ## Zeeka Network
 
 [Discord](https://discord.gg/eT96kE6V) | [Website](https://zeeka.network/) | [Github](https://github.com/zeeka-network)
+| --- | --- | ---
 #### Active version 2.9!
 ![image](https://user-images.githubusercontent.com/57448493/192145552-6eed7477-d72a-4089-bf94-172f4deec8ff.png)
 
