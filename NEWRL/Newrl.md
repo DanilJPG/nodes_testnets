@@ -17,7 +17,7 @@ sudo ufw allow 8456/tcp
 ```
 sudo ufw enable
 ```
-#### Обновление и подготовка сервера
+#### Updating and preparing the server
 ```
 sudo apt-get update && sudo apt-get upgrade \
 git clone https://github.com/git/git \
@@ -28,10 +28,10 @@ sudo apt update && sudo apt install python3.10-venv
 sudo apt update
 sudo apt install python3-venv python3-pip
 ```
-#### Установка скрипта бинарника
+#### Installing the binary script
 ```
 cd newrl
-# остановка работы скрипта из тестнета
+# stopping the script from the mainnet
 screen -X -S newrl kill
 git clone https://github.com/newrlfoundation/newrl.git
 cd newrl
