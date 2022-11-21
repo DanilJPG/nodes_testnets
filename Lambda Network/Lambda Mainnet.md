@@ -12,7 +12,7 @@ Steps | Comments
 [Initializing](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Lambda%20Mainnet.md#:~:text=lambdavm%0Amake%20install-,Initializing,-lambdavm%20init%20%3Cyour_custom_moniker) | To generate configuration files
 [Download genesis](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Lambda%20Mainnet.md#:~:text=id%20lambda_92000%2D1-,Download%20genesis,-wget%20%2DO%20/root) | The genesis stores the state of the chain
 [Fixing the configure](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Lambda%20Mainnet.md#:~:text=Correct%20the%20configuration%20file) | Making changes to config.toml
-[Prunning app.toml]() | 
+[Prunning app.toml](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Lambda%20Mainnet.md#:~:text=config/config.toml-,Prinning,-pruning%3D%22custom%22%20%26%26%20%5C%0Apruning_keep_recent) | To save memory usage
 [Service file](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Lambda%20Mainnet.md#:~:text=Create%20a%20service%20file) | Creating a service file
 [Launch](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Lambda%20Mainnet.md#:~:text=user.target%0AEOF-,Launch,-systemctl%20daemon%2Dreload) | Start node 
 [Wallet](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Lambda%20Mainnet.md#:~:text=auto%20%5C%0A%2D%2Dfees%205000ulamb-,Wallet,-%23%20create%20a%20wallet) | Creating and restoring a wallet
