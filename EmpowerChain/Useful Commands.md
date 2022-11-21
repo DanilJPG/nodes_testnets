@@ -1,49 +1,49 @@
 #### Useful Commands
 ```
-# проверить блоки
+# check the blocks
 empowerd status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
-# проверить логи
+# check the logs
 journalctl -u empowerd -f -o cat
 
-# проверить статус
+# check status
 curl localhost:26657/status
 
-# проверить баланс
+# check the balance
 empowerd q bank balances <address>
 
-# проверить pubkey валидатора
+# check the validator's pubkey
 empowerd tendermint show-validator
 ```
 #### For validator
 ```
-# собрать реварды со всех валидаторов, которым делегировали (без комиссии)
+# collect revards from all validators who were delegated (no commission)
 empowerd tx distribution withdraw-all-rewards --from $WALLET --fees 5000umpwr -y
 
-# собрать реварды c отдельного валидатора или реварды + комиссию со своего валидатора
+# collect the revards from a separate validator or revards + commission from your validator
 empowerd tx distribution withdraw-rewards <valoper_address> --from $WALLET --fees 5000umpwr --commission -y
 
-# заделегировать себе в стейк еще (так отправляется 1 монетa)
+# to delegate more to the steak (this is how 1 coin is sent)
 empowerd tx staking delegate <valoper_address> 1000000umpwr --from $WALLET --fees 5000umpwr -y
 
-# ределегирование на другого валидатора
+# redeleting to another validator
 empowerd tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000umpwr --from $WALLET --fees 5000umpwr -y
 
 # unbond 
 empowerd tx staking unbond <addr_valoper> 1000000umpwr --from $WALLET --fees 5000umpwr -y
 
-# отправить монеты на другой адрес
+# send coins to another address
 empowerd tx bank send $WALLET <address> 1000000umpwr --fees 5000umpwr -y
 ```
 #### Proposal
 ```
-# список proposals
+# list of proposals
 empowerd q gov proposals
 
-# посмотреть результат голосования
+# see the voting results
 empowerd q gov proposals --voter <ADDRESS>
 
-# проголосовать за предложение 
+# vote for the proposal 
 empowerd tx gov vote 1 yes --from <name_wallet> --fees 555umpwr
 ```
 #### Delete
