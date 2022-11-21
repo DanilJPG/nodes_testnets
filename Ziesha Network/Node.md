@@ -51,8 +51,6 @@ cd bazuka && cargo install --path
 ```
 bazuka init --listen 0.0.0.0:8765 --db ~/.bazuka --network groth --external 65.21.111.163:8765 --bootstrap 65.108.193.133:8765 --mnemonic "<mnemonic>"
 ```
-Expectation:
-![image](https://user-images.githubusercontent.com/57448493/192145821-fe01f241-8795-48d9-b9aa-72b25db18b7e.png)
 
 #### 6.Create a service file
 ```
