@@ -1,9 +1,24 @@
 ## Lambda Mainnet
 
-Dicord: https://discord.gg/lambdanetwork
+[Discord](https://discord.gg/lambdanetwork) | [Website](https://www.lambda.im/) | [Telegram] (https://t.me/HelloLambda)
+--- | --- | ---
 
-Docs: https://docs.lambda.im/validators/testnet.html
-
+Steps | Comments
+--- | --- |
+[Upgrade](https://github.com/DanilJPG/nodes_testnets/blob/main/LAmbda/Lambda%20Network.md#:~:text=Upgrade%20and%20install%20dependencies) | Check the version, if necessary update to the appropriate height blocks
+[installing utilities](https://github.com/DanilJPG/nodes_testnets/blob/main/LAmbda/Lambda%20Network.md#:~:text=Upgrade%20and%20install%20dependencies) | server setup
+[Installing GO](https://github.com/DanilJPG/nodes_testnets/blob/main/LAmbda/Lambda%20Network.md#:~:text=liblz4%2Dtool%20%2Dy-,Installing%20Go,-ver%3D%221.19.1%22%0Acd) | Go language is necessary to work with a binary file and unpack it
+[Copying a repository](https://github.com/DanilJPG/nodes_testnets/blob/main/LAmbda/Lambda%20Network.md#:~:text=Cloning%20a%20repository) | Cloning the GitHub repository of a project
+[Initializing](https://github.com/DanilJPG/nodes_testnets/blob/main/LAmbda/Lambda%20Network.md#:~:text=lambdavm%0Amake%20install-,Initializing,-lambdavm%20init%20%3Cyour_custom_moniker) | To generate configuration files
+[Download genesis](https://github.com/DanilJPG/nodes_testnets/blob/main/LAmbda/Lambda%20Network.md#:~:text=id%20lambda_92000%2D1-,Download%20genesis,-wget%20%2DO%20/root) | The genesis stores the state of the chain
+[Fixing the configure](https://github.com/DanilJPG/nodes_testnets/blob/main/LAmbda/Lambda%20Network.md#:~:text=Correct%20the%20configuration%20file) | Making changes to config.toml
+[Prunning app.toml]() | 
+[Service file](https://github.com/DanilJPG/nodes_testnets/blob/main/LAmbda/Lambda%20Network.md#:~:text=Create%20a%20service%20file) | Creating a service file
+[Launch](https://github.com/DanilJPG/nodes_testnets/blob/main/LAmbda/Lambda%20Network.md#:~:text=user.target%0AEOF-,Launch,-systemctl%20daemon%2Dreload) | Start node 
+[Wallet](https://github.com/DanilJPG/nodes_testnets/blob/main/LAmbda/Lambda%20Network.md#:~:text=auto%20%5C%0A%2D%2Dfees%205000ulamb-,Wallet,-%23%20create%20a%20wallet) | Creating and restoring a wallet
+[Validator](https://github.com/DanilJPG/nodes_testnets/blob/main/LAmbda/Lambda%20Network.md#:~:text=Creating%20a%20validator) | Creating your node operator
+[Useful commands]() | Here are commands for the validator, for node management and for the wallet
+[State Sunc]() | Chain synchronization
 #### Upgrade and install dependencies
 ```
 sudo apt update && sudo apt upgrade -y && \
