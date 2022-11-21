@@ -35,7 +35,7 @@ sudo apt install wget jq git libssl-dev cmake -y
 ```
 #### 3.Clone a repository with a node
 ```
-git clone https://github.com/zeeka-network/bazuka
+git clone https://github.com/ziesha-network/bazuka
 ```
 #### 4.Перейти в папку bazuka,компиляция и установка
 ```
