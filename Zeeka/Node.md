@@ -8,34 +8,34 @@ Github: https://github.com/zeeka-network
 #### Active version 2.9!
 ![image](https://user-images.githubusercontent.com/57448493/192145552-6eed7477-d72a-4089-bf94-172f4deec8ff.png)
 
-Zeeka (ℤ) - это криптовалюта, целью которой является создание легкого и масштабируемого блокчейна с широким использованием технологии доказательства нулевого знания.
+Zeeka (ℤ) is a cryptocurrency that aims to create a lightweight and scalable blockchain with extensive use of zero-knowledge proof technology.
 
-Zeeka предлагает новую концепцию под названием "Нулевые контракты". Нулевые контракты являются эквивалентом смарт-контрактов в некоторых основных блокчейн-системах, таких как Ethereum. Эти контракты будут выражены в виде математических ограничений вместо байт-кодов виртуальной машины, такой как виртуальная машина Ethereum.
+Zeeka offers a new concept called Zero Contracts. Zero contracts are the equivalent of smart contracts in some major blockchain systems such as Ethereum. These contracts will be expressed as mathematical constraints instead of virtual machine byte codes, such as the Ethereum virtual machine.
 
-Zeeka включит концепции, ранее использовавшиеся в качестве решений уровня конфиденциальности или L2 в других цепочках, в ядро нового блокчейна, стремясь создать более масштабируемую сеть с лучшей конфиденциальностью.
+Zeeka will incorporate concepts previously used as privacy layer or L2 solutions in other chains into the core of the new blockchain, aiming to create a more scalable network with better privacy.
 
-На данный момент возможно помогать проекту своими силами. Есть 3 формы для заполнения:
+At this point, it is possible to help the project in-house. There are 3 forms to fill out:
 
-1. Форма для участника комьюнити (на модераторов):https://docs.google.com/forms/d/e/1FAIpQLSdz129RVXCPLIipF2evu5HDblo5iXdVBtk-3RO6XzKYCAVGlQ/viewform
+1. Community member form (for moderators):https://docs.google.com/forms/d/e/1FAIpQLSdz129RVXCPLIipF2evu5HDblo5iXdVBtk-3RO6XzKYCAVGlQ/viewform
 
-2. Форма контрибуций:https://docs.google.com/forms/d/e/1FAIpQLSewVt8hRnRcufFOLCm9E9tNSeQ9FgWBjmygyIScA6_c5H7NPg/viewform
+2. Contributions form:https://docs.google.com/forms/d/e/1FAIpQLSewVt8hRnRcufFOLCm9E9tNSeQ9FgWBjmygyIScA6_c5H7NPg/viewform
 
-3. Подача заявки на тестнет:https://docs.google.com/forms/d/e/1FAIpQLSdZVJmcL5X83zDUdRIJxuWiSi8hvmocEM7Ut8E0m97-cmdgcQ/alreadyresponded
+3. Testnet submission form:https://docs.google.com/forms/d/e/1FAIpQLSdZVJmcL5X83zDUdRIJxuWiSi8hvmocEM7Ut8E0m97-cmdgcQ/alreadyresponded
 
-Официальный сайт:https://zeeka.io/
+Official website:https://zeeka.io/
 
-GitHub проекта:https://github.com/zeeka-network/bazuka
+Project GitHub:https://github.com/zeeka-network/bazuka
 
-#### 1. Подготовка сервера
+#### 1. Server Preparation
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt install wget jq git libssl-dev cmake -y
 ```
-#### 2.Установить Rust
+#### 2.Install Rust
 ```
 . <(wget -qO- https://raw.githubusercontent.com/letsnode/Utils/main/installers/rust.sh)
 ```
-#### 3.Клонировать репозиторий с нодой
+#### 3.Clone a repository with a node
 ```
 git clone https://github.com/zeeka-network/bazuka
 ```
@@ -44,26 +44,26 @@ git clone https://github.com/zeeka-network/bazuka
 cd bazuka && cargo install --path
 ```
 
-#### Посмотреть software bazuka
+#### View software bazuka
 ```
 /root/bazuka/target/release/bazuka -h
 ```
-#### Можно запустить с помощью этой команды или в следующем шаге через сервисный файл
+#### You can run with this command or in the next step through a service file
 ```
-#Очистите состояние цепочки разработки::
+#Clear the state of the development chain:
 target/release/bazuka purge-chain --dev
 Start the development chain with detailed logging:
 
 RUST_LOG=`RUST_LOG=info which bazuka` RUST_BACKTRACE=1 target/release/bazuka node --listen '0.0.0.0:8765' --external 'IP:8765' --network chaos --db /root/.bazuka-chaos --bootstrap '152.228.155.120:8765' --bootstrap '154.12.231.150:8765' --discord-handle 'nickname'  
 ```
-#### 5.Инициализировать ноду
+#### 5.Initialize a node
 ```
-bazuka init --seed '<Ваша мнемоника от любого кошелька где нет монет>' --network chaos --node 127.0.0.1:8765
+bazuka init --seed '<Your mnemonics from any coin purse>' --network chaos --node 127.0.0.1:8765
 ```
-Ожидаем:
+Expectation:
 ![image](https://user-images.githubusercontent.com/57448493/192145821-fe01f241-8795-48d9-b9aa-72b25db18b7e.png)
 
-#### 6.Создать сервисный файл
+#### 6.Create a service file
 ```
 sudo tee <<EOF >/dev/null /etc/systemd/system/zeeka.service
 [Unit]
@@ -82,27 +82,27 @@ WantedBy=multi-user.target
 EOF
 Замените [IP address] на ip вашего сервера
 ```
-#### 7.Запустить сервис
+#### 7.Run the service
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable zeeka
 sudo systemctl restart zeeka
 ```
-Добавить команду для просмотра лога ноды в систему в виде переменной
+Add a command to view the log of a node in the system as a variable
 ```
 . <(wget -qO- https://raw.githubusercontent.com/AlexM-dev/Utils/main/commands/insert_variable.sh) -n zeeka_log -v "sudo journalctl -fn 100 -u zeeka" -a
 ```
-#### Посмотреть логи
+#### View logs
 ```
-bazuka node --listen 0.0.0.0:8765 --external [Ваш IP  адрес сервера]:8765
+bazuka node --listen 0.0.0.0:8765 --external [Your server IP address]:8765
 zeeka_log
 ```
 ![image](https://user-images.githubusercontent.com/57448493/198363637-75ff9f4e-0a34-4b93-a5ce-14bdd053033b.png)
 
 
-Скопируйте данные в надежное место!!!
+Copy the data to a safe place!!!
 
-#### Удалить ноду 
+#### Delete a node 
 ```
 sudo systemctl stop zeeka && \
 sudo systemctl disable zeeka && \
@@ -122,7 +122,7 @@ git pull origin master
 cargo install --path
 ```
 
-#### Полезные команды
+#### Useful Commands
 ```
 Useful commands:
 bazuka deposit Deposit funds to a Zero-Contract
