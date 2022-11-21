@@ -1,6 +1,6 @@
 ## Lambda Mainnet
 
-[Discord](https://discord.gg/lambdanetwork) | [Website](https://www.lambda.im/) | [Telegram] (https://t.me/HelloLambda)
+[Discord](https://discord.gg/lambdanetwork) | [Website](https://www.lambda.im/) | [Telegram](https://t.me/HelloLambda)
 --- | --- | ---
 
 Steps | Comments
