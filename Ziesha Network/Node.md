@@ -102,13 +102,13 @@ Copy the data to a safe place!!!
 
 #### Delete a node 
 ```
-sudo systemctl stop zeeka && \
-sudo systemctl disable zeeka && \
-rm /etc/systemd/system/zeeka.service && \
-sudo systemctl daemon-reload && \
-cd $HOME && \
-rm -rf .bazuka && \
-rm -rf $(which bazuka)
+systemctl stop  zeeka zoro uzi
+systemctl disable zeeka zoro uzi
+rm -rf /root/bazuka
+rm -rf /root/.bazuka-debug
+rm -rf /root/zoro
+rm -rf /root/uzi
+rm ~/.bazuka.yaml
 ```
 
 #### Update version 
