@@ -4,7 +4,7 @@
 Открываем доступ RPC nano /root/.<bin>/config/config.toml
 
 laddr = "tcp://0.0.0.0:26657"
-Открываем app.toml и настраиваем снэпшоты nano $HOME/.defund/config/app.toml
+Открываем app.toml и настраиваем снэпшоты nano $HOME/.<bin>/config/app.toml
 
 # при настроенном прунинге 100/1000/10 snapshot-interval ставим не меньше 1000
 snapshot-interval = 1000
