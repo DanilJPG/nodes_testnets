@@ -17,7 +17,7 @@ Steps | Comments
 [Launch](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Lambda%20Mainnet.md#:~:text=user.target%0AEOF-,Launch,-systemctl%20daemon%2Dreload) | Start node 
 [Wallet](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Lambda%20Mainnet.md#:~:text=auto%20%5C%0A%2D%2Dfees%205000ulamb-,Wallet,-%23%20create%20a%20wallet) | Creating and restoring a wallet
 [Validator](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Lambda%20Mainnet.md#:~:text=Creating%20a%20validator) | Creating your node operator
-[Useful commands](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Useful%20commands_md) | Here are commands for the validator, for node management and for the wallet
+[Useful commands](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Useful%20commands.md) | Here are commands for the validator, for node management and for the wallet
 [State Sunc]() | Chain synchronization
 #### Upgrade and install dependencies
 ```
