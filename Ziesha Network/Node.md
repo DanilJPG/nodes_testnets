@@ -1,6 +1,6 @@
 ## Zeeka Network
 
-[Discord](https://discord.gg/eT96kE6V) | [Website](https://zeeka.network/) | [Github](https://github.com/zeeka-network)
+[Discord](https://discord.gg/eT96kE6V) | [Website](https://zeeka.io/) | [Github](https://github.com/zeeka-network)
 | --- | --- | ---
 #### Active version incentive Tetnet run 21.11.22 !
 ![image](https://user-images.githubusercontent.com/57448493/192145552-6eed7477-d72a-4089-bf94-172f4deec8ff.png)
@@ -18,10 +18,6 @@ At this point, it is possible to help the project in-house. There are 3 forms to
 2. Contributions form:https://docs.google.com/forms/d/e/1FAIpQLSewVt8hRnRcufFOLCm9E9tNSeQ9FgWBjmygyIScA6_c5H7NPg/viewform
 
 3. Testnet submission form:https://docs.google.com/forms/d/e/1FAIpQLSdZVJmcL5X83zDUdRIJxuWiSi8hvmocEM7Ut8E0m97-cmdgcQ/alreadyresponded
-
-Official website:https://zeeka.io/
-
-Project GitHub:https://github.com/zeeka-network/bazuka
 
 ***
 #### 1. Server Preparation
