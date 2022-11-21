@@ -106,7 +106,7 @@ cargo install --path
 
 #### Useful Commands
 
-Useful commands:
+
 `bazuka deposit` Deposit funds to a Zero-Contract
 
 `bazuka help` Prints this message or the help of the given subcommand(s)
