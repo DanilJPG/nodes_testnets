@@ -46,17 +46,10 @@ cd bazuka && cargo install --path
 ```
 /root/bazuka/target/release/bazuka -h
 ```
-#### You can run with this command or in the next step through a service file
-```
-#Clear the state of the development chain:
-target/release/bazuka purge-chain --dev
-Start the development chain with detailed logging:
 
-RUST_LOG=`RUST_LOG=info which bazuka` RUST_BACKTRACE=1 target/release/bazuka node --listen '0.0.0.0:8765' --external 'IP:8765' --network chaos --db /root/.bazuka-chaos --bootstrap '152.228.155.120:8765' --bootstrap '154.12.231.150:8765' --discord-handle 'nickname'  
-```
 #### 5.Initialize a node
 ```
-bazuka init --network groth --bootstrap 65.108.193.133:8765 --mnemonic "YOUR OLD MNEMONIC PHRASE"
+bazuka init --seed 'SEED' --network groth --node 127.0.0.1:8765 --bootstrap 23.34.12.45:8765 --bootstrap 34.56.78.23:8765
 ```
 Expectation:
 ![image](https://user-images.githubusercontent.com/57448493/192145821-fe01f241-8795-48d9-b9aa-72b25db18b7e.png)
