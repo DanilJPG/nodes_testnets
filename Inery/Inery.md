@@ -2,14 +2,14 @@
 Discord: https://discord.gg/GVBGr8uD
 
 Website: https://inery.io/
-Требования к оборудованию
+Equipment requirements
 ```
 CPU	Intel Core i3 or i5
 RAM	4 GB DDR4 RAM
 Storage	500 GB HDD
 Connection	100 Mbit/s port
 ```
-Рекомендуемые требования к компонентам
+Recommended component requirements
 ```
 CPU	Intel Core i7-8700 Hexa-Core
 RAM	64 GB DDR4 RAM
@@ -17,7 +17,7 @@ Storage	2 x 1 TB NVMe SSD
 Connection	1 Gbit/s port
 ```
 
-#### Подготовка(установка зависимостей,firewalld,открываем порты)
+#### Preparation (install dependencies, firewalld, open ports)
 ```
 sudo apt-get update && sudo apt install git && sudo apt install screen
 
@@ -37,39 +37,39 @@ autoconf libtool curl zlib1g-dev sudo ruby libusb-1.0-0-dev \
 libcurl4-gnutls-dev pkg-config patch llvm-7-dev clang-7 vim-common jq libncurses5
 ```
 ### Task 1
-#### Загрузка пакета Inery Node
+#### Downloading the Inery Node package
 ```
 git clone  https://github.com/inery-blockchain/inery-node
 ```
-После завершения загрузки перейдите в каталог inery.node
+After the download is complete, navigate to the inery.node directory
 ```
 cd inery-node
 ```
-Внутри inery-node есть каталоги inery и inery.setup Каталог inery содержит все двоичные файлы, чтобы протокол blockchain работал, путь к этим двоичным файлам должен быть экспортирован в среду операционной системы
+Inside the inery-node are the inery and inery.setup directories The inery directory contains all the binaries for the blockchain protocol to work, the path to these binaries must be exported to the operating system environment
 ```
 ls    
 inery inery.setup
 ```
-Перейдите в каталог inery.setup
+Go to the inery.setup directory
 ```
 cd inery.setup
 ```
-Внутри inery.setup есть ine.py и каталог инструментов
+Inside inery.setup is ine.py and the tools directory
 
-Дать ine.py разрешение скрипта на выполнение с помощью команды "chmod":
+Give ine.py permission to run the script with the "chmod" command:
 ```
 chmod +x ine.py
 ```
-Чтобы экспортировать путь к локальной среде операционной системы для двоичных файлов inery, внутри inery.setup запустите ine.py сценарий с параметрами --export
+To export the path to the local operating system environment for the inery binaries, run the ine.py script inside inery.setup with the --export parameter
 ```
 ./ine.py --export
 ```
-Обновление среды
+Updating the environment
 ```
 cd; source .bashrc; cd -
 ```
-#### Измените конфигурацию конфиг файла
-Вставьте свои данные
+#### Change the configuration file
+Insert your data
 ```
 sudo nano tools/config.json
 
@@ -81,17 +81,17 @@ sudo nano tools/config.json
 "HTTP_ADDRESS": "0.0.0.0:8888",     
 "HOST_ADDRESS": "0.0.0.0:9010" }
 ```
-#### Запуск узла
+#### Starting the node
 ```
 screen -S inery
 ./ine.py --master
 ```
-#### Привязка пошелька и аккаунта
+#### Binding purse and account
 ```
-# Создание кошелька
+# Creating a wallet
 cd;  cline wallet create --file defaultWallet.txt
 
-# Разблокировка кошелька
+# Unlocking the wallet
 cline wallet unlock --password YOUR_WALLET_PASSWORD
  
 cline wallet import --private-key MASTER_PRIVATE_KEY
@@ -102,13 +102,13 @@ cline system makeprod approve ACCOUNT_NAME ACCOUNT_NAME
 ```
 
 ### Task 2
-Разблокировка кошелька
+Unlocking the wallet
 ```
 cline wallet unlock -n <name_wallet>
 
 password:...
 ```
-Мы возьмем контракт токена из уже существующего, скопировав код контракта inery.token и записав его в файлах wasm и abi, которые мы будем использовать позже для настройки контракта токена в нашей собственной учетной записи
+We will take the token contract from an existing one by copying the inery.token contract code and writing it in the wasm and abi files, which we will use later to configure the token contract in our own account
 ```
 cline get code inery.token -c token.wasm -a token.abi --wasm
 
@@ -158,9 +158,9 @@ executed transaction: 5c820fef47c42a5b056d1b60741000aa90b621e89edf621bbf35c1263b
 ```
 
 #### Check
-Проверьте баланс токена TST для учетной записи
+Check the TST token balance for the account
 
-Получить баланс токена TST для токена контрактного счета 22
+Get TST token balance for contract account token 22
 
 ```
 cline get currency balance token22 token22 TST
@@ -169,7 +169,7 @@ output :
 
 999.0000 TST
 ```
-Проверьте баланс токена TST для учетной записи test22
+Check the TST token balance for the test22 account
 
 ```
 cline get currency balance token22 test22 TST
