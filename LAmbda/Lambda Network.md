@@ -4,12 +4,12 @@ Dicord: https://discord.gg/lambdanetwork
 
 Docs: https://docs.lambda.im/validators/testnet.html
 
-#### Обновляемся и устанавливаем зависимости
+#### Upgrade and install dependencies
 ```
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
-#### Установка Go
+#### Installing Go
 ```
 ver="1.19.1"
 cd $HOME
@@ -19,20 +19,20 @@ sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
 rm "go$ver.linux-amd64.tar.gz"
 ```
 
-#### Клонирование репозитория 
+#### Cloning a repository 
 ```
 git clone https://github.com/LambdaIM/lambdavm.git
 cd lambdavm
 make install
 ```
 
-#### Инициализация 
+#### Initializing 
 ```
 lambdavm init <your_custom_moniker> --chain-id lambda_92000-1 \
 lambdavm config chain-id lambda_92000-1
 ```
 
-#### Скачиваем genesisi
+#### Download genesis
 ```
 wget -O /root/.lambdavm/config//genesis.json "https://raw.githubusercontent.com/LambdaIM/mainnet/main/lambda_92000-1/genesis.json"
 #check
@@ -41,7 +41,7 @@ wget -O /root/.lambdavm/config//genesis.json "https://raw.githubusercontent.com/
 # 1ff02001539bc1e9828fe170006f055c04df280c61c4ca9ecc9e7b6a272b7777  genesis.json
 ```
 
-#### Правим конфиг файл
+#### Correct the configuration file
 ```
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" /root/.lambdavm/config/config.toml
@@ -56,7 +56,7 @@ SEEDS=`curl -sL https://raw.githubusercontent.com/LambdaIM/mainnet/main/lambda_9
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" ~/.lambdavm/config/config.toml
 ```
 
-#### Создаем сервисный файл
+#### Create a service file
 ```
 sudo tee /etc/systemd/system/lambdavm.service > /dev/null <<EOF
 [Unit]
@@ -73,14 +73,14 @@ WantedBy=multi-user.target
 EOF
 ```
 
-#### Запуск
+#### Launch
 ```
 systemctl daemon-reload && \
 systemctl enable lambdavm && \
 systemctl restart lambdavm && journalctl -u lambdavm -f -o cat
 ```
 
-#### Создание валидатора 
+#### Creating a validator 
 ```
 lambdavm tx staking create-validator \
 --amount 1000000000000000000ulamb \
@@ -97,58 +97,58 @@ lambdavm tx staking create-validator \
 ```
 #### Wallet 
 ```
-# создать кошелек
+# create a wallet
 empowerd keys add $WALLET --keyring-backend os
 
-# восстановить кошелек (после команды вставить seed)
+# restore the wallet (after the command insert seed)
 empowerd keys add $WALLET --recover --keyring-backend os
 
-# экспорт в метамаск(просмотр закрытого ключа)
+# export to metamask(view private key)
 lambdavm keys unsafe-export-eth-key garfield_wallet
 
-#экспортировать кошелек из метамаска
+# export wallet from metamask
 lambdavm keys unsafe-import-eth-key [account name] [private key]
 ```
-#### Полезные команды
+#### Useful Commands
 ```
-# проверить блоки
+# check the blocks
 lambdavm status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
-# проверить логи
+# check the logs
 journalctl -u lambdavm -f -o cat
 
-# проверить статус
+# check status
 curl localhost:26657/status
 
-# проверить баланс
+# check the balance
 lambdavm q bank balances <address>
 
-# проверить pubkey валидатора
+# check the validator's pubkey
 empowerd tendermint show-validator
 ```
 
-#### Транзакции
+#### Transactions
 ```
-# собрать реварды со всех валидаторов, которым делегировали (без комиссии)
+# collect revards from all validators who were delegated (no commission)
 lambdavm tx distribution withdraw-all-rewards --from <name_wallet> --fees 5000ulamb -y
 
-# собрать реварды c отдельного валидатора или реварды + комиссию со своего валидатора
+# collect the revards from a separate validator or revards + commission from your validator
 lambdavm tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 5000ulamb --commission -y
 
-# заделегировать себе в стейк еще (так отправляется 1 монетa)
+# to delegate more to the steak (this is how 1 coin is sent)
 lambdavm tx staking delegate <valoper_address> 1000000ulamb --from <name_wallet> --fees 5000ulamb -y
 
-# ределегирование на другого валидатора
+# redeleting to another validator
 lambdavm tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000ulamb --from <name_wallet> --fees 5000ulamb -y
 
 # unbond 
 lambdavm tx staking unbond <addr_valoper> 1000000ulamb --from <name_wallet> --fees 5000ulamb -y
 
-# отправить монеты на другой адрес
+# send coins to another address
 lambdavm tx bank send <name_wallet> <address> 1000000ulamb --fees 5000umpwr -y
 ```
 
-#### Удаление
+#### Deleting
 ```
 systemctl stop lambdavm && \
 systemctl disable lambdavm && \
