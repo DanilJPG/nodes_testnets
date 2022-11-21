@@ -1,5 +1,5 @@
 ## Zeeka Network
-***
+
 [Discord](https://discord.gg/eT96kE6V) | [Website](https://zeeka.network/) | [Github](https://github.com/zeeka-network)
 | --- | --- | ---
 #### Active version incentive Tetnet run 21.11.22 !
@@ -23,6 +23,7 @@ Official website:https://zeeka.io/
 
 Project GitHub:https://github.com/zeeka-network/bazuka
 
+***
 #### 1. Server Preparation
 ```
 sudo apt update && sudo apt upgrade -y
