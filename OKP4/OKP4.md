@@ -9,16 +9,16 @@ Faucet:
 ```
 https://faucet.okp4.network/
 ```
-#### Подача резюме для участия в вознаграждаемом testnet
+#### Submitting a resume for a rewarding testnet
 ```
 https://nemeton.okp4.network/
 ```
-#### Обновляемся и скачиваем зависимости
+#### Update and download dependencies
 ```
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
-#### Установка Go
+#### Installing Go
 ```
 ver="1.19.1"
 cd $HOME
@@ -27,7 +27,7 @@ sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
 rm "go$ver.linux-amd64.tar.gz"
 ```
-#### Клонируем репозиторий
+#### Clone a repository
 ```
 git clone https://github.com/okp4/okp4d.git
 cd okp4d
@@ -38,7 +38,7 @@ make install
 okp4d version
 2.2.0
 ```
-#### Инициализация
+#### Initializing
 ```
 okp4d init garfield --chain-id okp4-nemeton \
 okp4d config chain-id okp4-nemeton
@@ -55,12 +55,12 @@ config/node_key.json: Private key to use for node authentication in the p2p prot
 config/priv_validator_key: Private key to use as a validator in the consensus protocol.
 data: The node's database.
 ```
-#### Скачиваем генезис и addrbook
+#### Download genesis and addrbook
 ```
 wget $HOME/.okp4d/config/genesis.json "https://github.com/okp4/networks/blob/main/chains/nemeton/genesis.json"
 curl -s https://snapshots2-testnet.nodejumper.io/okp4-testnet/addrbook.json > $HOME/.okp4d/config/addrbook.json
 ```
-#### Заполняем конфиг файл
+#### Filling out the configuration file
 ```
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.okp4d/config/config.toml
@@ -90,14 +90,14 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 ```
-#### Запуск сервиса
+#### Service Launch
 ```
 systemctl daemon-reload && \
 systemctl enable okp4d && \
 systemctl restart okp4d && journalctl -u okp4d -f -o cat
 ```
 
-#### Создание валидатора
+#### Creating a validator
 ```
 okp4d tx staking create-validator \
 --chain-id okp4-nemeton \
@@ -114,7 +114,7 @@ okp4d tx staking create-validator \
 --fees 555uknow
 ```
 
-#### Полезные команды 
+#### Useful Commands 
 ```
 # проверить блоки
 okp4d status 2>&1 | jq ."SyncInfo"."latest_block_height"
@@ -133,7 +133,7 @@ okp4d q bank balances <address>
 okp4d tendermint show-validator
 ```
 
-#### Комадны для валидатора
+#### Comadns for the validator
 ```
 # собрать реварды со всех валидаторов, которым делегировали (без комиссии)
 okp4d tx distribution withdraw-all-rewards --from <name_wallet> --fees 500uknow -y
@@ -156,13 +156,13 @@ okp4d tx bank send <name_wallet> <address> 1000000uknow --fees 500uknow -y
 # выбраться из тюрьмы
 okp4d tx slashing unjail --from <name_wallet> --fees 500uknow -y
 ```
-#### Сброс 
+#### Reset 
 ```
 systemctl stop okp4d
 rm $HOME/.okp4d/config/addrbook.json
 okp4d tendermint unsafe-reset-all --home $HOME/.okp4d --keep-addr-book
 ```
-#### Удаление
+#### Deleting
 ```
 systemctl stop okp4d && \
 systemctl disable okp4d && \
