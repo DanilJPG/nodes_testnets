@@ -1,4 +1,5 @@
 ## Celestia
+
 ### Installing a complete assembly
 [Website](https://celestia.org/) | [Docs](https://docs.celestia.org/) | [Explorers](https://celestia.explorers.guru/) | [Github](https://github.com/celestiaorg) | [Discord](https://discord.gg/celestiacommunity)
 | --- | --- | --- | --- | ---
