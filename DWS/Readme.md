@@ -1,6 +1,7 @@
 ## DWS
 
 [Discord](https://discord.gg/dws) | [Website](https://deweb.services/) 
+| --- | ---
 
 ### Sirius Testnet
 
