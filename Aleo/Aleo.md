@@ -1,4 +1,6 @@
 ## Aleo
+[Website](https://www.aleo.org/post/announcing-testnet-3) | [Discord](https://discord.gg/7scts2cr) | [Github](https://github.com/AleoHQ/snarkOS/) 
+| --- | --- | ---
  
 ![image](https://user-images.githubusercontent.com/57448493/201538555-429fed0a-7950-4c4e-9e97-c6f368708b5d.png)
  
@@ -6,11 +8,6 @@ Aleo has raised $228 million to develop its project, written in its own programm
 
 I advise you to read: https://www.aleo.org/post/discover-aleo
 
-Website: https://www.aleo.org/post/announcing-testnet-3
-
-Discord: https://discord.gg/7scts2cr
-
-Github: https://github.com/AleoHQ/snarkOS/ 
 
 #### 1. Overview
 snarkOS is a decentralized operating system for zero-knowledge applications. This code forms the basis of the Aleo network, which verifies transactions and stores encrypted government applications in a public way.
