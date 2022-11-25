@@ -5,7 +5,7 @@
 ```
 $request <address_wallet>
 ```
-#### Обновление и установка утилит
+#### Updating and installing utilities
 ```
 apt update && apt upgrade -y \
 
@@ -24,7 +24,7 @@ source $HOME/.bash_profile && \
 go version
 ```
 
-#### Клонируем репозиторий и устанавливаем бинарник
+#### Clone the repository and install the binary
 ```
 git clone https://github.com/NibiruChain/nibiru
 cd nibiru
@@ -35,14 +35,14 @@ chmod +x /usr/bin/nibid
 nibid version
 ```
 
-#### Инициализация
+#### Initializing
 ```
 nibid init <moniker-name> --chain-id=nibiru-testnet-1 --home $HOME/.nibid \
 nibid config chain-id nibiru-testnet-1
 ```
 
 
-#### Скачиваем генезис и адресбук
+#### Download genesis and address book
 ```
 curl -s https://rpc.testnet-1.nibiru.fi/genesis | jq -r .result.genesis > genesis.json
 mv genesis.json $HOME/.nibid/config/genesis.json
@@ -51,7 +51,7 @@ wget -O $HOME/.nibid/config/addrbook.json "http://65.108.6.45:8000/nibiru/addrbo
 ```
 
 
-#### Заполняем config.toml
+#### Filling out config.toml
 ```
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025unibi\"/;" ~/.nibid/config/app.toml
 
@@ -76,7 +76,7 @@ CONFIG_TOML="$HOME/.nibid/config/config.toml"
 ```
 
 
-#### Создаем сервисный файл
+#### Create a service file
 ```
 sudo tee /etc/systemd/system/nibid.service > /dev/null <<EOF
 [Unit]
@@ -96,7 +96,7 @@ EOF
 ```
 
 
-#### Запуск
+#### Launch
 ```
 systemctl daemon-reload
 systemctl start nibidd
@@ -132,7 +132,7 @@ sudo systemctl restart nibid
 sudo journalctl -u nibid -f --no-hostname -o cat
 
 ```
-#### Кошелек
+#### Wallet
 ```
 # создать кошелек
 nibid keys add <name_wallet> --keyring-backend os
@@ -142,7 +142,7 @@ nibid keys add <name_wallet> --recover --keyring-backend os
 ```
 
 
-#### Создаем валидатора
+#### Creating a validator
 ```
 nibid tx staking create-validator \
 --chain-id nibiru-testnet-1 \
@@ -158,30 +158,30 @@ nibid tx staking create-validator \
 ```
 
 
-#### Полезные команды
+#### Useful Commands
 ```
 # проверить блоки
 nibid status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
-# проверить логи
+# check the logs
 journalctl -u nibid -f -o cat
 
-# проверить статус
+# check status
 curl localhost:26657/status
 
-# проверить баланс
+# check the balance
 nibid q bank balances <address>
 
-# собрать реварды со всех валидаторов, которым делегировали (без комиссии)
+# collect revards from all validators who were delegated (no commission)
 nibid tx distribution withdraw-all-rewards --from <name_wallet> --fees 5000unibi -y
 
-# собрать реварды c отдельного валидатора или реварды + комиссию со своего валидатора
+# collect the revards from a separate validator or revards + commission from your validator
 nibid tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 5000unibi --commission -y
 
-# заделегировать себе в стейк еще (так отправляется 1 монетa)
+# to delegate more to the steak (this is how 1 coin is sent)
 nibid tx staking delegate <valoper_address> 1000000unibi --from <name_wallet> --fees 5000unibi -y
 
-# ределегирование на другого валидатора
+# redeleting to another validator
 nibid tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000unibi --from <name_wallet> --fees 5000unibi -y
 ```
 
@@ -196,7 +196,7 @@ rm -rf .nibid nibiru && \
 rm -rf $(which nibid)
 ```
 
-#### Если сущетсвуют проблемы связанные с подключением пиров или генезисом попробуйте сброс сети и начните с шага скачивания генезиса
+#### If there is a problem connecting peers or genesis, try resetting the network and start with the genesis download step
 ```
 systemctl stop nibid
 rm $HOME/.nibid/config/addrbook.json
