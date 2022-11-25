@@ -1,5 +1,5 @@
 ## Celestia
-### Установка полного узла
+### Installing a complete assembly
 Website: https://celestia.org/
 
 Docs: https://docs.celestia.org/
@@ -9,12 +9,12 @@ Explorers: https://celestia.explorers.guru/
 Github: https://github.com/celestiaorg
 
 Discord: https://discord.gg/celestiacommunity
-#### Обновление и установка "ключей" и утилит
+#### Updating and installing "keys" and utilities
 ```
 sudo apt update && sudo apt upgrade -y \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu -y
 ```
-#### Установка Go
+#### Installing Go
 ```
 cd $HOME
 ver="1.19.1"
@@ -27,7 +27,7 @@ source $HOME/.bash_profile
 
 go version
 ```
-#### Установка Celestia App
+#### Installing the Celestia App
 ```
 cd $HOME
 rm -rf celestia-app
@@ -42,13 +42,13 @@ celestia-appd version
 ```
 git clone https://github.com/celestiaorg/networks
 ```
-#### Устновка ноды
+#### Installing a node
 ```
 cd $HOME
 rm -rf networks
 git clone https://github.com/celestiaorg/networks.git
 ```
-#### задаем переменные
+#### set the variables
 ```
 CELESTIA_NODENAME="<name_operator>"
 CELESTIA_WALLET="<name_wallet>"
@@ -61,19 +61,19 @@ echo 'export CELESTIA_NODENAME='${CELESTIA_NODENAME} >> $HOME/.bash_profile
 echo 'export CELESTIA_WALLET='${CELESTIA_WALLET} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
-#### Инициализация
+#### Initializing
 ```
 celestia-appd init $CELESTIA_NODENAME --chain-id $CELESTIA_CHAIN 
 ```
 ```
 cp $HOME/networks/mamaki/genesis.json $HOME/.celestia-app/config/
 ```
-#### Настройка клиента
+#### Setting up the client
 ```
 celestia-appd config chain-id $CELESTIA_CHAIN
 celestia-appd config keyring-backend test
 ```
-#### Правим конфиг файл
+#### Correct the configuration file
 ```
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025ujkl\"/;" ~/.celestia-app/config/app.toml
 external_address=$(wget -qO- eth0.me)
@@ -87,7 +87,7 @@ sed -i 's/peer-gossip-sleep-duration *=.*/peer-gossip-sleep-duration = "2ms"/g' 
 sed -i 's/timeout-commit = ".*/timeout-commit = "25s"/g' $HOME/.celestia-app/config/config.toml
 sed -i 's/peer-gossip-sleep-duration *=.*/peer-gossip-sleep-duration = "2ms"/g' $HOME/.celestia-app/config/config.toml
 ```
-#### Сервисный файл
+#### Service file
 ```
 sudo tee $HOME/celestia-appd.service > /dev/null <<EOF
 [Unit]
@@ -105,29 +105,29 @@ EOF
 
 sudo mv $HOME/celestia-appd.service /etc/systemd/system/
 ```
-#### Запуск
+#### Launch
 ```
 sudo systemctl enable celestia-appd
 sudo systemctl daemon-reload
 sudo systemctl restart celestia-appd && journalctl -u celestia-appd -f -o cat
 ```
-#### Проверка логов и синхронизация
+#### Log checking and synchronization
 ```
-# проверить блоки
+# check the blocks
 celestia-appd status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
-# проверить логи
+# check the logs
 sudo journalctl -u celestia-appd -f -o cat
 
-# проверить статус
+# check status
 curl localhost:26657/status
 ```
 #### Wallet
 ```
-# создать кошелек
+# create a wallet
 celestia-appd keys add <name_wallet> --keyring-backend os
 
-# восстановить кошелек (после команды вставить seed)
+# restore the wallet (after the command insert seed)
 celestia-appd keys add <name_wallet> --recover --keyring-backend os
 ```
 #### Prinning
@@ -156,44 +156,44 @@ celestia-appd tx staking create-validator \
 --from <name_wallet> \
 --fees 5550utia
 ```
-#### Полезные команды
+#### Useful Commands
 ```
-# проверить блоки
+# check the blocks
 celestia-appd status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
-# проверить логи
+# check the logs
 sudo journalctl -u celestia-appd -f -o cat
 
-# проверить статус
+# check status
 curl localhost:26657/status
 
-# проверить баланс
+# check the balance
 celestia-appd q bank balances <address>
 
-# вывести список кошельков
+# display a list of wallets
 celestia-appd keys list
 
-# показать ключ аккаунта
+# Show account key
 celestia-appd keys show <name_wallet> --bech acc
 ```
 #### Операции с валидатором
 ```
-# собрать комиссионные + реварды
+# collect commissions + revards
 celestia-appd tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 5555utia --commission -y
 
-# заделегировать себе в стейк еще (так отправляется 1 монетa)
+# to delegate more to the steak (this is how 1 coin is sent)
 celestia-appd tx staking delegate <valoper_address> 1000000utia --from <name_wallet> --fees 5555utia -y
 
-# ределегирование на другого валидатора
+# redeleting to another validator
 celestia-appd tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000utia --from <name_wallet> --fees 5555utia -y
 
 # unbond 
 celestia-appd tx staking unbond <addr_valoper> 1000000utia --from <name_wallet> --fees 5555utia -y
 
-# отправить монеты на другой адрес
+# send coins to another address
 celestia-appd tx bank send <name_wallet> <address> 1000000utia --fees 5555utia -y
 
-# выбраться из тюрьмы
+# get out of jail
 celestia-appd tx slashing unjail --from <name_wallet> --fees 5555utia -y
 ```
 #### Update
