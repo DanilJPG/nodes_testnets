@@ -1,28 +1,29 @@
-Discord: https://discord.gg/dws
+## DWS
 
-Website: https://deweb.services/
+[Discord](https://discord.gg/dws) | [Website](https://deweb.services/) 
+
 ### Sirius Testnet
 
-DWS предлагает полный набор инфраструктурных и прикладных услуг, которые позволяют запускать в децентрализованном облаке практически всё: от корпоративных приложений и проектов больших данных до социальных игр и мобильных приложений.
+DWS offers a complete set of infrastructure and application services that enable you to run virtually everything from enterprise applications and big data projects to social games and mobile applications in the decentralized cloud.
 
-dewebd - это блокчейн-приложение, созданное с использованием Cosmos SDK v.0.45.0 и Tendermint v.0.34.15.
+dewebd is a blockchain application created using Cosmos SDK v.0.45.0 and Tendermint v.0.34.15.
 
-Вы можете запустить программу-валидатор, используя бинарный файл или скомпилировав его самостоятельно.
+You can run the validator program using a binary file or by compiling it yourself.
 
-Рекомендуют модификации сервера: 4 ядра, 8 оперативки, 200 ссд;
+Recommended server modifications: 4 cores, 8 RAM, 200 ssd;
 
-Step 0A - Запуск полного узла / валидатора с использованием двоичных файлов
-Загрузите последнюю версию (v0.2) бинарника с Github:
+Step 0A - Run the full node/validator using binaries
+Download the latest version (v0.2) of the binary from Github:
 
 ```
-#Обновляем репозитории
+#### Updating repositories
 sudo apt update && sudo apt upgrade -y
 
-#Устанавливаем необходимые утилиты
+#### Installing the necessary utilities
 sudo apt install curl build-essential git wget jq make gcc tmux nvme-cli -y
 ```
 
-Для дальнейшей взаимодействии с программой потребуется установить Golang(одной командой)
+For further interaction with the program you will need to install Golang (one command)
 
 ```
 wget https://golang.org/dl/go1.18.1.linux-amd64.tar.gz; \
@@ -34,7 +35,7 @@ source ~/.bash_profile && \
 go version
 ```
 
-### Установка ноды
+### Node Installation
 ```
 git clone https://github.com/deweb-services/deweb.git && cd deweb
 git checkout v0.3.1
@@ -43,40 +44,40 @@ make install
 0.3.1
 ```
 
-#### Инициализируем ноду
-Вместо <name_node> вставляем имя ноды, которое хотим присвоить
+#### Initializing a node
+Instead of <name_node> insert the name of the node you want to assign
 ```
 dewebd init <name_node> --chain-id deweb-testnet-sirius
 ```
-#### Скачиваем Genesis
+#### Download Genesis
 ```
 wget -O $HOME/.deweb/config/genesis.json "https://raw.githubusercontent.com/deweb-services/deweb/main/genesis.json"
 ```
 
 ```
-Проверка версии:
+Version Verification:
 sha256sum ~/.deweb/config/genesis.json 
 
 5316dc5abf1bc46813b673e920cb6faac06850c4996da28d343120ee0d713ab9  /root/.deweb/config/genesis.json
 ```
 
-#### Настраиваем ноду(разными командами)
+#### Setting up a node (with different commands)
 ```
 cd $HOME
-#настраиваем пиры
+# setting up piers
 peers="F4C24583640A7BE659F8A6FA734F9ED61FB10CD9@78.137.4.44:42656" sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/; s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.deweb/config/config.toml
 
-#настраиваем сид
+#setting up the seat
 sed -E -i 's/seeds = \".*\"/seeds = \"74d8f92c37ffe4c6393b3718ca531da8f0bf0594@seed1.deweb.services:26656\"/' $HOME/.deweb/config/config.toml
 
-#сбор за газ
+#gas charge
 sed -E -i 's/minimum-gas-prices = \".*\"/minimum-gas-prices = \"0.001udws\"/' $HOME/.deweb/config/app.toml
 
-###открываем порт
+###opening a port
 sudo ufw allow 26656
 ```
 
-#### Создаем сервисный файл
+#### Create a service file
 ```
 sudo tee /etc/systemd/system/dewebd.service > /dev/null <<EOF
 echo "[Unit]
@@ -92,43 +93,43 @@ LimitNOFILE=4096
 WantedBy=multi-user.target 
 EOF
 ```
-#### Запуск
+#### Launch
 ```
 sudo systemctl daemon-reload && \
 sudo systemctl enable dewebd && \
 sudo systemctl restart dewebd && sudo journalctl -u dewebd -f -o cat
 ```
-Если имеются ошибки связанными с подсоединением пиров, стоит обратится за помощью в дискорд, и в закрепах искать нужную информацию
+If there are errors related to the connection of peers, it is worth asking for help in the discord, and in the bookmarks to look for the right information
 
 https://discord.gg/Kyuc3cvx
 
-#### Проверяем синхронизацию и блоки
+#### Checking synchronization and blocks
 ```
 dewebd status 2>&1 | jq ."SyncInfo"."latest_block_height"
 curl localhost:26657/status
 ```
-Пока идет синхронизация можем создать и пополнить кошелек:
+While synchronization is going on, we can create and replenish the wallet:
 ```
-#создать кошелек
+#create a wallet
 dewebd keys add <name_wallet>
 
-#восстановить кошелек (после команды вставить seed)
+#restore the wallet (after the command insert seed)
 dewebd keys add <name_wallet> --recover
 
-#проверить баланс
+#check the balance
 dewebd q bank balances <deweb1...>
 Если не может подключиться к пирам,то проверяйте: в дискорде проекта имеется канал peers
 ```
-Если меняете,что то нужно изменять, то обращайтесь к остановке ноды:
+If you change something that needs to be changed, then refer to the node stop:
 ```
-#стопаем ноду, удаляем адресную книгу и сбрасываем данные
+#Stop the node, delete the address book and reset the data
 sudo systemctl stop dewebd
 rm $HOME/.deweb/config/addrbook.json
 dewebd unsafe-reset-all
 
-#перезагружаем ноду
+#restart the node
 sudo systemctl restart dewebd && journalctl -u dewebd -f -o cat
-После синхронизации, идем в дискорд просим токены(канал #faucet), 1 dws = 1000000 udws
+After synchronization, go to discord asking for tokens (channel #faucet), 1 dws = 1000000 udws
 ```
 #### State Sync 
 ```
@@ -158,7 +159,7 @@ mv $HOME/.deweb/priv_validator_state.json.backup $HOME/.deweb/data/priv_validato
 sudo systemctl restart dewebd
 sudo journalctl -u dewebd -f --no-hostname -o cat
 ```
-#### Ставим валидатора(одной командой), необходимо заменить <name_wallet> и <name_moniker> на те, которые вы хотите:
+#### Set the validator (one command), you must replace <name_wallet> and <name_moniker> on the ones you want:
 ```
 dewebd tx staking create-validator \
 --chain-id deweb-testnet-sirius \
@@ -173,31 +174,31 @@ dewebd tx staking create-validator \
 --gas="auto" \
 --fees 555udws
 ```
-#### Проверить логи
+#### Check the logs
 ```
 sudo journalctl -u dewebd -f -o cat
 sudo journalctl -fn 100 -u dewebd
 ```
-#### Проверить валидатора
+#### Check the validator
 ```
 dewebd query staking validator <dewebvaloper1...>
 dewebd query staking validators --limit 1000000 -o json | jq '.validators[] | select(.description.moniker=="<name_moniker>")' | jq
 ```
-#### Заделегировать себе в стейк
+#### To make it into a steak.
 ```
 dewebd tx staking delegate <dewebvaloper1...> 1000000udws --from <name_wallet> --fees 555udws -y
 ```
-#### Отправить монеты на другой адрес
+#### Send coins to another address
 ```
 dewebd tx bank send <name_wallet> <deweb1...> 10000000udws --fees 555udws -y
 ```
-#### Чистим данные
+#### Clearing the data
 ```
-# удаляем addrbook и очищаем данные
+# Delete addrbook and clear the data
 rm $HOME/.deweb/config/addrbook.json
 dewebd unsafe-reset-all
 
-# удаляем бинарные файлы, после чего необходимо снова инициализировать ноду
+# Delete the binary files, after which you must reinitialize the node
 rm -rf ~/.deweb
 ```
 #### Governance
@@ -214,5 +215,3 @@ BINARY tx staking edit-validator \
   --details "DETAILS" \
   --from "WALLET_NAME"
 ```
-Explorer: https://dws.explorers.guru/validators
-Discord: https://discord.gg/g3cWTrJ4
