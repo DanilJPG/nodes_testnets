@@ -2,9 +2,9 @@
  
 ![image](https://user-images.githubusercontent.com/57448493/201538555-429fed0a-7950-4c4e-9e97-c6f368708b5d.png)
  
-Aleo привлек 228 млн. долларов для разработки своего проекта,написанного на собственном языке программирования LEO. Команда стремится к созданию пользовательского интерфейса в Интернете, который является одновременно по-настоящему личным и по-настоящему приватным. С возможность развертыванию приложений в сети с нулевым знанием,что дает безопасность и смягчат сливы приватных данных в сети. Это лишь немного, что представляет собой Aleo. 
+Aleo has raised $228 million to develop its project, written in its own programming language, LEO. The team aims to create a user interface on the Internet that is both truly private and truly private. With the ability to deploy applications on the network with zero knowledge, which gives security and mitigate leaks of private data on the network. This is just a little bit of what Aleo is all about. 
 
-Советую ознакомится: https://www.aleo.org/post/discover-aleo
+I advise you to read: https://www.aleo.org/post/discover-aleo
 
 Website: https://www.aleo.org/post/announcing-testnet-3
 
@@ -13,57 +13,57 @@ Discord: https://discord.gg/7scts2cr
 Github: https://github.com/AleoHQ/snarkOS/ 
 
 #### 1. Overview
-snarkOS - это децентрализованная операционная система для приложений с нулевым уровнем знаний. Этот код формирует основу сети Aleo, которая проверяет транзакции и хранит зашифрованные государственные приложения общедоступным способом.
+snarkOS is a decentralized operating system for zero-knowledge applications. This code forms the basis of the Aleo network, which verifies transactions and stores encrypted government applications in a public way.
 
 #### 2. Build Guide
 2.1 Requirements
 
-Ниже приведены минимальные требования для запуска узла Aleo:
+Below are the minimum requirements to start an Aleo node:
 ```
 CPU: 16-cores (32-cores preferred)
 RAM: 16GB of memory (32GB preferred)
 Storage: 128GB of disk space
 Network: 10 Mbps of upload and download bandwidth
 ```
-Пожалуйста, обратите внимание, что для запуска конкурентоспособного Aleo Prover машине потребуется нечто большее, чем эти требования.
+Please note that to run a competitive Aleo Prover machine will require more than these requirements.
 
 #### 2.2 Installation
-Перед началом работы, пожалуйста, убедитесь, что на вашем компьютере установлена версия Rust v1.64+. Инструкции по установке Rust можно найти здесь.https://www.rust-lang.org/tools/install
+Before you start, please make sure that you have Rust v1.64+ installed on your computer. Instructions on how to install Rust can be found here.https://www.rust-lang.org/tools/install
 
-Начните с клонирования этого репозитория Github:
+Start by cloning this Github repository:
 ```
 git clone https://github.com/AleoHQ/snarkOS.git --depth 1
 ```
-Затем перейдите в каталог snarkOS:
+Then go to the snarkOS directory:
 ```
 cd snarkOS
 ```
-[Для пользователей Ubuntu] Доступен вспомогательный скрипт для установки зависимостей. Из каталога snarkOS запустите:
+[Для пользователей Ubuntu] An auxiliary script for installing dependencies is available. From the snarkOS directory, run:
 ```
 ./build_ubuntu.sh
 ```
-Наконец, установите snarkOS:
+Finally, install snarkOS:
 ```
 cargo install --path /root/snarkOS/
 ```
 #### 3. Run an Aleo Node
-3a. Запустите клиент Aleo
-Начните с следования инструкциям в руководстве по сборке.
+3a. Start the Aleo client
+Start by following the instructions in the build guide.
 
-Затем, чтобы запустить клиентский узел из каталога snarkOS, запустите:
+Then, to start the client node from the snarkOS directory, start:
 ```
 ./run-client.sh
 ```
 #### 3b. Run an Aleo Prover
-Начните с следования инструкциям в руководстве по сборке.
+Start by following the instructions in the build guide.
 
-Затем сгенерируйте адрес учетной записи Aleo:
+Then generate an Aleo account address:
 ```
 snarkos account new 
 ```
-Это приведет к созданию новой учетной записи Aleo в терминале.
+This will create a new Aleo account in the terminal.
 
-Пожалуйста, не забудьте сохранить закрытый ключ учетной записи и ключ просмотра. Ниже приведен пример вывода:
+Please remember to save the account private key and the view key. Below is an example output:
 
  Attention - Remember to store this account private key and view key.
 ```
@@ -71,14 +71,14 @@ snarkos account new
      View Key  AViewKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me
       Address  aleo1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me
 ```     
-Затем, чтобы запустить узел проверки, из каталога snarkOS запустите:
+Then, to start the test node, from the snarkOS directory run:
 ```
 screen -S aleo
 ./run-prover.sh
 ```
-При появлении запроса введите свой закрытый ключ Aleo:
+When prompted, enter your Aleo private key:
 ```
-Введите закрытый ключ учетной записи Aleo Prover:
+Enter the Aleo Prover account private key:
 APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
@@ -91,9 +91,9 @@ OPTIONS:
     -v, --verbosity <VERBOSITY>    Specify the verbosity [options: 0, 1, 2, 3] [default: 2]
 
 SUBCOMMANDS:
-    account    Команды для управления учетными записями Aleo
-    clean      Очищает хранилище узла snarkOS
-    help       Распечатайте это сообщение или справку из данной подкоманды(ов)
-    start      Запускает узел snarkOS
-    update     Обновление snarkOS
+    account  Commands for managing Aleo accounts
+    clean    Clears the storage of the snarkOS node
+    help     Prints this message or help from this subcommand(s)
+    start    Starts the snarkOS host
+    update   Updates snarkOS
 ```
