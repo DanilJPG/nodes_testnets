@@ -1,10 +1,7 @@
 ## Nibiru Chain
 
-Discord: https://discord.gg/4sCtbbfc
-
-Website: https://nibiru.fi/
-
-Faucet: https://discord.com/channels/947911971515293759/984840062871175219
+Discord: https://discord.gg/4sCtbbfc | [Website](https://nibiru.fi/) | [Faucet](https://discord.com/channels/947911971515293759/984840062871175219)
+| --- | --- | ---
 ```
 $request <address_wallet>
 ```
