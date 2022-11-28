@@ -19,7 +19,7 @@ Steps | Comments
 [Wallet](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Create%20a%20wallet%20while%20synchronization%20is%20going%20on) | Creating and restoring a wallet
 [Validator](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=use%20the%20tap-,Validator,-empowerd%20tx%20staking) | Creating your node operator
 [Useful commands](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Useful%20Commands.md) | Here are commands for the validator, for node management and for the wallet
-[State Sunc]() | Chain synchronization
+[State Sync]() | Chain synchronization
 
 **Brief description:** *Decentralize the new (circular) economy so that everyone can get a fair share of the benefits of making the world a cleaner and better place. When you delegate to the Validator, you not only earn your interest rate, you also help clean up the environment*.
 
