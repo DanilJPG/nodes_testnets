@@ -5,7 +5,7 @@ sudo systemctl stop empowerd
 cp $HOME/.empowerchain/data/priv_validator_state.json $HOME/.empowerchain/priv_validator_state.json.backup
 empowerd tendermint unsafe-reset-all --home $HOME/.empowerchain --keep-addr-book
 
-SNAP_RPC="https://5.161.99.245:26656"
+SNAP_RPC=http://5.161.99.245:26657/
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
