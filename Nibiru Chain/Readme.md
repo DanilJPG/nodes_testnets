@@ -99,9 +99,9 @@ EOF
 #### Launch
 ```
 systemctl daemon-reload
-systemctl start nibidd
-systemctl enable nibidd
-journalctl -u nibidd -f -n 100
+systemctl start nibid
+systemctl enable nibid
+journalctl -u nibid -f -n 100
 ```
 #### State Sync
 ```
