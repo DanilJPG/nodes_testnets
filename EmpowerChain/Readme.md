@@ -26,7 +26,7 @@ Steps | Comments
 ![image](https://user-images.githubusercontent.com/57448493/200168721-ca5c593a-0054-4c69-9eeb-14243678f4fc.png)
 
 ***
-#### Empowerchain Testnet v0.0.2 Upgrade 11.11.2022
+#### Update
 Chain ID: altruistic-1
 
 The upgrade is scheduled for 580000.
@@ -37,7 +37,7 @@ Build the new binary verison
 ```Shell
 cd empowerchain
 git pull
-git checkout v0.0.2
+git checkout v0.0.3
 cd chain && make install
 ```
 #### Updating and installing utilities 
