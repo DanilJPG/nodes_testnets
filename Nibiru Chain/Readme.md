@@ -101,7 +101,7 @@ EOF
 systemctl daemon-reload
 systemctl start nibid
 systemctl enable nibid
-journalctl -u nibid -f -n 100
+sudo journalctl -u nibid -f --no-hostname -o cat
 ```
 #### State Sync
 ```
