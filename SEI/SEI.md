@@ -1,6 +1,6 @@
 ## SEI
 
-[Dscord](tps://discord.gg/sei) | [Wesite](https://www.seinetwork.io/) | [github](https://github.com/sei-protocol/sei-chain)
+[Discord](tps://discord.gg/sei) | [Wesite](https://www.seinetwork.io/) | [github](https://github.com/sei-protocol/sei-chain)
 | --- | --- | ---
 
 #### Active version 1.2.2beta-postfix
