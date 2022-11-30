@@ -2,7 +2,7 @@
 
 Discord: https://discord.gg/sei
 
-#### Active version 1.2.2beta
+#### Active version 1.2.2beta-postfix
 
 #### Обновляем репозитории
 ```
