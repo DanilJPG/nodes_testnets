@@ -35,4 +35,7 @@ lambdavm tx staking unbond <addr_valoper> 1000000ulamb --from <name_wallet> --fe
 
 # send coins to another address
 lambdavm tx bank send <name_wallet> <address> 1000000ulamb --fees 5000umpwr -y
+
+ # jail
+ lambdavm tx slashing unjail --from <name_wallet> --fees 5000ulamb -y
 ```
