@@ -110,7 +110,7 @@ sudo systemctl stop nibid
 cp $HOME/.nibid/data/priv_validator_state.json $HOME/.nibid/priv_validator_state.json.backup
 nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
 
-SNAP_RPC="5.161.99.245:36657"
+SNAP_RPC="https://5.161.99.245:36657"
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
