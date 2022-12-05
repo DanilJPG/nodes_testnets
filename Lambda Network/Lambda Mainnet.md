@@ -20,12 +20,12 @@ Steps | Comments
 [Useful commands](https://github.com/DanilJPG/nodes_testnets/blob/main/Lambda%20Network/Useful%20commands.md) | Here are commands for the validator, for node management and for the wallet
 [State Sunc]() | Chain synchronization
 #### Upgrade and install dependencies
-```
+```Shell
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 #### Installing Go
-```
+```Shell
 ver="1.19.1"
 cd $HOME
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -35,20 +35,20 @@ rm "go$ver.linux-amd64.tar.gz"
 ```
 
 #### Cloning a repository 
-```
+```Shell
 git clone https://github.com/LambdaIM/lambdavm.git
 cd lambdavm
 make install
 ```
 
 #### Initializing 
-```
+```Shell
 lambdavm init <your_custom_moniker> --chain-id lambda_92000-1 \
 lambdavm config chain-id lambda_92000-1
 ```
 
 #### Download genesis
-```
+```Shell
 wget -O /root/.lambdavm/config//genesis.json "https://raw.githubusercontent.com/LambdaIM/mainnet/main/lambda_92000-1/genesis.json"
 #check
 
@@ -57,7 +57,7 @@ wget -O /root/.lambdavm/config//genesis.json "https://raw.githubusercontent.com/
 ```
 
 #### Correct the configuration file
-```
+```Shell
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" /root/.lambdavm/config/config.toml
 
@@ -71,7 +71,7 @@ SEEDS=`curl -sL https://raw.githubusercontent.com/LambdaIM/mainnet/main/lambda_9
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" ~/.lambdavm/config/config.toml
 ```
 #### Prinning
-```
+```Shell
 pruning="custom" && \
 pruning_keep_recent="100" && \
 pruning_keep_every="0" && \
@@ -83,7 +83,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 ```
 
 #### Create a service file
-```
+```Shell
 sudo tee /etc/systemd/system/lambdavm.service > /dev/null <<EOF
 [Unit]
 Description=lambdavm
@@ -100,14 +100,14 @@ EOF
 ```
 
 #### Launch
-```
+```Shell
 systemctl daemon-reload && \
 systemctl enable lambdavm && \
 systemctl restart lambdavm && journalctl -u lambdavm -f -o cat
 ```
 
 #### Creating a validator 
-```
+```Shell
 lambdavm tx staking create-validator \
 --amount 1000000000000000000ulamb \
 --pubkey $(lambdavm tendermint show-validator) \
@@ -122,7 +122,7 @@ lambdavm tx staking create-validator \
 --fees 5000ulamb
 ```
 #### Wallet 
-```
+```Shell
 # create a wallet
 empowerd keys add $WALLET --keyring-backend os
 
@@ -137,7 +137,7 @@ lambdavm keys unsafe-import-eth-key [account name] [private key]
 ```
 
 #### Deleting
-```
+```Shell
 systemctl stop lambdavm && \
 systemctl disable lambdavm && \
 rm /etc/systemd/system/lambdavm.service && \
