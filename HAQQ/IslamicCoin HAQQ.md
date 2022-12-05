@@ -24,7 +24,7 @@ Permanent Internet connection (traffic will be minimal during testnet; 10Mbps wi
 Проект планирует предоставлять инновации и занимается благотворительностью, создание приложений на Tendermint облегчит создание и мониторинг систем. Свойства ETH помогут масштабироваться и увеличить скорость отклика и транзакций клиентов в будущем.
 
 #### Обновление 27.09.2022 на высоте 256200
-```
+```Shell
 sudo systemctl stop haqqd
 cd $HOME && rm -rf haqq
 git clone https://github.com/haqq-network/haqq && cd haqq
@@ -33,7 +33,7 @@ make install
 sudo systemctl restart haqqd && sudo journalctl -u haqqd -f -o cat
 ```
 #### Обновление 04.10.2022 на высоте 355555
-```
+```Shell
 cd && rm -rf haqq
 git clone https://github.com/haqq-network/haqq
 cd haqq && git checkout v1.2.0
@@ -45,13 +45,13 @@ journalctl -u haqqd -f -o cat
 ```
 
 ### 1. Обновляемся и скачиваем зависимости:
-```
+```Shell
 apt update && apt upgrade -y
 sudo apt-get install curl git make gcc liblz4-tool build-essential jq -y
 ```
 
 ### 2. Установим GO:
-```
+```Shell
 ver="1.18.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
@@ -63,7 +63,7 @@ go version
 ```
 
 ### 3. Загрузка и формирование бинарника: 
-```
+```Shell
 cd $HOME
 git clone https://github.com/haqq-network/haqq && cd haqq
 git checkout v1.1.0
@@ -73,7 +73,7 @@ haqqd version:
 ```
 
 ### 4. Инициализируем ноду
-```
+```Shell
 haqqd init <name_moniker> --chain-id haqq_53211-1
 ```
 Приведенная выше команда создает все конфигурационные файлы, необходимые для работы вашего узла, а также файл genesis по умолчанию, который определяет начальное состояние сети. По умолчанию все эти конфигурационные файлы находятся в ~/.haqq, но вы можете изменить расположение этой папки, передав флаг --home.
@@ -81,38 +81,38 @@ haqqd init <name_moniker> --chain-id haqq_53211-1
 ### 5. Заполнение конфигурационных файлов
 
 #### 5.1 Скачиваем genesis
-```
+```Shell
 wget -O $HOME/.haqqd/config/genesis.json "https://raw.githubusercontent.com/haqq-network/validators-contest/master/genesis.json"
 ```
 #### 5.2 Скачиваем addrbook
-```
+```Shell
 wget -O $HOME/.haqqd/config/addrbook.json "https://github.com/StakeTake/guidecosmos/blob/main/haqq/haqq_53211-1/README.md#add-addrbook"
 ```
 #### 5.3 Редактируем config.toml
 
 # правим конфиг, благодаря чему мы можем больше не использовать флаг chain-id для каждой команды CLI в client.toml
-```
+```Shell
 haqqd config chain-id haqq_54211-2
 ```
 # настраиваем минимальную цену за газ в app.toml
-```
+```Shell
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0aISLM\"/;" ~/.haqqd/config/app.toml
 ```
 # добавляем seeds/bpeers/peers в config.toml
-```
+```Shell
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.haqqd/config/config.toml
 ```
-```
+```Shell
 peers="b3ce1618585a9012c42e9a78bf4a5c1b4bad1123@65.21.170.3:33656,952b9d918037bc8f6d52756c111d0a30a456b3fe@213.239.217.52:29656,85301989752fe0ca934854aecc6379c1ccddf937@65.109.49.111:26556,d648d598c34e0e58ec759aa399fe4534021e8401@109.205.180.81:29956,f2c77f2169b753f93078de2b6b86bfa1ec4a6282@141.95.124.150:20116,eaa6d38517bbc32bdc487e894b6be9477fb9298f@78.107.234.44:45656,37513faac5f48bd043a1be122096c1ea1c973854@65.108.52.192:36656,d2764c55607aa9e8d4cee6e763d3d14e73b83168@66.94.119.47:26656,fc4311f0109d5aed5fcb8656fb6eab29c15d1cf6@65.109.53.53:26656,297bf784ea674e05d36af48e3a951de966f9aa40@65.109.34.133:36656,bc8c24e9d231faf55d4c6c8992a8b187cdd5c214@65.109.17.86:32656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.haqqd/config/config.toml
 ```
-```
+```Shell
 seeds="62bf004201a90ce00df6f69390378c3d90f6dd7e@seed2.testedge2.haqq.network:26656,23a1176c9911eac442d6d1bf15f92eeabb3981d5@seed1.testedge2.haqq.network:26656"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.haqqd/config/config.toml
 ```
 #### 6. Создание сервисного файла
-```
+```Shell
 sudo tee /etc/systemd/system/haqqd.service > /dev/null <<EOF
 [Unit]
 Description=haqqd
@@ -131,7 +131,7 @@ EOF
 
 ```                                                          
 #### 7. Запуск
-```
+```Shell
 sudo systemctl daemon-reload && \
 sudo systemctl enable haqqd && \
 sudo systemctl restart haqqd && sudo journalctl -u haqqd -f -o cat
@@ -139,7 +139,7 @@ sudo systemctl restart haqqd && sudo journalctl -u haqqd -f -o cat
                                                              
                                                              
 #### 8. Кошелек
-```
+```Shell
 # создание
 haqqd keys add <name_wallet> --keyring-backend os
 
@@ -154,7 +154,7 @@ haqqd keys unsafe-import-eth-key [account name] [private key]
 ```
 
 #### 9. Валидатор 
-```
+```Shell
 haqqd tx staking create-validator \
 --chain-id haqq_53211-1 \
 --commission-rate 0.05 \
@@ -171,7 +171,7 @@ haqqd tx staking create-validator \
 Полезные команды по валидатору 
 
 #### Sync
-```
+```Shell
 # проверить блоки
 haqqd status 2>&1 | jq ."SyncInfo"."latest_block_height"
 # проверить логи
@@ -185,7 +185,7 @@ haqqd q bank balances <address>
 
   
 ### Delegetion
-```
+```Shell
 # заделегировать себе в стейк еще (так отправляется 1 монетa)
 haqqd tx staking delegate <valoper_address> 1000000000000000000aISLM --from <name_wallet> --fees 500aISLM -y
 # ределегирование на другого валидатора
@@ -200,7 +200,7 @@ haqqd tx slashing unjail --from <name_wallet> --fees 500aISLM -y
 
   
 ### Governance
-```
+```Shell
 # список proposals
 haqqd q gov proposals
 # посмотреть результат голосования
@@ -221,7 +221,7 @@ rm -rf $(which haqqd)
 ```
 
 #### Edit validator 
-```
+```Shell
 BINARY tx staking edit-validator \
   --chain-id "CHAIN_NAME" \
   --moniker "MONIKER" \
