@@ -16,17 +16,19 @@ Recommended server modifications: 4 cores, 8 RAM, 200 ssd;
 Step 0A - Run the full node/validator using binaries
 Download the latest version (v0.2) of the binary from Github:
 
-```
-#### Updating repositories
-sudo apt update && sudo apt upgrade -y
 
+#### Updating repositories
+```Shell
+sudo apt update && sudo apt upgrade -y
+```
 #### Installing the necessary utilities
+```Shell
 sudo apt install curl build-essential git wget jq make gcc tmux nvme-cli -y
 ```
 
 For further interaction with the program you will need to install Golang (one command)
 
-```
+```Shell
 wget https://golang.org/dl/go1.18.1.linux-amd64.tar.gz; \
 rm -rv /usr/local/go; \
 tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz && \
@@ -37,7 +39,7 @@ go version
 ```
 
 ### Node Installation
-```
+```Shell
 git clone https://github.com/deweb-services/deweb.git && cd deweb
 git checkout v0.3.1
 make install
@@ -47,15 +49,15 @@ make install
 
 #### Initializing a node
 Instead of <name_node> insert the name of the node you want to assign
-```
+```Shell
 dewebd init <name_node> --chain-id deweb-testnet-sirius
 ```
 #### Download Genesis
-```
+```Shell
 wget -O $HOME/.deweb/config/genesis.json "https://raw.githubusercontent.com/deweb-services/deweb/main/genesis.json"
 ```
 
-```
+```Shell
 Version Verification:
 sha256sum ~/.deweb/config/genesis.json 
 
@@ -63,7 +65,7 @@ sha256sum ~/.deweb/config/genesis.json
 ```
 
 #### Setting up a node (with different commands)
-```
+```Shell
 cd $HOME
 # setting up piers
 peers="F4C24583640A7BE659F8A6FA734F9ED61FB10CD9@78.137.4.44:42656" sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/; s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.deweb/config/config.toml
@@ -79,7 +81,7 @@ sudo ufw allow 26656
 ```
 
 #### Create a service file
-```
+```Shell
 sudo tee /etc/systemd/system/dewebd.service > /dev/null <<EOF
 echo "[Unit]
 Description=DWS Node
@@ -95,7 +97,7 @@ WantedBy=multi-user.target
 EOF
 ```
 #### Launch
-```
+```Shell
 sudo systemctl daemon-reload && \
 sudo systemctl enable dewebd && \
 sudo systemctl restart dewebd && sudo journalctl -u dewebd -f -o cat
@@ -105,12 +107,12 @@ If there are errors related to the connection of peers, it is worth asking for h
 https://discord.gg/Kyuc3cvx
 
 #### Checking synchronization and blocks
-```
+```Shell
 dewebd status 2>&1 | jq ."SyncInfo"."latest_block_height"
 curl localhost:26657/status
 ```
 While synchronization is going on, we can create and replenish the wallet:
-```
+```Shell
 #create a wallet
 dewebd keys add <name_wallet>
 
@@ -122,7 +124,7 @@ dewebd q bank balances <deweb1...>
 Если не может подключиться к пирам,то проверяйте: в дискорде проекта имеется канал peers
 ```
 If you change something that needs to be changed, then refer to the node stop:
-```
+```Shell
 #Stop the node, delete the address book and reset the data
 sudo systemctl stop dewebd
 rm $HOME/.deweb/config/addrbook.json
@@ -133,7 +135,7 @@ sudo systemctl restart dewebd && journalctl -u dewebd -f -o cat
 After synchronization, go to discord asking for tokens (channel #faucet), 1 dws = 1000000 udws
 ```
 #### State Sync 
-```
+```Shell
 sudo systemctl stop dewebd
 
 cp $HOME/.deweb/data/priv_validator_state.json $HOME/.deweb/priv_validator_state.json.backup
@@ -161,7 +163,7 @@ sudo systemctl restart dewebd
 sudo journalctl -u dewebd -f --no-hostname -o cat
 ```
 #### Set the validator (one command), you must replace <name_wallet> and <name_moniker> on the ones you want:
-```
+```Shell
 dewebd tx staking create-validator \
 --chain-id deweb-testnet-sirius \
 --commission-rate=0.05 \
@@ -176,25 +178,25 @@ dewebd tx staking create-validator \
 --fees 555udws
 ```
 #### Check the logs
-```
+```Shell
 sudo journalctl -u dewebd -f -o cat
 sudo journalctl -fn 100 -u dewebd
 ```
 #### Check the validator
-```
+```Shell
 dewebd query staking validator <dewebvaloper1...>
 dewebd query staking validators --limit 1000000 -o json | jq '.validators[] | select(.description.moniker=="<name_moniker>")' | jq
 ```
 #### To make it into a steak.
-```
+```Shell
 dewebd tx staking delegate <dewebvaloper1...> 1000000udws --from <name_wallet> --fees 555udws -y
 ```
 #### Send coins to another address
-```
+```Shell
 dewebd tx bank send <name_wallet> <deweb1...> 10000000udws --fees 555udws -y
 ```
 #### Clearing the data
-```
+```Shell
 # Delete addrbook and clear the data
 rm $HOME/.deweb/config/addrbook.json
 dewebd unsafe-reset-all
@@ -203,12 +205,12 @@ dewebd unsafe-reset-all
 rm -rf ~/.deweb
 ```
 #### Governance
-```
+```Shell
 dewebd tx gov vote 1 yes --from <name_wallet> --fees 555udws
 ```
 
 #### Edit validator 
-```
+```Shell
 BINARY tx staking edit-validator \
   --chain-id "CHAIN_NAME" \
   --moniker "MONIKER" \
