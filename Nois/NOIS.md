@@ -3,12 +3,12 @@ Discord:
 Если ваш бот имеет rpc = http://node-0.noislabs.com:26657/, пожалуйста, измените его на https://rpc.noislabs.com:443/, потому что первый url больше не доступен.
 
 #### Обновление и установка зависимостей 
-```
+```Shell
 apt-get update 
 sudo apt install curl build-essential git wget jq make gcc tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
 ```
 #### Установка GO
-```
+```Shell
 ver="1.19.1"
 cd $HOME
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -17,7 +17,7 @@ sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
 rm "go$ver.linux-amd64.tar.gz"
 ```
 #### Копирование репозитория
-```
+```Shell
 git clone https://github.com/noislabs/full-node.git 
 cd full-node/full-node/
 ./setup.sh
@@ -25,16 +25,16 @@ mv out/noisd $HOME/go/bin/
 export PATH=$HOME/go/bin:$PATH
 ```
 #### Инициализация
-```
+```Shell
 noisd init <name_moniker> --chain-id nois-testnet-002
 ```
 Замените '<name_moniker>' на название своего оператора
 #### Скачиваем genesis
-```
+```Shell
 wget -qO $HOME/.noisd/config/genesis.json "https://raw.githubusercontent.com/noislabs/testnets/main/nois-testnet-002/genesis.json"
 ```
 #### Правим конфиг 
-```
+```Shell
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.noisd/config/config.toml
 
@@ -52,7 +52,7 @@ sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.noisd/config/config.t
 ```
 
 #### Сервисный файл
-```
+```Shell
 sudo tee /etc/systemd/system/noisd.service > /dev/null <<EOF
 [Unit]
 Description=noisd
@@ -70,13 +70,13 @@ WantedBy=multi-user.target
 EOF
 ```
 #### Запуск
-```
+```Shell
 sudo systemctl daemon-reload
 sudo systemctl enable noisd
 sudo systemctl restart noisd && sudo journalctl -u noisd -f -o cat
 ```
 #### Создаем кошелек пока идет синхронизация 
-```
+```Shell
 # создать кошелек
 noisd keys add <name_wallet> --keyring-backend os
 
@@ -85,7 +85,7 @@ noisd keys add <name_wallet> --recover --keyring-backend os
 ```
 Идем в дискорд и пользуемся краном 
 #### Валидатор
-```
+```Shell
 noisd tx staking create-validator \
 --chain-id nois-testnet-002 \
 --commission-rate 0.05 \
@@ -99,7 +99,7 @@ noisd tx staking create-validator \
 --fees 5000unois
 ```
 #### Полезные команды
-```
+```Shell
 # проверка высота блоков
 noisd status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
@@ -117,7 +117,7 @@ noisd q bank balances <address>
 noisd keys list
 ```
 #### Валидатор 
-```
+```Shell
 # собрать реварды со всех валидаторов, которым делегировали (без комиссии)
 noisd tx distribution withdraw-all-rewards --from <name_wallet> --fees 5000unois -y
 
@@ -131,7 +131,7 @@ noisd tx staking delegate <valoper_address> 1000000unois --from <name_wallet> --
 noisd tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000unois --from <name_wallet> --fees 5000unois -y
 ```
 #### Edit validator 
-```
+```Shell
 BINARY tx staking edit-validator \
   --chain-id "CHAIN_NAME" \
   --moniker "MONIKER" \
