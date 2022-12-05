@@ -6,20 +6,20 @@ Off.manual: https://docs.okp4.network/docs/nodes/introduction
 WebSite: https://okp4.network/
 
 Faucet:
-```
+```Shell
 https://faucet.okp4.network/
 ```
 #### Submitting a resume for a rewarding testnet
-```
+```Shell
 https://nemeton.okp4.network/
 ```
 #### Update and download dependencies
-```
+```Shell
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
 ```
 #### Installing Go
-```
+```Shell
 ver="1.19.1"
 cd $HOME
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -28,23 +28,23 @@ sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
 rm "go$ver.linux-amd64.tar.gz"
 ```
 #### Clone a repository
-```
+```Shell
 git clone https://github.com/okp4/okp4d.git
 cd okp4d
 make install
 ```
 #### Check version
-```
+```Shell
 okp4d version
 2.2.0
 ```
 #### Initializing
-```
+```Shell
 okp4d init garfield --chain-id okp4-nemeton \
 okp4d config chain-id okp4-nemeton
 ```
 
-```
+```Shell
 This will generate, in the $HOME/.okp4d folder, the following files:
 
 config/app.toml: Application-related configuration file.
@@ -56,12 +56,12 @@ config/priv_validator_key: Private key to use as a validator in the consensus pr
 data: The node's database.
 ```
 #### Download genesis and addrbook
-```
+```Shell
 wget $HOME/.okp4d/config/genesis.json "https://github.com/okp4/networks/blob/main/chains/nemeton/genesis.json"
 curl -s https://snapshots2-testnet.nodejumper.io/okp4-testnet/addrbook.json > $HOME/.okp4d/config/addrbook.json
 ```
 #### Filling out the configuration file
-```
+```Shell
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.okp4d/config/config.toml
 
@@ -73,7 +73,7 @@ sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.o
 
 ```
 
-```
+```Shell
 sudo tee /etc/systemd/system/okp4d.service > /dev/null <<EOF
 [Unit]
 Description=okp4d
@@ -91,14 +91,14 @@ WantedBy=multi-user.target
 EOF
 ```
 #### Service Launch
-```
+```Shell
 systemctl daemon-reload && \
 systemctl enable okp4d && \
 systemctl restart okp4d && journalctl -u okp4d -f -o cat
 ```
 
 #### Creating a validator
-```
+```Shell
 okp4d tx staking create-validator \
 --chain-id okp4-nemeton \
 --moniker "garfield" \
@@ -115,7 +115,7 @@ okp4d tx staking create-validator \
 ```
 
 #### Useful Commands 
-```
+```Shell
 # проверить блоки
 okp4d status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
@@ -134,7 +134,7 @@ okp4d tendermint show-validator
 ```
 
 #### Comadns for the validator
-```
+```Shell
 # собрать реварды со всех валидаторов, которым делегировали (без комиссии)
 okp4d tx distribution withdraw-all-rewards --from <name_wallet> --fees 500uknow -y
 
@@ -157,13 +157,13 @@ okp4d tx bank send <name_wallet> <address> 1000000uknow --fees 500uknow -y
 okp4d tx slashing unjail --from <name_wallet> --fees 500uknow -y
 ```
 #### Reset 
-```
+```Shell
 systemctl stop okp4d
 rm $HOME/.okp4d/config/addrbook.json
 okp4d tendermint unsafe-reset-all --home $HOME/.okp4d --keep-addr-book
 ```
 #### Deleting
-```
+```Shell
 systemctl stop okp4d && \
 systemctl disable okp4d && \
 rm /etc/systemd/system/okp4d.service && \
@@ -173,7 +173,7 @@ rm -rf .okp4d okp4d && \
 rm -rf $(which okp4d)
 ```
 #### Edit validator 
-```
+```Shell
 BINARY tx staking edit-validator \
   --chain-id "CHAIN_NAME" \
   --moniker "MONIKER" \
