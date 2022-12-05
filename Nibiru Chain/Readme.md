@@ -6,14 +6,14 @@
 $request <address_wallet>
 ```
 #### Updating and installing utilities
-```
+```Shell
 apt update && apt upgrade -y \
 
 apt install curl iptables build-essential git wget jq make gcc nano tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
 ```
 
 #### Go
-```
+```Shell
 ver="1.19.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
@@ -25,7 +25,7 @@ go version
 ```
 
 #### Clone the repository and install the binary
-```
+```Shell
 git clone https://github.com/NibiruChain/nibiru
 cd nibiru
 git checkout v0.15.0
@@ -36,14 +36,14 @@ nibid version
 ```
 
 #### Initializing
-```
+```Shell
 nibid init <moniker-name> --chain-id=nibiru-testnet-1 --home $HOME/.nibid \
 nibid config chain-id nibiru-testnet-1
 ```
 
 
 #### Download genesis and address book
-```
+```Shell
 curl -s https://rpc.testnet-1.nibiru.fi/genesis | jq -r .result.genesis > genesis.json
 mv genesis.json $HOME/.nibid/config/genesis.json
 
@@ -52,7 +52,7 @@ wget -O $HOME/.nibid/config/addrbook.json "http://65.108.6.45:8000/nibiru/addrbo
 
 
 #### Filling out config.toml
-```
+```Shell
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025unibi\"/;" ~/.nibid/config/app.toml
 
 external_address=$(wget -qO- eth0.me)
@@ -77,7 +77,7 @@ CONFIG_TOML="$HOME/.nibid/config/config.toml"
 
 
 #### Create a service file
-```
+```Shell
 sudo tee /etc/systemd/system/nibid.service > /dev/null <<EOF
 [Unit]
 Description=nibid
@@ -97,14 +97,14 @@ EOF
 
 
 #### Launch
-```
+```Shell
 systemctl daemon-reload
 systemctl start nibid
 systemctl enable nibid
 sudo journalctl -u nibid -f --no-hostname -o cat
 ```
 #### State Sync
-```
+```Shell
 sudo systemctl stop nibid
 
 cp $HOME/.nibid/data/priv_validator_state.json $HOME/.nibid/priv_validator_state.json.backup
@@ -133,7 +133,7 @@ sudo journalctl -u nibid -f --no-hostname -o cat
 
 ```
 #### Wallet
-```
+```Shell
 # создать кошелек
 nibid keys add <name_wallet> --keyring-backend os
 
@@ -143,7 +143,7 @@ nibid keys add <name_wallet> --recover --keyring-backend os
 
 
 #### Creating a validator
-```
+```Shell
 nibid tx staking create-validator \
 --chain-id nibiru-testnet-1 \
 --commission-rate 0.05 \
@@ -159,7 +159,7 @@ nibid tx staking create-validator \
 
 
 #### Useful Commands
-```
+```Shell
 # проверить блоки
 nibid status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
@@ -186,7 +186,7 @@ nibid tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000uni
 ```
 
 #### Delete
-```
+```Shell
 systemctl stop nibid && \
 systemctl disable nibid && \
 rm /etc/systemd/system/nibid.service && \
@@ -197,7 +197,7 @@ rm -rf $(which nibid)
 ```
 
 #### If there is a problem connecting peers or genesis, try resetting the network and start with the genesis download step
-```
+```Shell
 systemctl stop nibid
 rm $HOME/.nibid/config/addrbook.json
 nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
