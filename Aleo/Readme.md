@@ -16,7 +16,7 @@ snarkOS is a decentralized operating system for zero-knowledge applications. Thi
 2.1 Requirements
 
 Below are the minimum requirements to start an Aleo node:
-```
+```Shell
 CPU: 16-cores (32-cores preferred)
 RAM: 16GB of memory (32GB preferred)
 Storage: 128GB of disk space
@@ -28,19 +28,19 @@ Please note that to run a competitive Aleo Prover machine will require more than
 Before you start, please make sure that you have Rust v1.64+ installed on your computer. Instructions on how to install Rust can be found here.https://www.rust-lang.org/tools/install
 
 Start by cloning this Github repository:
-```
+```Shell
 git clone https://github.com/AleoHQ/snarkOS.git --depth 1
 ```
 Then go to the snarkOS directory:
-```
+```Shell
 cd snarkOS
 ```
 [Для пользователей Ubuntu] An auxiliary script for installing dependencies is available. From the snarkOS directory, run:
-```
+```Shell
 ./build_ubuntu.sh
 ```
 Finally, install snarkOS:
-```
+```Shell
 cargo install --path /root/snarkOS/
 ```
 #### 3. Run an Aleo Node
@@ -48,14 +48,14 @@ cargo install --path /root/snarkOS/
 Start by following the instructions in the build guide.
 
 Then, to start the client node from the snarkOS directory, start:
-```
+```Shell
 ./run-client.sh
 ```
 #### 3b. Run an Aleo Prover
 Start by following the instructions in the build guide.
 
 Then generate an Aleo account address:
-```
+```Shell
 snarkos account new 
 ```
 This will create a new Aleo account in the terminal.
@@ -63,23 +63,23 @@ This will create a new Aleo account in the terminal.
 Please remember to save the account private key and the view key. Below is an example output:
 
  Attention - Remember to store this account private key and view key.
-```
+```Shell
   Private Key  APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me And Use In The Next Step
      View Key  AViewKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me
       Address  aleo1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Save Me
 ```     
 Then, to start the test node, from the snarkOS directory run:
-```
+```Shell
 screen -S aleo
 ./run-prover.sh
 ```
 When prompted, enter your Aleo private key:
-```
+```Shell
 Enter the Aleo Prover account private key:
 APrivateKey1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-```
+```Shell
 snarkos --help
 ```
 ```
