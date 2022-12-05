@@ -6,16 +6,16 @@
 #### Active version 1.2.2beta-postfix
 
 #### Обновляем репозитории
-```
+```Shell
 sudo apt update && sudo apt upgrade -y
 ```
 #### Устанавливаем необходимые утилиты
-```
+```Shell
 sudo apt install curl build-essential git wget jq make gcc tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
 ```
 
 #### Устанавливаем Go 
-```
+```Shell
 ver="1.19.1"
 cd $HOME
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
@@ -25,7 +25,7 @@ rm "go$ver.linux-amd64.tar.gz"
 ```
 
 #### Устанавливаем бинарники
-```
+```Shell
 git clone https://github.com/sei-protocol/sei-chain.git && cd sei-chain
 git checkout <...>
 make install
@@ -35,18 +35,18 @@ seid version --long | head
 # commit: 9764e4d7b0fdbfacfca446c1a12a75df1693cd02
 ```
 #### Инициализируем ноду, чтобы создать необходимые файлы конфигурации
-```
+```Shell
 seid init <name_moniker> --chain-id atlantic-1
 ```
 #### Скачиваем Genesis
-```
+```Shell
 wget -O $HOME/.sei/config/genesis.json "https://raw.githubusercontent.com/sei-protocol/testnet/master/sei-incentivized-testnet/genesis.json"
 
 # Проверим генезис
 sha256sum ~/.sei/config/genesis.json
 ``` 
 #### Проверяем, что состояние валидатора на начальном этапе
-```
+```Shell
 cd && cat .sei/data/priv_validator_state.json
 {
   "height": "0",
@@ -58,11 +58,11 @@ cd && cat .sei/data/priv_validator_state.json
 seid tendermint unsafe-reset-all --home $HOME/.sei
 ```
 #### Скачиваем addrbook
-```
+```Shell
 wget -O $HOME/.sei/config/addrbook.json "https://raw.githubusercontent.com/sei-protocol/testnet/master/sei-incentivized-testnet/addrbook.json"
 ```
 #### Настраиваем конфигурацию ноды
-```
+```Shell
 # правим конфиг, благодаря чему мы можем больше не использовать флаг chain-id для каждой команды CLI в client.toml
 seid config chain-id atlantic-1
 
@@ -86,7 +86,7 @@ seeds=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.sei/config/config.toml
 ```
 #### Prunning
-```
+```Shell
 pruning="custom" && \
 pruning_keep_recent="100" && \
 pruning_keep_every="0" && \
@@ -98,7 +98,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 ```
 
 #### Создаем сервисный файл
-```
+```Shell
 sudo tee /etc/systemd/system/seid.service > /dev/null <<EOF
 [Unit]
 Description=seid
@@ -116,14 +116,14 @@ WantedBy=multi-user.target
 EOF
 ```
 #### Start
-```
+```Shell
 sudo systemctl daemon-reload && \
 sudo systemctl enable seid && \
 sudo systemctl restart seid && sudo journalctl -u seid -f -o cat
 ```
 
 #### создать кошелек
-```
+```Shell
 seid keys add <name_wallet>
 
 # восстановить кошелек (после команды вставить seed)
@@ -132,7 +132,7 @@ seid keys add <name_wallet> --recover
 ```
 
 #### Создаем валидатора
-```
+```Shell
 seid tx staking create-validator \
 --chain-id atlantic-1 \
 --commission-rate 0.05 \
@@ -150,7 +150,7 @@ seid tx staking create-validator \
 ```
 
 #### Полезные команды
-```
+```Shell
 # проверить блоки
 seid status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
@@ -171,7 +171,7 @@ seid query staking validators --limit 1000000 -o json | jq '.validators[] | sele
 seid query tx <TX_HASH>
 ```
 #### Транзакции
-```
+```Shell
 # собрать комиссионные + реварды
 seid tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 5555usei --commission -y
 
@@ -191,7 +191,7 @@ seid tx bank send <name_wallet> <address> 1000000usei --fees 5555usei -y
 seid tx slashing unjail --from <name_wallet> --fees 5555usei -y
 ```
 #### Работа с кошельками
-```
+```Shell
 # вывести список кошельков
 seid keys list
 
@@ -208,11 +208,11 @@ seid keys show <name_wallet> --bech cons
 seid q auth account $(quicksilverd keys show <name_wallet> -a) -o text
 ```
 #### удалить кошелек
-```
+```Shell
 seid keys delete <name_wallet>
 ```
 #### Обновление
-```
+```Shell
 cd seid
 git pull
 git checkout ...
@@ -221,7 +221,7 @@ make install
 # после перезагружаем ноду
 ```
 #### Удалить ноду
-```
+```Shell
 sudo systemctl stop seid && \
 sudo systemctl disable seid && \
 rm /etc/systemd/system/seid.service && \
@@ -231,7 +231,7 @@ rm -rf .sei .sei-chain sei-chain && \
 rm -rf $(which seid)
 ```
 #### Голосование
-```
+```Shell
 # список proposals
 seid q gov proposals
 
@@ -245,7 +245,7 @@ seid tx gov vote 1 yes --from <name_wallet> --fees 5550usei
 seid tx gov deposit 1 1000000usei --from <name_wallet> --fees 5550usei
 ```
 #### Edit validator 
-```
+```Shell
 BINARY tx staking edit-validator \
   --chain-id "CHAIN_NAME" \
   --moniker "MONIKER" \
