@@ -3,14 +3,14 @@ Discord: https://discord.gg/GVBGr8uD
 
 Website: https://inery.io/
 Equipment requirements
-```
+```Shell
 CPU	Intel Core i3 or i5
 RAM	4 GB DDR4 RAM
 Storage	500 GB HDD
 Connection	100 Mbit/s port
 ```
 Recommended component requirements
-```
+```Shell
 CPU	Intel Core i7-8700 Hexa-Core
 RAM	64 GB DDR4 RAM
 Storage	2 x 1 TB NVMe SSD
@@ -18,7 +18,7 @@ Connection	1 Gbit/s port
 ```
 
 #### Preparation (install dependencies, firewalld, open ports)
-```
+```Shell
 sudo apt-get update && sudo apt install git && sudo apt install screen
 
 sudo apt-get install firewalld 
@@ -38,39 +38,39 @@ libcurl4-gnutls-dev pkg-config patch llvm-7-dev clang-7 vim-common jq libncurses
 ```
 ### Task 1
 #### Downloading the Inery Node package
-```
+```Shell
 git clone  https://github.com/inery-blockchain/inery-node
 ```
 After the download is complete, navigate to the inery.node directory
-```
+```Shell
 cd inery-node
 ```
 Inside the inery-node are the inery and inery.setup directories The inery directory contains all the binaries for the blockchain protocol to work, the path to these binaries must be exported to the operating system environment
-```
+```Shell
 ls    
 inery inery.setup
 ```
 Go to the inery.setup directory
-```
+```Shell
 cd inery.setup
 ```
 Inside inery.setup is ine.py and the tools directory
 
 Give ine.py permission to run the script with the "chmod" command:
-```
+```Shell
 chmod +x ine.py
 ```
 To export the path to the local operating system environment for the inery binaries, run the ine.py script inside inery.setup with the --export parameter
-```
+```Shell
 ./ine.py --export
 ```
 Updating the environment
-```
+```Shell
 cd; source .bashrc; cd -
 ```
 #### Change the configuration file
 Insert your data
-```
+```Shell
 sudo nano tools/config.json
 
 "MASTER_ACCOUNT": {     
@@ -82,12 +82,12 @@ sudo nano tools/config.json
 "HOST_ADDRESS": "0.0.0.0:9010" }
 ```
 #### Starting the node
-```
+```Shell
 screen -S inery
 ./ine.py --master
 ```
 #### Binding purse and account
-```
+```Shell
 # Creating a wallet
 cd;  cline wallet create --file defaultWallet.txt
 
@@ -103,7 +103,7 @@ cline system makeprod approve ACCOUNT_NAME ACCOUNT_NAME
 
 ### Task 2
 Unlocking the wallet
-```
+```Shell
 cline wallet unlock -n <name_wallet>
 
 password:...
