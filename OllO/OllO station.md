@@ -1,16 +1,16 @@
 ## OllO station
 #### Обновляемся
-```
+```Shell
 apt update && apt upgrade -y
 ```
 
 #### Устанавливаем зависимости
-```
+```Shell
 apt install curl build-essential git wget jq make gcc tmux htop nvme-cli pkg-config libssl-dev libleveldb-dev tar clang bsdmainutils ncdu unzip libleveldb-dev -y
 ```
 
 #### Установка GO
-```
+```Shell
 ver="1.18.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
@@ -22,39 +22,39 @@ go version
 ```
 
 #### Клонируем репозитория 
-```
+```Shell
 git clone https://github.com/OLLO-Station/ollo
 cd ollo
 make install
 ```
 
 #### Инициализируем
-```
+```Shell
 ollod init --chain-id "ollo-testnet-0" "name_moniker"
 ```
-```
+```Shell
 sha256sum ~/.ollo/config/genesis.json
 257123e2c824fba30786a3db6c0f4ff22ea63ec7bcaea7db47c0d333c0cbcaf5  /root/.ollo/config/genesis.json
 ```
 #### Создаем кошелек
-```
+```Shell
 ollod keys add <name_wallet> --keyring-backend os
 ollod keys add <name_wallet> --recover --keyring-backend os
 ```
 #### Check wallet
-```
+```Shell
 ollod keys list
 ```
 #### Скачиваем генезис
-```
+```Shell
 wget -qO $HOME/.ollo/config/genesis.json https://github.com/AlexToTheMoon/AM-Solutions/raw/main/ollo-genesis.json
 ```
 Скачиваем адресбук
-```
+```Shell
 wget $HOME/.ollo/config/addrbook.json https://raw.githubusercontent.com/OllO-Station/ollo/master/networks/ollo-testnet-0/addrbook.json
 ```
 #### Настраиваем кофинг файл
-```
+```Shell
 sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.ollo/config/app.toml
 
 external_address=$(wget -qO- eth0.me)
@@ -72,7 +72,7 @@ sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.ollo/config/config.toml
 ```
 
 #### Создаем сервисный файл
-```
+```Shell
 sudo tee /etc/systemd/system/ollod.service > /dev/null <<EOF
 [Unit]
 Description=ollod
@@ -91,17 +91,17 @@ EOF
 ```
 
 #### Запуск
-```
+```Shell
 sudo systemctl daemon-reload && \
 sudo systemctl enable ollod && \
 sudo systemctl restart ollod && sudo journalctl -u ollod -f -o cat
 ```
 #### Проверим логи
-```
+```Shell
 journalctl -fu ollod -o cat
 ```
 #### STATE SYNC 
-```
+```Shell
 sudo systemctl stop ollod
 
 SNAP_RPC="http://161.97.82.203:29987"; \
@@ -127,7 +127,7 @@ sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1false|" $HOME/.ollo/con
  
 
 #### CREATE VALIDATOR
-```
+```Shell
  ollod tx staking create-validator \
  --amount=1000000utollo \
  --pubkey=$(ollod tendermint show-validator) \
@@ -141,7 +141,7 @@ sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1false|" $HOME/.ollo/con
 --gas=auto
  ```
 #### Полезные команды
-```
+```Shell
 # проверить блоки
 ollod status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
@@ -156,7 +156,7 @@ curl localhost:26657/status
 ollod q bank balances <address>
 ```
 #### Удаление 
-```
+```Shell
 sudo systemctl stop ollod
 sudo systemctl disable ollod
 sudo rm /etc/systemd/system/ollo* -rf
