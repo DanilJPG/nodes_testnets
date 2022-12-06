@@ -34,6 +34,7 @@ cargo run --release --package manta-trusted-setup --all-features --bin groth16_p
 ```
 After installation, the terminal will prompt you to enter your Twitter and e-mail, and immediately generate a key, which must be saved somewhere - 
 После уставновки терминал предложит вам вбить ваш Twitter и e-mail, и сразуже сгенерирует ключи, который обязательно нужно куда-то сохранить.
+![image](https://user-images.githubusercontent.com/57448493/205856767-6f9ed2a0-50c0-40c7-8bef-b8174ce058bb.png)
 
 #### Registration
 ```
@@ -48,3 +49,5 @@ screen -S manta
 manta-trusted-setup contribute #вводим seed - enter seed
 
 ```
+![image](https://user-images.githubusercontent.com/57448493/205856806-61ce3a8a-2fd4-4837-aa02-f000f7b0c1f1.png)
+![image](https://user-images.githubusercontent.com/57448493/205856870-02a725c2-2102-4abf-a38b-402547da148a.png)
