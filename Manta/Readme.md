@@ -4,7 +4,7 @@
 
 ![image](https://user-images.githubusercontent.com/57448493/205853439-05ca86de-38d4-48db-815f-c5702ce72f63.png)
 
-
+Пока что регистрация закрыта, ждемс когда откроют
 #### Requirements
 ```
 Official: None. But I would bet on:
