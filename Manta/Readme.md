@@ -4,7 +4,7 @@
 
 ![image](https://user-images.githubusercontent.com/57448493/205853439-05ca86de-38d4-48db-815f-c5702ce72f63.png)
 
-Пока что регистрация закрыта, ждемс когда откроют
+
 #### Requirements
 ```
 Official: None. But I would bet on:
@@ -49,7 +49,7 @@ chmod +x /usr/bin/manta-trusted-setup
 screen -S manta
 
 manta-trusted-setup contribute #вводим seed - enter seed
-
+Пока что регистрация закрыта, ждемс когда откроют
 ```
 ![image](https://user-images.githubusercontent.com/57448493/205856806-61ce3a8a-2fd4-4837-aa02-f000f7b0c1f1.png)
 ![image](https://user-images.githubusercontent.com/57448493/205856870-02a725c2-2102-4abf-a38b-402547da148a.png)
