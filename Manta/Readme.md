@@ -1,9 +1,9 @@
 ## Manta Network
-
+| [Discord](https://discord.gg/mantanetwork) | [Docs](https://docs.manta.network/docs/guides/TrustedSetup)
+| --- | ---
 ![image](https://user-images.githubusercontent.com/57448493/205853439-05ca86de-38d4-48db-815f-c5702ce72f63.png)
 
-| [Discord]() | [Docs](https://docs.manta.network/docs/guides/TrustedSetup)
-| --- | ---
+
 #### Requirements
 ```
 Official: None. But I would bet on:
