@@ -3,10 +3,12 @@
 ![image](https://user-images.githubusercontent.com/57448493/205853439-05ca86de-38d4-48db-815f-c5702ce72f63.png)
 
 
-1. Requirements
+#### Requirements
+```
 Official: None. But I would bet on:
 2сpu — 4vCPU
 4–8 GB RAM
+```
 #### Подготовка сервера - Server Preparation
 ```
 sudo apt update && sudo apt upgrade -y
