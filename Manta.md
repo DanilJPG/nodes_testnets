@@ -25,7 +25,7 @@ cd manta-rs
 
 cargo run --release --package manta-trusted-setup --all-features --bin groth16_phase2_client register
 ```
-After installation, the terminal will prompt you to enter your Twitter and e-mail, and immediately generate a key, which must be saved somewhere.
+After installation, the terminal will prompt you to enter your Twitter and e-mail, and immediately generate a key, which must be saved somewhere - 
 После уставновки терминал предложит вам вбить ваш Twitter и e-mail, и сразуже сгенерирует ключи, который обязательно нужно куда-то сохранить.
 
 #### Registration
