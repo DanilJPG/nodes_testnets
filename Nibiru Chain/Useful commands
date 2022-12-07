@@ -1,3 +1,5 @@
+#### Useful Commands
+```Shell
 # проверить блоки
 nibid status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
@@ -21,3 +23,4 @@ nibid tx staking delegate <valoper_address> 1000000unibi --from <name_wallet> --
 
 # redeleting to another validator
 nibid tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000unibi --from <name_wallet> --fees 5000unibi -y
+```
