@@ -6,20 +6,11 @@
 
 Steps | Comments
 --- | --- |
-[Upgrade](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=up%20the%20environment.-,Empowerchain%20Testnet%20v0.0.2%20Upgrade%2011.11.2022,-Chain%20ID%3A%20altruistic) | Check the version, if necessary update to the appropriate height blocks
-[installing utilities](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=Updating%20and%20installing%20utilities) | server setup
-[Installing GO](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=liblz4%2Dtool%20%2Dy-,Installing%20GO,-ver%3D%22) | Go language is necessary to work with a binary file and unpack it
-[Copying a repository](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Copying%20a%20repository) | Cloning the GitHub repository of a project
-[Initializing](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=long%20%7C%20head-,Initializing,-empowerd%20init%20%24NODENAME) | To generate configuration files
-[Download genesis](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=id%20altruistic%2D1-,Download%20genesis,-rm%20%2Drf%20%24HOME) | The genesis stores the state of the chain
-[Fixing the configure](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Fixing%20the%20configure) | Making changes to config.toml
-[Prunning app.toml](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=config/config.toml-,Prunning%20%60app.toml%27,-pruning%3D%22) | 
-[Service file](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=config/app.toml-,Service%20file,-sudo%20tee%20/etc) | Creating a service file
-[Launch](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=user.target%0AEOF-,Launch,-systemctl%20daemon%2Dreload) | Start node 
-[Wallet](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Create%20a%20wallet%20while%20synchronization%20is%20going%20on) | Creating and restoring a wallet
-[Validator](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=use%20the%20tap-,Validator,-empowerd%20tx%20staking) | Creating your node operator
+[Server Preparation](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=up%20the%20environment.-,Empowerchain%20Testnet%20v0.0.2%20Upgrade%2011.11.2022,-Chain%20ID%3A%20altruistic) | Check the version, if necessary update to the appropriate height blocks,server setup, Go language is necessary to work with a binary file and unpack it
+[Working with a binary file and setting up](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Copying%20a%20repository) | Cloning the GitHub repository of a project,To generate configuration files,The genesis stores the state of the chain,Making changes to config.toml,Creating a service file
+[Creating a validator and generating a wallet](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Create%20a%20wallet%20while%20synchronization%20is%20going%20on) | Creating and restoring a wallet,Creating your node operator
 [Useful commands](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Useful%20Commands.md) | Here are commands for the validator, for node management and for the wallet
-[State Sync](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/State%20Sync.md) | Chain synchronization
+
 
 **Brief description:** *Decentralize the new (circular) economy so that everyone can get a fair share of the benefits of making the world a cleaner and better place. When you delegate to the Validator, you not only earn your interest rate, you also help clean up the environment*.
 
@@ -40,7 +31,8 @@ git pull
 git checkout v0.0.3
 cd chain && make install
 ```
-#### Updating and installing utilities 
+### 1.Подготовка сервера - Server Preparation 
+#### Обновление и установка зависимостей - Upgrade and install dependencies
 ```Bash
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
@@ -57,7 +49,8 @@ source $HOME/.bash_profile && \
 go version
 ```
 
-#### Copying a repository
+### 2.Работа с бинарным файлом и настройка - Working with a binary file and setting up
+#### Cloning a repository 
 ```Bash
 cd $HOME && git clone https://github.com/empowerchain/empowerchain && \
 cd empowerchain/chain && \
@@ -73,7 +66,7 @@ empowerd config chain-id altruistic-1
 ```Bash
 rm -rf $HOME/.empowerchain/config/genesis.json && cd $HOME/.empowerchain/config && wget $HOME/.empowerchain/config/genesis.json "https://raw.githubusercontent.com/empowerchain/empowerchain/main/testnets/altruistic-1/genesis.json"
 ```
-#### Fixing the configure 
+#### Correct the configuration file
 ```Shell
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.empowerchain/config/config.toml
@@ -97,7 +90,7 @@ sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_rec
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.empowerchain/config/app.toml && \
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.empowerchain/config/app.toml
 ```
-#### Service file
+#### Create a service file
 ```Bash
 sudo tee /etc/systemd/system/empowerd.service > /dev/null <<EOF
 [Unit]
@@ -121,12 +114,11 @@ systemctl daemon-reload && \
 systemctl enable empowerd && \
 systemctl restart empowerd && journalctl -u empowerd -f -o cat
 ```
-#### Create a wallet while synchronization is going on 
+### 3.Создание валидатора и генерация кошелька - Creating a validator and generating a wallet
+#### Wallet 
 ```Bash
-# создать кошелек
 empowerd keys add $WALLET --keyring-backend os
 
-# восстановить кошелек (после команды вставить seed)
 empowerd keys add $WALLET --recover --keyring-backend os
 ```
 Go to discord and use the tap 
@@ -145,6 +137,9 @@ empowerd tx staking create-validator \
 --from $WALLET \
 --fees 5000umpwr
 ```
-> Note please save the mnemonic and priv_validator_key.json file!
 
-*Track the height of blocks, node status, balance, you can use these [commands](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Useful%20Commands)*
+### 4. Удаление - Delete
+#### Deleting
+```Shell
+
+```
