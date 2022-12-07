@@ -6,7 +6,7 @@
 
 Steps | Comments
 --- | --- |
-[Server Preparation](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#:~:text=up%20the%20environment.-,Empowerchain%20Testnet%20v0.0.2%20Upgrade%2011.11.2022,-Chain%20ID%3A%20altruistic) | Check the version, if necessary update to the appropriate height blocks,server setup, Go language is necessary to work with a binary file and unpack it
+[Server Preparation](https://github.com/DanilJPG/nodes_testnets/tree/main/EmpowerChain#:~:text=%D0%9F%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B0%20%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0%20%2D%20Server%20Preparation) | Check the version, if necessary update to the appropriate height blocks,server setup, Go language is necessary to work with a binary file and unpack it
 [Working with a binary file and setting up](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Copying%20a%20repository) | Cloning the GitHub repository of a project,To generate configuration files,The genesis stores the state of the chain,Making changes to config.toml,Creating a service file
 [Creating a validator and generating a wallet](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Empower.md#copying-a-repository:~:text=Create%20a%20wallet%20while%20synchronization%20is%20going%20on) | Creating and restoring a wallet,Creating your node operator
 [Useful commands](https://github.com/DanilJPG/nodes_testnets/blob/main/EmpowerChain/Useful%20Commands.md) | Here are commands for the validator, for node management and for the wallet
