@@ -2,10 +2,17 @@
 
 [Discord](https://discord.gg/4sCtbbfc) | [Website](https://nibiru.fi/) | [Faucet](https://discord.com/channels/947911971515293759/984840062871175219)
 | --- | --- | ---
-```
-$request <address_wallet>
-```
-#### Updating and installing utilities
+
+Steps | Comments
+--- | --- |
+[Server Preparation](https://github.com/DanilJPG/mainnet_guides/blob/main/BeeZee/Readme.md#:~:text=Upgrade%20and%20install%20dependencies) | Check the version, if necessary update to the appropriate height blocks,server setup, Go language is necessary to work with a binary file and unpack it
+[Working with a binary file and setting up](https://github.com/DanilJPG/mainnet_guides/blob/main/BeeZee/Readme.md#:~:text=Cloning%20a%20repository) | Cloning the GitHub repository of a project,To generate configuration files,The genesis stores the state of the chain,Making changes to config.toml,Creating a service file
+[Creating a validator and generating a wallet](https://github.com/DanilJPG/mainnet_guides/blob/main/BeeZee/Readme.md#:~:text=t%20%5C%0A%2D%2Dfees%205000ubze-,Wallet,-%23%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D0%B5%D0%BA%0Abzed) | Creating and restoring a wallet,Creating your node operator
+[Useful commands](https://github.com/DanilJPG/mainnet_guides/blob/main/BeeZee/Useful%20command.md) | Here are commands for the validator, for node management and for the wallet
+[State Sunc](https://github.com/DanilJPG/mainnet_guides/blob/main/BeeZee/State%20Sync.md) | Chain synchronization
+
+### 1.Подготовка сервера - Server Preparation 
+#### Обновление и установка зависимостей - Upgrade and install dependencies
 ```Shell
 apt update && apt upgrade -y \
 
@@ -24,7 +31,8 @@ source $HOME/.bash_profile && \
 go version
 ```
 
-#### Clone the repository and install the binary
+### 2.Работа с бинарным файлом и настройка - Working with a binary file and setting up
+#### Cloning a repository 
 ```Shell
 git clone https://github.com/NibiruChain/nibiru
 cd nibiru
@@ -51,7 +59,7 @@ wget -O $HOME/.nibid/config/addrbook.json "http://65.108.6.45:8000/nibiru/addrbo
 ```
 
 
-#### Filling out config.toml
+#### Correct the configuration file
 ```Shell
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025unibi\"/;" ~/.nibid/config/app.toml
 
@@ -95,7 +103,6 @@ WantedBy=multi-user.target
 EOF
 ```
 
-
 #### Launch
 ```Shell
 systemctl daemon-reload
@@ -103,36 +110,9 @@ systemctl start nibid
 systemctl enable nibid
 sudo journalctl -u nibid -f --no-hostname -o cat
 ```
-#### State Sync
-```Shell
-sudo systemctl stop nibid
 
-cp $HOME/.nibid/data/priv_validator_state.json $HOME/.nibid/priv_validator_state.json.backup
-nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
-
-SNAP_RPC="https://5.161.99.245:36657"
-
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
-TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-
-echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
-
-peers=""4372060d7b7268818944a3697fbad1897152ce0d@5.161.99.245:26656"
-sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.nibid/config/config.toml
-
-sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
-s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
-s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.nibid/config/config.toml
-
-mv $HOME/.nibid/priv_validator_state.json.backup $HOME/.nibid/data/priv_validator_state.json
-
-sudo systemctl restart nibid
-sudo journalctl -u nibid -f --no-hostname -o cat
-
-```
-#### Wallet
+### 3.Создание валидатора и генерация кошелька - Creating a validator and generating a wallet
+#### Wallet 
 ```Shell
 # создать кошелек
 nibid keys add <name_wallet> --keyring-backend os
@@ -201,4 +181,34 @@ rm -rf $(which nibid)
 systemctl stop nibid
 rm $HOME/.nibid/config/addrbook.json
 nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
+```
+
+#### State Sync
+```Shell
+sudo systemctl stop nibid
+
+cp $HOME/.nibid/data/priv_validator_state.json $HOME/.nibid/priv_validator_state.json.backup
+nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
+
+SNAP_RPC="https://5.161.99.245:36657"
+
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+
+peers=""4372060d7b7268818944a3697fbad1897152ce0d@5.161.99.245:26656"
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.nibid/config/config.toml
+
+sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.nibid/config/config.toml
+
+mv $HOME/.nibid/priv_validator_state.json.backup $HOME/.nibid/data/priv_validator_state.json
+
+sudo systemctl restart nibid
+sudo journalctl -u nibid -f --no-hostname -o cat
+
 ```
