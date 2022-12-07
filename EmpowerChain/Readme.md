@@ -17,20 +17,7 @@ Steps | Comments
 ![image](https://user-images.githubusercontent.com/57448493/200168721-ca5c593a-0054-4c69-9eeb-14243678f4fc.png)
 
 ***
-#### Update
-Chain ID: altruistic-1
 
-The upgrade is scheduled for 580000.
-
-Cosmovisor manual build method
-Build the new binary verison
-
-```Shell
-cd empowerchain
-git pull
-git checkout v0.0.3
-cd chain && make install
-```
 ### 1.Подготовка сервера - Server Preparation 
 #### Обновление и установка зависимостей - Upgrade and install dependencies
 ```Bash
