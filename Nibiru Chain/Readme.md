@@ -165,7 +165,8 @@ nibid tx staking delegate <valoper_address> 1000000unibi --from <name_wallet> --
 nibid tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000unibi --from <name_wallet> --fees 5000unibi -y
 ```
 
-#### Delete
+### 4. Удаление - Delete
+#### Deleting
 ```Shell
 systemctl stop nibid && \
 systemctl disable nibid && \
