@@ -46,16 +46,7 @@ empowerd q gov proposals --voter <ADDRESS>
 # vote for the proposal 
 empowerd tx gov vote 1 yes --from <name_wallet> --fees 555umpwr
 ```
-#### Delete
-```
-systemctl stop empowerd && \
-systemctl disable empowerd && \
-rm /etc/systemd/system/empowerd.service && \
-systemctl daemon-reload && \
-cd $HOME && \
-rm -rf .empowerchain empowerchain && \
-rm -rf $(which empowerd)
-```
+
 #### Edit validator 
 ```
 BINARY tx staking edit-validator \
