@@ -6,7 +6,7 @@
 Steps | Comments
 --- | --- |
 [Server Preparation](https://github.com/DanilJPG/nodes_testnets/blob/main/Nibiru%20Chain/Readme.md#:~:text=1.%D0%9F%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B0%20%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0%20%2D%20Server%20Preparation) | Check the version, if necessary update to the appropriate height blocks,server setup, Go language is necessary to work with a binary file and unpack it
-[Working with a binary file and setting up](https://github.com/DanilJPG/mainnet_guides/blob/main/BeeZee/Readme.md#:~:text=Cloning%20a%20repository) | Cloning the GitHub repository of a project,To generate configuration files,The genesis stores the state of the chain,Making changes to config.toml,Creating a service file
+[Working with a binary file and setting up](2.Работа с бинарным файлом и настройка - Working with a binary file and setting up) | Cloning the GitHub repository of a project,To generate configuration files,The genesis stores the state of the chain,Making changes to config.toml,Creating a service file
 [Creating a validator and generating a wallet](https://github.com/DanilJPG/mainnet_guides/blob/main/BeeZee/Readme.md#:~:text=t%20%5C%0A%2D%2Dfees%205000ubze-,Wallet,-%23%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C%20%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D0%B5%D0%BA%0Abzed) | Creating and restoring a wallet,Creating your node operator
 [Useful commands](https://github.com/DanilJPG/mainnet_guides/blob/main/BeeZee/Useful%20command.md) | Here are commands for the validator, for node management and for the wallet
 [State Sunc](https://github.com/DanilJPG/mainnet_guides/blob/main/BeeZee/State%20Sync.md) | Chain synchronization
