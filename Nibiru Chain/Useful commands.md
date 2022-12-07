@@ -39,16 +39,16 @@ nibid tx slashing unjail --from <name_wallet> --fees 5000unibi -y
 ```
 #### Proposal
   ```
- # список proposals
+ # list of proposals
 nibid q gov proposals
 
-# посмотреть результат голосования
+# to see the result of the vote
 nibid q gov proposals --voter <ADDRESS>
 
-# проголосовать за предложение 
+# vote for proposal 
 nibid tx gov vote 1 yes --from <name_wallet> --fees 555unibi
 
-# внести депозит в предложение
+# make a deposit to the proposal
 nibid tx gov deposit 1 1000000unibi --from <name_wallet> --fees 555unibi
   ```
 #### Edit validator
