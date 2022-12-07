@@ -15,6 +15,7 @@ nibid q bank balances <address>
 
 ```
 #### Useful commands for validator and delegator
+```
 # collect rewards from all validators that you have delegated to (without commission)
 nibid tx distribution withdraw-all-rewards --from <name_wallet> --fees 5000unibi -y
 
