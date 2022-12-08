@@ -86,12 +86,9 @@ Copy the data to a safe place!!!
 
 #### Delete a node 
 ```
-systemctl stop zeeka zoro uzi
-systemctl disable zeeka zoro uzi
+systemctl stop zeeka
+systemctl disable zeeka
 rm -rf /root/bazuka
-rm -rf /root/.bazuka-debug
-rm -rf /root/zoro
-rm -rf /root/uzi
 rm ~/.bazuka.yaml
 ```
 
