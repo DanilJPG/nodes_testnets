@@ -6,20 +6,20 @@
 
 
 #### Requirements
-```
+```Bash
 Official: None. But I would bet on:
 2сpu — 4vCPU
 4–8 GB RAM
 ```
 #### Подготовка сервера - Server Preparation
-```
+```Bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install make clang pkg-config libssl-dev libclang-dev build-essential git curl ntp jq llvm tmux htop screen unzip cmake -y
 curl https://sh.rustup.rs/ -sSf | sh -s -- -y
 source $HOME/.cargo/env
 ```
 #### Установка клиента - Installing client 
-```
+```Bash
 sudo apt update
 
 sudo apt install pkg-config build-essential libssl-dev curl jq
@@ -39,7 +39,7 @@ After installation, the terminal will prompt you to enter your Twitter and e-mai
 ![image](https://user-images.githubusercontent.com/57448493/205856767-6f9ed2a0-50c0-40c7-8bef-b8174ce058bb.png)
 
 #### Registration
-```
+```Bash
 cd ~
 
 mv /root/manta-rs/target/release/groth16_phase2_client /usr/bin/manta-trusted-setup
