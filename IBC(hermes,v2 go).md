@@ -241,22 +241,34 @@ uptickd tx ibc-transfer transfer transfer channel-5 sei1828et4w3u52na4h8m3mp8r22
 #### 8.1 Настройка 
 
 #### STRIDE
+```
 sed -i -e "s/^indexer *=.*/indexer = \"kv\"/" $HOME/.stride/config/config.toml
+```
 #### GAIA
+```
 sed -i -e "s/^indexer *=.*/indexer = \"kv\"/" $HOME/.gaia/config/config.toml  
+```
 RPC конфигурация нод проектов, находящихся вconfig.toml file:
 
 #### STRIDE
+```
 laddr = "tcp://0.0.0.0:26657" in $HOME/.stride/config/config.toml
+```
 #### GAIA
+```
 laddr = "tcp://0.0.0.0:23657" in $HOME/.gaia/config/config.toml  
 RELAYER_ID='kjnodes|#8455'            # используйте свой ник из Discorda
 STRIDE_RPC_ADDR='127.0.0.1:26657'    # ресерчьте config.toml по слову laddr
 GAIA_RPC_ADDR='127.0.0.1:23657       # ресерчьте config.toml по слову laddr
+```
 #### обновляемся
+```
 sudo apt update && sudo apt upgrade -y
+```
 #### установка зависимостей
+```
 sudo apt install curl build-essential git wget jq make gcc tmux chrony -y
+```
 #### Установка Go
 ```
 if ! [ -x "$(command -v go)" ]; then
