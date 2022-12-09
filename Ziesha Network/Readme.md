@@ -3,21 +3,6 @@
 [Discord](https://discord.gg/eT96kE6V) | [Website](https://zeeka.io/) | [Github](https://github.com/zeeka-network)
 | --- | --- | ---
 #### Active version incentive Tetnet run 21.11.22 !
-![image](https://user-images.githubusercontent.com/57448493/192145552-6eed7477-d72a-4089-bf94-172f4deec8ff.png)
-
-Zeeka (ℤ) is a cryptocurrency that aims to create a lightweight and scalable blockchain with extensive use of zero-knowledge proof technology.
-
-Zeeka offers a new concept called Zero Contracts. Zero contracts are the equivalent of smart contracts in some major blockchain systems such as Ethereum. These contracts will be expressed as mathematical constraints instead of virtual machine byte codes, such as the Ethereum virtual machine.
-
-Zeeka will incorporate concepts previously used as privacy layer or L2 solutions in other chains into the core of the new blockchain, aiming to create a more scalable network with better privacy.
-
-At this point, it is possible to help the project in-house. There are 3 forms to fill out:
-
-1. Community member form (for moderators):https://docs.google.com/forms/d/e/1FAIpQLSdz129RVXCPLIipF2evu5HDblo5iXdVBtk-3RO6XzKYCAVGlQ/viewform
-
-2. Contributions form:https://docs.google.com/forms/d/e/1FAIpQLSewVt8hRnRcufFOLCm9E9tNSeQ9FgWBjmygyIScA6_c5H7NPg/viewform
-
-3. Testnet submission form:https://docs.google.com/forms/d/e/1FAIpQLSdZVJmcL5X83zDUdRIJxuWiSi8hvmocEM7Ut8E0m97-cmdgcQ/alreadyresponded
 
 ***
 #### 1. Server Preparation
