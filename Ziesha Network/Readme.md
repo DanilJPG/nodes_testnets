@@ -6,35 +6,35 @@
 
 ***
 #### 1. Server Preparation
-```
+```Bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install wget jq git libssl-dev cmake -y
 ```
 #### 2.Install Rust
-```
+```Bash
 . <(wget -qO- https://raw.githubusercontent.com/letsnode/Utils/main/installers/rust.sh)
 ```
 #### 3.Clone a repository with a node
-```
+```Bash
 git clone https://github.com/ziesha-network/bazuka
 ```
 #### 4.Перейти в папку bazuka,компиляция и установка
-```
+```Bash
 cd bazuka && cargo install --path
 ```
 
 #### View software bazuka
-```
+```Bash
 /root/bazuka/target/release/bazuka -h
 ```
 
 #### 5.Initialize a node
-```
+```Bash
 bazuka init --listen 0.0.0.0:8765 --db ~/.bazuka --network groth --external 65.21.111.163:8765 --bootstrap 65.108.193.133:8765 --mnemonic "<mnemonic>"
 ```
 
 #### 6.Create a service file
-```
+```Bash
 sudo tee <<EOF >/dev/null /etc/systemd/system/zeeka.service
 [Unit]
 Description=Zeeka node
@@ -52,7 +52,7 @@ WantedBy=multi-user.target
 EOF
 ```
 #### 7.Run the service
-```
+```Bash
 sudo systemctl daemon-reload
 sudo systemctl enable zeeka
 sudo systemctl restart zeeka
@@ -62,7 +62,7 @@ Add a command to view the log of a node in the system as a variable
 . <(wget -qO- https://raw.githubusercontent.com/AlexM-dev/Utils/main/commands/insert_variable.sh) -n zeeka_log -v "sudo journalctl -fn 100 -u zeeka" -a
 ```
 #### View logs
-```
+```Bash
 zeeka_log
 ```
 ![Screenshot_2](https://user-images.githubusercontent.com/57448493/203043786-13920c84-4b91-44f5-829e-d87fdac7d60f.png)
@@ -70,7 +70,7 @@ zeeka_log
 Copy the data to a safe place!!!
 
 #### Delete a node 
-```
+```Bash
 systemctl stop zeeka
 systemctl disable zeeka
 rm -rf /root/bazuka
@@ -78,7 +78,7 @@ rm ~/.bazuka.yaml
 ```
 
 #### Update version 
-```
+```Bash
 rm ~/.bazuka.yaml
 sudo systemctl stop zeeka 
 cd bazuka
