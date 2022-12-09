@@ -1,5 +1,5 @@
 #### Useful Commands
-```
+```Shell
 # check the blocks
 empowerd status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
@@ -16,7 +16,7 @@ empowerd q bank balances <address>
 empowerd tendermint show-validator
 ```
 #### For validator
-```
+```Shell
 # collect revards from all validators who were delegated (no commission)
 empowerd tx distribution withdraw-all-rewards --from $WALLET --fees 5000umpwr -y
 
@@ -36,7 +36,7 @@ empowerd tx staking unbond <addr_valoper> 1000000umpwr --from $WALLET --fees 500
 empowerd tx bank send $WALLET <address> 1000000umpwr --fees 5000umpwr -y
 ```
 #### Proposal
-```
+```Shell
 # list of proposals
 empowerd q gov proposals
 
@@ -48,7 +48,7 @@ empowerd tx gov vote 1 yes --from <name_wallet> --fees 555umpwr
 ```
 
 #### Edit validator 
-```
+```Shell
 BINARY tx staking edit-validator \
   --chain-id "CHAIN_NAME" \
   --moniker "MONIKER" \
