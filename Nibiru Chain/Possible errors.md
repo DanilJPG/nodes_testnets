@@ -1,5 +1,5 @@
 #### Error: rpc error: code = NotFound desc = rpc error: code = NotFound desc = account <addr_wallet> not found: key not found
-```
+```Shell
 Ошибка связана с переменной,попробуйте проверить адрес в эксплорере,либо восстановить кошелек. Если ошибка связана с адресом валидатора,то проверьте синрхронизацию и правильность привязки кошелька к валидатору(проверьте имя оператора и имя кошелька при создании валдитора)
 The error is related to the variable, try to check the address in the explorer, or restore the purse. If the error is related to the validator address, then check the synchronization and correct binding purse to the validator (check the operator name and purse name when creating a validator)
 
@@ -14,13 +14,13 @@ If it does not help, check the synchronization of the node
 nibid status | jq .SyncInfo.catching_up
 ```
 #### Error: rpc error: code = Unknown desc = unknown query path: unknown request
-```
+```Shell
 Проверьте правильность введенной команды
 Check if the command is correct
 ```
 
 #### Error: rpc error: code = Unknown desc = account sequence mismatch, expected 11, got 8: incorrect account sequence: unknown request
-```
+```Shell
 Допишите в конец вашей команды -S <число>, в моем случае это 11
 Add -S <number> to the end of your command, in my case it is 11
 Example:
@@ -28,19 +28,19 @@ nibid tx staking delegate <valoper> 9000000unibi --from wallet --chain-id altrui
 ```
 
 #### Error: rpc error: code = Unknown desc = runtime error: invalid memory address or nil pointer dereference: panic
-```
+```Shell
 Ваш бинарный файл не соответствует genesis сети,скачайте другой genesis либо проверьте правильность клонированного репозитория из которого копировали бинарный файл
 Your binary does not match the genesis network, download another genesis or check the correctness of the cloned repository from which you copied the binary
 ```
 
 #### Error: invalid character 'o' looking for beginning of value
-```
+```Shell
 Проверьте правильность команды, возможно какой-то `0` является буквой `o`
 Check if the command is correct, maybe some `0` is the letter `o`.
 ```
 
 #### Parse error: Invalid numeric literal at line `<number>` , column `<number>`
-```
+```Shell
 Возможные решения:
 - проверьте правильность версии бинарного файла
 - проверьте порты 
@@ -51,14 +51,14 @@ Possible solutions:
 
 #### Error: invalid Bech32 prefix; expected nibivaloper, got nibi
 Usage: nibid tx staking delegate [validator-addr] [amount] [flags]
-```
+```Shell
 Check that the command is typed correctly
 Проверьте правильность набора команды
 ```
 
 
 #### Failed to connect to localhost port 26657: Connection refused
-```
+```Shell
 Попробуйте изменить порт
 Try changing the port
 
@@ -80,14 +80,21 @@ Try to find and use the correct State Sync or Snapshot
 ```
 
 #### Error: rpc error: code = Unknown desc = rpc error: code = Unknown desc = failed to execute message; message index: 0: redelegation to this validator already in progress; first redelegation to this validator must complete before next redelegation 
-```
+```Shell
 Ожидайте и попробуйте заново, и проверьте tx hash в эксплорере
 Wait and try again, and check the tx hash in the explorer
 ```
 
 
 #### Failed to execute message; message index: 0: validator does not exist
-```
+```Shell
 Ваш валидатор или валидатор которому делегируете не существует,проверьте правильность использованной команды
 Your validator or the validator you delegate does not exist, check if the command you used is correct
+```
+
+#### If there is a problem connecting peers or genesis, try resetting the network and start with the genesis download step
+```Shell
+systemctl stop nibid
+rm $HOME/.nibid/config/addrbook.json
+nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
 ```
