@@ -39,7 +39,7 @@ Your binary does not match the genesis network, download another genesis or chec
 Check if the command is correct, maybe some `0` is the letter `o`.
 ```
 
-#### parse error: Invalid numeric literal at line `<number>` , column `<number>`
+#### Parse error: Invalid numeric literal at line `<number>` , column `<number>`
 ```
 Возможные решения:
 - проверьте правильность версии бинарного файла
@@ -78,14 +78,14 @@ sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:3
 Try to find and use the correct State Sync or Snapshot
 ```
 
-#### rror: rpc error: code = Unknown desc = rpc error: code = Unknown desc = failed to execute message; message index: 0: redelegation to this validator already in progress; first redelegation to this validator must complete before next redelegation 
+#### Error: rpc error: code = Unknown desc = rpc error: code = Unknown desc = failed to execute message; message index: 0: redelegation to this validator already in progress; first redelegation to this validator must complete before next redelegation 
 ```
 Ожидайте и попробуйте заново, и проверьте tx hash в эксплорере
 Wait and try again, and check the tx hash in the explorer
 ```
 
 
-#### failed to execute message; message index: 0: validator does not exist
+#### Failed to execute message; message index: 0: validator does not exist
 ```
 Ваш валидатор или валидатор которому делегируете не существует,проверьте правильность использованной команды
 Your validator or the validator you delegate does not exist, check if the command you used is correct
