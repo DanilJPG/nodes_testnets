@@ -91,3 +91,9 @@ Wait and try again, and check the tx hash in the explorer
 Ваш валидатор или валидатор которому делегируете не существует,проверьте правильность использованной команды
 Your validator or the validator you delegate does not exist, check if the command you used is correct
 ```
+
+#### Error: error during handshake: error on replay: validator set is nil in genesis and still empty after InitChain
+```
+Ваш genesis файл не скачен после инициализации
+Your genesis file is not downloaded after initialization
+```
