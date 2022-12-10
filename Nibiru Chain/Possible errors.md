@@ -98,3 +98,9 @@ systemctl stop nibid
 rm $HOME/.nibid/config/addrbook.json
 nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
 ```
+
+#### Error: error during handshake: error on replay: validator set is nil in genesis and still empty after InitChain
+```
+Ваш genesis файл не скачен после инициализации
+Your genesis file is not downloaded after initialization
+```
