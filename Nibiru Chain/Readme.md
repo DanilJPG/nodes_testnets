@@ -147,10 +147,3 @@ cd $HOME && \
 rm -rf .nibid nibiru && \
 rm -rf $(which nibid)
 ```
-
-#### If there is a problem connecting peers or genesis, try resetting the network and start with the genesis download step
-```Shell
-systemctl stop nibid
-rm $HOME/.nibid/config/addrbook.json
-nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
-```
