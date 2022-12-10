@@ -52,7 +52,8 @@ Possible solutions:
 #### Error: invalid Bech32 prefix; expected nibivaloper, got nibi
 Usage: nibid tx staking delegate [validator-addr] [amount] [flags]
 ```
-
+Check that the command is typed correctly
+Проверьте правильность набора команды
 ```
 
 
