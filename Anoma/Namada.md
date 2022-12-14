@@ -23,7 +23,7 @@ Steps | Comments
 
 Сейчас можете подать заявку на участие в бесплатной когорте, подробности : https://www.reddit.com/r/Namada/
 
-#### 1. Сборка и внесение вклада из исходного кода
+#### 1. Установка зависимостей и ключей
 Сначала вам нужно будет установить некоторые зависимости. На системах на базе debian вы можете использовать:
 ```Shell
 sudo apt update && sudo apt install -y curl git build-essential pkg-config libssl-dev
