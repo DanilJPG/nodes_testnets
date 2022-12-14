@@ -1,3 +1,15 @@
+
+[Discord](https://discord.gg/anoma) | [Website](https://anoma.net/) | [Reddit](https://www.reddit.com/r/Namada/)
+--- | --- | ---
+
+Steps | Comments
+--- | --- |
+[Server Preparation]() | Check the version, if necessary update to the appropriate height blocks,server setup, Rust language is necessary to work with a binary file and unpack it
+[Working with the repository]() | Clone the repository and the necessary binaries
+[Contribution]() | Manual and automatic contribution 
+[Useful commands]() | 
+[Possible Errors]() | 
+
 ![image](https://user-images.githubusercontent.com/57448493/207617542-b8894f17-2cc4-45e8-bce4-857d4ea73214.png)
 
 
@@ -16,7 +28,7 @@
 ```Shell
 sudo apt update && sudo apt install -y curl git build-essential pkg-config libssl-dev
 ```
-После этого вам нужно будет установить Rust, введя следующую команду:
+#### После этого вам нужно будет установить Rust, введя следующую команду:
 ```Shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
