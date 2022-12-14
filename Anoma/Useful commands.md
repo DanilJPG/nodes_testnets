@@ -12,10 +12,14 @@ cargo run --release --bin namada-ts --features cli contribute offline
 
 #### Проверка вклада
 Если вы хотите проверить свой вклад, вы можете сделать это через CLI. После того как вы успешно внесли вклад, будет создан файл `namada_contributor_info_round_${round_height}.json` и сохранен в той же папке бинарного файла namada-ts, вместе с файлом параметров `namada_contribution_round_{ROUND}_public_key_{PUBLIC_KEY}.params`. Файл содержит `json-структуру`. Вы должны скопировать значения следующих полей:
-`public_key`
-`contribution_hash`
-`contribution_hash_signature`
-`parameter_path` - Это необязательный аргумент, который представляет собой абсолютный путь к файлу параметров, сгенерированному CLI (упомянутому выше).
+
+1) `public_key`
+
+2) `contribution_hash`
+
+3) `contribution_hash_signature`
+
+4) `parameter_path` - Это необязательный аргумент, который представляет собой абсолютный путь к файлу параметров, сгенерированному CLI (упомянутому выше).
 и вводит их:
 ```
 namada-ts verify-contribution $public_key $contribution_hash $contribution_hash_signature $[parameter_path].
