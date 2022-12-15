@@ -96,4 +96,7 @@ Your validator or the validator you delegate does not exist, check if the comman
 ```
 Ваш genesis файл не скачен после инициализации
 Your genesis file is not downloaded after initialization
+
+Также часто помогает синхронизация через snapshot or state sync
+Also often helps to synchronize via snapshot or state sync
 ```
