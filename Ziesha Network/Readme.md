@@ -1,6 +1,6 @@
 ## Zeeka Network
 
-[Discord](https://discord.gg/eT96kE6V) | [Website](https://zeeka.io/) | [Github](https://github.com/zeeka-network)
+[Discord](https://discord.gg/zieshanetwork) | [Website](https://zeeka.io/) | [Github](https://github.com/zeeka-network)
 | --- | --- | ---
 #### Active version incentive Tetnet run 21.11.22 !
 
