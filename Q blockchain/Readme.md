@@ -112,5 +112,50 @@ nano config.json
  "rpc": "https://rpc.qtestnet.org"
 }
 
-#Save changes ctrl X , Y , enter*
+#Save changes ctrl X , Y , enter
+```
+
+#### 3.3 Put Stake in Validators Contract - Заложить долю в контракт валидаторов 
+```Shell
+Чтобы получать вознаграждения нужно сделать ставку на валидатора, перейдите `https://hq.qtestnet.org`. Включите режим `advanced mode` и сделайти ставку `Consensus Services` -> `Validator Staking`
+
+As was mentioned previously, you need to put stake to validators contract in order to become a validator.
+
+You can use the dApp "Your HQ" that can be found at `https://hq.qtestnet.org`. Ultimately, you need to Join Validator Ranking to receive rewards. The according functionality is located at `Consensus Services` -> `Validator Staking` in box "Manage Balance". If you can't see the menu item Consensus Services, you are not running the dApp UI in `advanced mode`. Go to Settings and activate it.
+```
+
+#### 3.4 Add your Validator to https://stats.qtestnet.org - Добавление вашего валидатора в общий список
+```Shell
+nano /testnet-validator/docker-compose.yaml
+```
+
+**Take a look at the example below.Copy and paste into `docker-compose.yaml`. Replace with `<your_name_validator>`. Save with ctrl X , Y , enter**
+
+**Взгляните на пример ниже.Скопируйте и вставьте в `docker-compose.yaml`. Замените `<your_name_validator>`. Сохраните ctrl X , Y , enter**
+
+```Shell
+
+version: "3"
+
+services:
+  testnet-validator-node:
+    image: $QCLIENT_IMAGE
+    entrypoint: ["geth", "--ethstats=<your_name_validator>:qstats-testnet@stats.qtestnet.org", "--bootnodes=$BOOTNODE1_ADDR,$BOOTNODE2_ADDR,$BOOTNODE3_ADDR", "--datadir=/data", "--nat=extip:$IP", "--port=$EXT_PORT", "--unlock=$ADDRESS",  "--password=/data/keystore/pwd.txt", "--mine", "--miner.threads=1", "--syncmode=full", "--rpc.allow-unprotected-txs", "--testnet", "--verbosity=3", "--miner.gasprice=1"]
+    volumes:
+      - ./keystore:/data/keystore
+      - ./additional:/data/additional
+      - testnet-validator-node-data:/data
+    ports:
+      - $EXT_PORT:8545/tcp
+      - $EXT_PORT:8545/udp
+    restart: unless-stopped
+
+volumes:
+  testnet-validator-node-data:
+
+```
+### 4. Lauch
+```
+docker-compose up -d
+docker-compose logs -f --tail "100"
 ```
