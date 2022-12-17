@@ -42,10 +42,12 @@ touch pwd
 nano pwd.txt
 # Save changes ctrl X , Y , enter
 ```
+#### Generation file
 
 ```Shell
 docker-compose run --rm --entrypoint "geth account new --datadir=/data --password=/data/keystore/pwd.txt" testnet-validator-node
 ```
+
 **The generated file stores your address for Metamask - В сгенерированном файле хранится ваш адрес для Metamask**
 
 *Таким образом, генерируется новый закрытый ключ, который хранится в каталоге /keystore, зашифрованном паролем из `pwd.txt` файл. В нашем примере `0xb3FF24F818b0ff6Cc50de951bcB8f86b52287DAc` (у вас будет другое значение) - это адрес, соответствующий недавно сгенерированному закрытому ключу.*
