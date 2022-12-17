@@ -7,11 +7,13 @@
 
 Steps | Comments
 --- | --- |
-[Server Preparation]() | Check the version, if necessary update to the appropriate height blocks,server setup, Go language is necessary to work with a binary file and unpack it
-[Working with a binary file and setting up]() | Cloning the GitHub repository of a project,To generate configuration files,The genesis stores the state of the chain,Making changes to config.toml,Creating a service file
-[Creating a validator and generating a wallet]() | Creating and restoring a wallet,Creating your node operator
-[Useful commands]() | Here are commands for the validator, for node management and for the wallet
-[Possible Errors]() | Here are possible errors related to the node and the validator
+[Server Preparation]() | 
+[Setup Validator node]() | 
+[Configuration files setup]() | 
+[Lauch]() | lauch docker
+[Appendix]() | 
+[Useful]() | 
+[Possible Errors]() | 
 
 
 ### 1. Server preparation - Подготовка сервера
@@ -161,7 +163,7 @@ docker-compose logs -f --tail "100"
 ```
 ### Следите за обновлениями в канале - Watch the channel for updates
 
-#### Appendix - Приложение (This is what your work files should look like - примерно так должны выглядеть ваши рабочие файлы)
+#### 5. Appendix - Приложение (This is what your work files should look like - примерно так должны выглядеть ваши рабочие файлы)
 `.env`
 
 ![image](https://user-images.githubusercontent.com/57448493/208238274-1079d224-c610-4c19-a669-a3e590c0f8f0.png)
@@ -174,3 +176,15 @@ docker-compose logs -f --tail "100"
 
 ![image](https://user-images.githubusercontent.com/57448493/208238346-aaae2b9b-31f5-4cb1-adee-ee37af4576af.png)
 
+### 6. Oracle
+
+`/omnibridge-oracle`	The core Q OmniBridge client
+`/omnibridge-ui`	A graphical user interface to use the bridge on your local server
+`/omnibridge-alm` The monitor component to track the status of bridge transactions on the blockchain
+
+`/omnibridge-oracle` Основной клиент Q OmniBridge
+`/omnibridge-ui` Графический пользовательский интерфейс для использования моста на вашем локальном сервере
+`/omnibridge-alm` Компонент монитора для отслеживания статуса транзакций моста на блокчейне
+```
+
+```
