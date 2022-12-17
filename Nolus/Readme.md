@@ -123,10 +123,9 @@ nolusd tx staking create-validator \
 --min-self-delegation "1000000" \
 --amount 1000000unls \
 --pubkey $(nolusd tendermint show-validator) \
---moniker garfield \
---from nolus1cmlsm0pcxn60vaanzumuvdndepew9zcezx36kv \
---website "linktr.ee/1blocknodes" \
---identity "0393473F5F0C6667" \ 
+--moniker <moniker> \
+--from <wallet> \
+--website "" \
 --fees 5000unls \
 --gas 800000
 ```
