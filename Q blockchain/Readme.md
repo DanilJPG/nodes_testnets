@@ -69,7 +69,7 @@ Path of the secret key file: /data/keystore/UTC--2021-01-18T11-36-28.705754426Z-
 #### 2.3 [Faucet](https://faucet.qtestnet.org/)
 
 ### 3. Configuration files setup - Настройка конфигурационного файла 
-```
+```Shell
 cp .env.example .env
 nano .env
 ```
@@ -77,7 +77,7 @@ nano .env
 #### 3.1 Edit `.env`
 
 **Replace `ADDRESS(without 0x)` obtained in step 2 and your `IP`  - Замените `ADDRESS(без 0х)` полученный в шаге 2 и ваш `IP` **
-```
+```Shell
 # docker image for q client
 QCLIENT_IMAGE=qblockchain/q-client:1.2.2
 
@@ -100,11 +100,11 @@ BOOTNODE3_ADDR=enode://7a8ade64b79961a7752daedc4104ca4b79f1a67a10ea5c9721e7115d8
 
 
 #### 3.2 Edit `config.json`
-```
+```Shell
 nano config.json
 ```
 **Replace `ADDRESS(without 0x)` obtained in step 2.2 and password**
-```
+```Shell
 {
  "address": "<your address>",
  "password": "supersecurepassword",
