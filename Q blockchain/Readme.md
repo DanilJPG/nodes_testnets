@@ -26,10 +26,11 @@ git clone https://gitlab.com/q-dev/testnet-public-tools
 cd testnet-public-tools/testnet-validator
 ```
 This directory contains the docker-compose.yaml file for quick launching of the validator node with preconfigurations on rpc, blockchain explorer using .env (which can be created from .env.example).
+
 Этот каталог содержит файл docker-compose.yaml для быстрого запуска узла валидатора с предварительными настройками на rpc, blockchain explorer с использованием .env (который может быть создан из .env.example).
 
 #### Creating a catalog with keys and generating keys - Создание каталога с ключами и генерация ключей
-Создаем папку и файл где будет хранится пароль, который будет защищать наш файл с ключами
+*Создаем папку и файл где будет хранится пароль, который будет защищать наш файл с ключами*
 Create a folder and a file that will store the password, which will protect our file with the keys
 ```
 mkdir keystore 
@@ -41,8 +42,9 @@ nano pwd.txt
 ```
 docker-compose run --rm --entrypoint "geth account new --datadir=/data --password=/data/keystore/pwd.txt" testnet-validator-node
 ```
-Таким образом, генерируется новый закрытый ключ, который хранится в каталоге /keystore, зашифрованном паролем из pwd.txt файл. В нашем примере 0xb3FF24F818b0ff6Cc50de951bcB8f86b52287DAc (у вас будет другое значение) - это адрес, соответствующий недавно сгенерированному закрытому ключу.
-This generates a new private key, which is stored in the /keystore directory, encrypted with the password from the pwd.txt file. In our example 0xb3FF24F818b0ff6Cc50de951bcB8f86b52287DAc (you will have a different value) is the address corresponding to the newly generated private key.
+*Таким образом, генерируется новый закрытый ключ, который хранится в каталоге /keystore, зашифрованном паролем из pwd.txt файл. В нашем примере 0xb3FF24F818b0ff6Cc50de951bcB8f86b52287DAc (у вас будет другое значение) - это адрес, соответствующий недавно сгенерированному закрытому ключу.*
+
+*This generates a new private key, which is stored in the /keystore directory, encrypted with the password from the pwd.txt file. In our example 0xb3FF24F818b0ff6Cc50de951bcB8f86b52287DAc (you will have a different value) is the address corresponding to the newly generated private key.*
 ```
 Your new key was generated
 
