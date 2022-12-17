@@ -159,3 +159,15 @@ volumes:
 docker-compose up -d
 docker-compose logs -f --tail "100"
 ```
+### Следите за обновлениями в канале - Watch the channel for updates
+
+#### Appendix - Приложение
+`.env`
+![image](https://user-images.githubusercontent.com/57448493/208238274-1079d224-c610-4c19-a669-a3e590c0f8f0.png)
+
+`docker-compose.yaml`
+![image](https://user-images.githubusercontent.com/57448493/208238299-75df315f-ee58-4eef-9bf8-055e2fbdeb19.png)
+
+`config.json`
+![image](https://user-images.githubusercontent.com/57448493/208238346-aaae2b9b-31f5-4cb1-adee-ee37af4576af.png)
+
