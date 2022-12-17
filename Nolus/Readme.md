@@ -107,9 +107,9 @@ systemctl restart nolusd && journalctl -u nolusd -f -o cat
 ### 3.Создание валидатора и генерация кошелька - Creating a validator and generating a wallet
 #### Wallet 
 ```Bash
-empowerd keys add $WALLET --keyring-backend os
+nolusd keys add $WALLET --keyring-backend os
 
-empowerd keys add $WALLET --recover --keyring-backend os
+nolusd keys add $WALLET --recover --keyring-backend os
 ```
 Go to discord and use the tap 
 
