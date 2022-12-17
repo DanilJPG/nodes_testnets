@@ -1,6 +1,6 @@
 ## Nulink
 
-Discord : https://discord.gg/w964Qzre
+Discord : https://discord.gg/zSkVBrCx
 
 Twitter : https://twitter.com/NuLink_
 
