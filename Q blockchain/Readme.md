@@ -14,6 +14,7 @@ Steps | Comments
 [Appendix]() | 
 [Useful]() | 
 [Possible Errors]() | 
+[Upgarde](https://github.com/DanilJPG/nodes_testnets/blob/main/Q%20blockchain/Upgrade.md) | actual version
 
 
 ### 1. Server preparation - Подготовка сервера
