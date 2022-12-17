@@ -32,7 +32,9 @@ This directory contains the docker-compose.yaml file for quick launching of the 
 
 #### 2.2 Creating a catalog with keys and generating keys - Создание каталога с ключами и генерация ключей
 *Создаем папку и файл где будет хранится пароль, который будет защищать наш файл с ключами*
-Create a folder and a file that will store the password, which will protect our file with the keys
+
+*Create a folder and a file that will store the password, which will protect our file with the keys*
+
 ```Shell
 mkdir keystore 
 cd keystore
