@@ -95,7 +95,7 @@ BOOTNODE1_ADDR=enode://c610793186e4f719c1ace0983459c6ec7984d676e4a323681a1cbc8a6
 BOOTNODE2_ADDR=enode://8eff01a7e5a66c5630cbd22149e069bbf8a8a22370cef61b232179e21ba8c7b74d40e8ee5aa62c54d145f7fc671b851e5ccbfe124fce75944cf1b06e29c55c80@79.125.97.227:30305
 BOOTNODE3_ADDR=enode://7a8ade64b79961a7752daedc4104ca4b79f1a67a10ea5c9721e7115d820dbe7599fe9e03c9c315081ccf6a2afb0b6652ee4965e38f066fe5bf129abd6d26df58@79.125.97.227:30306
 
-*Save changes ctrl X , Y , enter*
+# Save changes ctrl X , Y , enter*
 ```
 
 
@@ -112,5 +112,5 @@ nano config.json
  "rpc": "https://rpc.qtestnet.org"
 }
 
-*Save changes ctrl X , Y , enter*
+# Save changes ctrl X , Y , enter*
 ```
