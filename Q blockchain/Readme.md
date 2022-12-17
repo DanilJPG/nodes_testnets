@@ -38,6 +38,7 @@ touch pwd
 nano pwd.txt
 # Write the password into the file and save it, exit ctrl X + Y + enter
 ```
+```
 docker-compose run --rm --entrypoint "geth account new --datadir=/data --password=/data/keystore/pwd.txt" testnet-validator-node
 ```
 Таким образом, генерируется новый закрытый ключ, который хранится в каталоге /keystore, зашифрованном паролем из pwd.txt файл. В нашем примере 0xb3FF24F818b0ff6Cc50de951bcB8f86b52287DAc (у вас будет другое значение) - это адрес, соответствующий недавно сгенерированному закрытому ключу.
