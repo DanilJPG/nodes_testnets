@@ -191,6 +191,7 @@ cd /root/testnet-public-tools/omnibridge-oracle/
 cp .env.testnet .env
 nano .env
 ```
-Восстановите кошелек в метамаск с помощью файла который был сгенерирован в шаге : 
+Восстановите кошелек в метамаск с помощью файла который был сгенерирован в шаге : https://github.com/DanilJPG/nodes_testnets/blob/main/Q%20blockchain/Readme.md#:~:text=X%20%2C%20Y%20%2C%20enter-,Generation%20file,-docker%2Dcompose%20run
 
-Restore the wallet to the metamask using the file that was generated in step : 
+Restore the wallet to the metamask using the file that was generated in step : https://github.com/DanilJPG/nodes_testnets/blob/main/Q%20blockchain/Readme.md#:~:text=X%20%2C%20Y%20%2C%20enter-,Generation%20file,-docker%2Dcompose%20run
+
