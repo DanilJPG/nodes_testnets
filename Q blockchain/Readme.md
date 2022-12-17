@@ -18,8 +18,24 @@ Steps | Comments
 
 
 ### 1. Server preparation - Подготовка сервера
-```
+```Shell
+#update
+sudo apt-get update && sudo apt-get upgrade -y
 
+# install 'key'
+sudo apt-get install curl wget git jq libpq-dev libssl-dev \
+build-essential pkg-config openssl ocl-icd-opencl-dev \
+libopencl-clang-dev libgomp1 -y
+
+#install docker and docker-compose
+. <(wget -qO- https://raw.githubusercontent.com/SecorD0/utils/main/installers/docker.sh)
+
+#install rust
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+
+#check version
+source "$HOME/.cargo/env" && \
+echo -e "\n$(cargo --version).\n"
 ```
 
 ### 2. Setup Validator node - Установка узла валидатора
