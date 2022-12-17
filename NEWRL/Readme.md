@@ -1,6 +1,6 @@
 ## NEWRL
 
-Discord: https://discord.gg/B2P8PVv6
+Discord: https://discord.gg/MatDnbuu
 
 #### mainnet
 ```
