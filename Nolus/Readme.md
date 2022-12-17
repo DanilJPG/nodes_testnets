@@ -115,17 +115,20 @@ Go to discord and use the tap
 
 #### Validator
 ```Bash
-empowerd tx staking create-validator \
---chain-id altruistic-1 \
+nolusd tx staking create-validator \
+--chain-id nolus-rila \
 --commission-rate 0.05 \
 --commission-max-rate 0.2 \
 --commission-max-change-rate 0.1 \
 --min-self-delegation "1000000" \
---amount 1000000umpwr \
---pubkey $(empowerd tendermint show-validator) \
---moniker "<name_moniker>" \
---from $WALLET \
---fees 5000umpwr
+--amount 1000000unls \
+--pubkey $(nolusd tendermint show-validator) \
+--moniker garfield \
+--from nolus1cmlsm0pcxn60vaanzumuvdndepew9zcezx36kv \
+--website "linktr.ee/1blocknodes" \
+--identity "0393473F5F0C6667" \ 
+--fees 5000unls \
+--gas 800000
 ```
 
 ### 4. Удаление - Delete
