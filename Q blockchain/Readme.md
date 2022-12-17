@@ -187,5 +187,10 @@ docker-compose logs -f --tail "100"
 `/omnibridge-ui` Графический пользовательский интерфейс для использования моста на вашем локальном сервере
 `/omnibridge-alm` Компонент монитора для отслеживания статуса транзакций моста на блокчейне
 ```
-
+cd /root/testnet-public-tools/omnibridge-oracle/
+cp .env.testnet .env
+nano .env
 ```
+Восстановите кошелек в метамаск с помощью файла который был сгенерирован в шаге : 
+
+Restore the wallet to the metamask using the file that was generated in step : 
