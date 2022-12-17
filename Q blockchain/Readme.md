@@ -186,6 +186,8 @@ docker-compose logs -f --tail "100"
 `/omnibridge-oracle` Основной клиент Q OmniBridge
 `/omnibridge-ui` Графический пользовательский интерфейс для использования моста на вашем локальном сервере
 `/omnibridge-alm` Компонент монитора для отслеживания статуса транзакций моста на блокчейне
+
+#### 6.1 Omnibridge
 ```
 cd /root/testnet-public-tools/omnibridge-oracle/
 cp .env.testnet .env
