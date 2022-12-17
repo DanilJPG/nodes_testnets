@@ -13,7 +13,7 @@ Permanent Internet connection (traffic will be minimal during testnet; 10Mbps wi
 
 #### WebSite : https://islamiccoin.net/documentation
 
-#### Discord: https://discord.gg/fc2NxR7V
+#### Discord: https://discord.gg/ZDM7KZm9
 
 #### Telegram: https://t.me/islamic_coin
 
