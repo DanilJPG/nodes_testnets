@@ -7,7 +7,7 @@
 
 Steps | Comments
 --- | --- |
-[Server Preparation]() | 
+[Server Preparation](https://github.com/DanilJPG/nodes_testnets/blob/main/Q%20blockchain/Readme.md#:~:text=Server%20preparation%20%2D%20%D0%9F%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B0%20%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0) | 
 [Setup Validator node]() | 
 [Configuration files setup]() | 
 [Lauch]() | lauch docker
