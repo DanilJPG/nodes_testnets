@@ -11,8 +11,7 @@ Steps | Comments
 [Setup Validator node](https://github.com/DanilJPG/nodes_testnets/blob/main/Q%20blockchain/Readme.md#:~:text=Setup%20Validator%20node%20%2D%20%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0%20%D1%83%D0%B7%D0%BB%D0%B0%20%D0%B2%D0%B0%D0%BB%D0%B8%D0%B4%D0%B0%D1%82%D0%BE%D1%80%D0%B0) | Working with the repository and generating block signing keys
 [Configuration files setup](https://github.com/DanilJPG/nodes_testnets/blob/main/Q%20blockchain/Readme.md#:~:text=Configuration%20files%20setup%20%2D%20%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D1%84%D0%B0%D0%B9%D0%BB%D0%B0) | Change the default settings to your own
 [Lauch](https://github.com/DanilJPG/nodes_testnets/blob/main/Q%20blockchain/Readme.md#:~:text=4.-,Lauch,-docker%2Dcompose%20up) | lauch docker
-[Appendix]() | 
-[Useful]() | 
+[Appendix](https://github.com/DanilJPG/nodes_testnets/blob/main/Q%20blockchain/Readme.md#:~:text=Appendix%20%2D%20%D0%9F%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5) | 
 [Possible Errors]() | 
 [Upgarde](https://github.com/DanilJPG/nodes_testnets/blob/main/Q%20blockchain/Upgrade.md) | actual version
 
