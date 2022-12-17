@@ -98,7 +98,7 @@ BOOTNODE1_ADDR=enode://c610793186e4f719c1ace0983459c6ec7984d676e4a323681a1cbc8a6
 BOOTNODE2_ADDR=enode://8eff01a7e5a66c5630cbd22149e069bbf8a8a22370cef61b232179e21ba8c7b74d40e8ee5aa62c54d145f7fc671b851e5ccbfe124fce75944cf1b06e29c55c80@79.125.97.227:30305
 BOOTNODE3_ADDR=enode://7a8ade64b79961a7752daedc4104ca4b79f1a67a10ea5c9721e7115d820dbe7599fe9e03c9c315081ccf6a2afb0b6652ee4965e38f066fe5bf129abd6d26df58@79.125.97.227:30306
 
-#Save changes ctrl X , Y , enter*
+#Save changes ctrl X , Y , enter
 ```
 
 
@@ -158,7 +158,7 @@ volumes:
 
 ```
 ### 4. Lauch
-```
+```Shell
 docker-compose up -d
 docker-compose logs -f --tail "100"
 ```
@@ -188,7 +188,7 @@ docker-compose logs -f --tail "100"
 `/omnibridge-alm` Компонент монитора для отслеживания статуса транзакций моста на блокчейне
 
 #### 6.1 Omnibridge
-```
+```Shell
 cd /root/testnet-public-tools/omnibridge-oracle/
 cp .env.testnet .env
 nano .env
@@ -207,31 +207,34 @@ Restore the wallet to the metamask using the file that was generated in step : [
 3) `COMMON_FOREIGN_RPC_URL` here we write `https://rpc.ankr.com/eth_rinkeby`
 ![image](https://user-images.githubusercontent.com/57448493/208241342-e404c324-7796-4fec-bd88-481184d66bd1.png)
 
-```
+#Save changes ctrl X , Y , enter
+```Shell
 docker-compose up -d
 screen -S oracle
 docker-compose logs -f --tail "100"
 ```
 #### 6.2 Omnibridge-ui
-```
+```Shell
 cd ../omnibridge-ui
 cp .env.testnet .env
 nano .env
 ```
 `REACT_APP_FOREIGN_RPC_URL` replace `https://rpc.ankr.com/eth_rinkeby`
 
-```
+```Shell
+#Save changes ctrl X , Y , enter
 docker-compose up -d
 ```
 
 #### 6.3 Omnibridge-alm
-```
+```Shell
 cd
 cd testnet-public-tools/omnibridge-alm/
 cp .env.testnet .env
 ```
 `COMMON_FOREIGN_RPC_URL` replace `https://rpc.ankr.com/eth_rinkeby`
 
-```
+```Shell
+#Save changes ctrl X , Y , enter
 docker-compose up -d
 ```
