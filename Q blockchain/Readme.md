@@ -199,8 +199,39 @@ Restore the wallet to the metamask using the file that was generated in step : [
 
 1) Скопируйте приватный ключ и вставьте в `ORACLE_VALIDATOR_ADDRESS_PRIVATE_KEY` 
 2) Замените `ORACLE_VALIDATOR_ADDRESS` на ваш адрес кошелька
+3) `COMMON_FOREIGN_RPC_URL` заменить на `https://rpc.ankr.com/eth_rinkeby`
+
 
 1) Copy the private key and paste it into `ORACLE_VALIDATOR_ADDRESS_PRIVATE_KEY`. 
 2) Replace `ORACLE_VALIDATOR_ADDRESS` with your wallet address
-
+3) `COMMON_FOREIGN_RPC_URL` here we write `https://rpc.ankr.com/eth_rinkeby`
 ![image](https://user-images.githubusercontent.com/57448493/208241342-e404c324-7796-4fec-bd88-481184d66bd1.png)
+
+```
+docker-compose up -d
+screen -S oracle
+docker-compose logs -f --tail "100"
+```
+#### 6.2 Omnibridge-ui
+```
+cd ../omnibridge-ui
+cp .env.testnet .env
+nano .env
+```
+`REACT_APP_FOREIGN_RPC_URL` replace `https://rpc.ankr.com/eth_rinkeby`
+
+```
+docker-compose up -d
+```
+
+#### 6.3 Omnibridge-alm
+```
+cd
+cd testnet-public-tools/omnibridge-alm/
+cp .env.testnet .env
+```
+`COMMON_FOREIGN_RPC_URL` replace `https://rpc.ankr.com/eth_rinkeby`
+
+```
+docker-compose up -d
+```
