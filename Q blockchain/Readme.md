@@ -46,6 +46,8 @@ nano pwd.txt
 ```Shell
 docker-compose run --rm --entrypoint "geth account new --datadir=/data --password=/data/keystore/pwd.txt" testnet-validator-node
 ```
+**The generated file stores your address for Metamask - В сгенерированном файле хранится ваш адрес для Metamask**
+
 *Таким образом, генерируется новый закрытый ключ, который хранится в каталоге /keystore, зашифрованном паролем из `pwd.txt` файл. В нашем примере `0xb3FF24F818b0ff6Cc50de951bcB8f86b52287DAc` (у вас будет другое значение) - это адрес, соответствующий недавно сгенерированному закрытому ключу.*
 
 *This generates a new private key, which is stored in the /keystore directory, encrypted with the password from the `pwd.txt` file. In our example `0xb3FF24F818b0ff6Cc50de951bcB8f86b52287DAc` (you will have a different value) is the address corresponding to the newly generated private key.*
@@ -72,7 +74,7 @@ nano .env
 
 #### 3.1 Edit `.env`
 
-**Replace `ADDRESS(without 0x)` obtained in step 2 and your `IP  - Замените `ADDRESS(без 0х)` полученный в шаге 2 и ваш `IP`**
+**Replace `ADDRESS(without 0x)` obtained in step 2 and your `IP`  - Замените `ADDRESS(без 0х)` полученный в шаге 2 и ваш `IP` **
 ```
 # docker image for q client
 QCLIENT_IMAGE=qblockchain/q-client:1.2.2
