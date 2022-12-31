@@ -32,6 +32,7 @@ go version
 
 ### 2.Работа с бинарным файлом и настройка - Working with a binary file and setting up
 #### Cloning a repository
+```
 git clone https://github.com/Nolus-Protocol/nolus-core
 cd nolus-core
 git checkout v0.1.39
