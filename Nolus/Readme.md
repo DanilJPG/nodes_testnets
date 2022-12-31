@@ -42,7 +42,7 @@ make install
 #### Initializing
 ```Bash
 nolusd init $NODENAME --chain-id nolus-rila && \
-nolusd config chain-id altruistic-1
+nolusd config chain-id nolus-rila
 ```
 
 #### Download genesis
