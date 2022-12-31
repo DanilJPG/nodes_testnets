@@ -133,11 +133,11 @@ nolusd tx staking create-validator \
 ### 4. Удаление - Delete
 #### Deleting
 ```Shell
-systemctl stop empowerd && \
-systemctl disable empowerd && \
-rm /etc/systemd/system/empowerd.service && \
+systemctl stop nolusd && \
+systemctl disable nolusd && \
+rm /etc/systemd/system/nolusd.service && \
 systemctl daemon-reload && \
 cd $HOME && \
-rm -rf .empowerchain empowerchain && \
-rm -rf $(which empowerd)
+rm -rf .nolus nolus && \
+rm -rf $(which nolusd)
 ```
