@@ -33,9 +33,8 @@ go version
 ### 2.Работа с бинарным файлом и настройка - Working with a binary file and setting up
 #### Cloning a repository 
 ```Shell
-git clone https://github.com/NibiruChain/nibiru
-cd nibiru
-git checkout v0.15.0
+git clone https://github.com/NibiruChain/nibiru && cd nibiru
+git checkout v0.16.3
 make install
 mv /root/go/bin/nibid /usr/bin/
 chmod +x /usr/bin/nibid
@@ -44,17 +43,14 @@ nibid version
 
 #### Initializing
 ```Shell
-nibid init <moniker-name> --chain-id=nibiru-testnet-1 --home $HOME/.nibid \
-nibid config chain-id nibiru-testnet-1
+nibid init <name_moniker> --chain-id nibiru-testnet-2 --home $HOME/.nibid \
+nibid config chain-id nibiru-testnet-2
 ```
 
 
 #### Download genesis and address book
 ```Shell
-curl -s https://rpc.testnet-1.nibiru.fi/genesis | jq -r .result.genesis > genesis.json
-mv genesis.json $HOME/.nibid/config/genesis.json
-
-wget -O $HOME/.nibid/config/addrbook.json "http://65.108.6.45:8000/nibiru/addrbook.json"
+curl -s https://rpc.testnet-2.nibiru.fi/genesis | jq -r .result.genesis > $HOME/.nibid/config/genesis.json
 ```
 
 
@@ -124,7 +120,7 @@ nibid keys add <name_wallet> --recover --keyring-backend os
 #### Creating a validator
 ```Shell
 nibid tx staking create-validator \
---chain-id nibiru-testnet-1 \
+--chain-id nibiru-testnet-2 \
 --commission-rate 0.05 \
 --commission-max-rate 0.2 \
 --commission-max-change-rate 0.1 \
