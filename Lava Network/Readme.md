@@ -1,4 +1,4 @@
-## Lambda Mainnet
+## Lava
 
 [Discord](https://discord.gg/7H69AtB3) | [Website](https://lavanet.xyz/) | [Twitter](https://twitter.com/lavanetxyz)
 --- | --- | ---
