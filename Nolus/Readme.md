@@ -33,21 +33,23 @@ go version
 ### 2.Работа с бинарным файлом и настройка - Working with a binary file and setting up
 #### Cloning a repository
 ```
-git clone https://github.com/Nolus-Protocol/nolus-core
-cd nolus-core
+git clone https://github.com/Nolus-Protocol/nolus-core && cd nolus-core
 git checkout v0.1.39
 make install
 ```
 
 #### Initializing
 ```Bash
-nolusd init $NODENAME --chain-id nolus-rila && \
+nolusd init <name_moniker> --chain-id nolus-rila 
+
+nolusd config keyring-backend os
+
 nolusd config chain-id nolus-rila
 ```
 
 #### Download genesis
 ```Bash
-cd $HOME/.nolus/config && wget $HOME/.nolus/config/genesis.json https://raw.githubusercontent.com/Nolus-Protocol/nolus-networks/main/testnet/nolus-rila/genesis.json
+wget -O $HOME/.nolus/config/genesis.json "https://raw.githubusercontent.com/Nolus-Protocol/nolus-networks/main/testnet/nolus-rila/genesis.json"
 ```
 *Замените файл genesis по умолчанию в каталоге узла Nolus правильным файлом, который вы извлекли с помощью команды выше.*
 
