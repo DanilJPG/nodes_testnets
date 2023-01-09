@@ -1,0 +1,36 @@
+```
+# проверить блоки
+lavad status 2>&1 | jq ."SyncInfo"."latest_block_height"
+
+# проверить логи
+journalctl -u lavad -f -o cat
+
+# проверить статус
+curl localhost:26657/status
+
+# проверить баланс
+lavad q bank balances <address>
+```
+
+```
+# собрать реварды со всех валидаторов, которым делегировали (без комиссии)
+lavad tx distribution withdraw-all-rewards --from <name_wallet> --fees 5000ulava -y
+
+# собрать реварды c отдельного валидатора или реварды + комиссию со своего валидатора
+lavad tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 5000ulava --commission -y
+
+# заделегировать себе в стейк еще (так отправляется 1 монетa)
+lavad tx staking delegate <valoper_address> 1000000ulava --from <name_wallet> --fees 5000ulava -y
+
+# ределегирование на другого валидатора
+lavad tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000ulava --from <name_wallet> --fees 5000ulava -y
+
+# unbond 
+lavad tx staking unbond <addr_valoper> 1000000ulava --from <name_wallet> --fees 5000ulava -y
+
+# отправить монеты на другой адрес
+lavad tx bank send <name_wallet> <address> 1000000ulava --fees 5000ulava -y
+
+# выбраться из тюрьмы
+lavad tx slashing unjail --from <name_wallet> --fees 5000ulava -y
+```
