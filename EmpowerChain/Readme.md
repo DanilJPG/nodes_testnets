@@ -1,7 +1,7 @@
 ## EmpowerChain
 
 
-[Discord](https://discord.gg/We2RVx5e) | [Website](https://empower.eco/) | [Faucet](https://discord.gg/T5N4V5qd)
+[Discord](https://discord.gg/KPtVcy3m) | [Website](https://empower.eco/) | [Faucet](https://discord.gg/T5N4V5qd)
 --- | --- | ---
 
 Steps | Comments
