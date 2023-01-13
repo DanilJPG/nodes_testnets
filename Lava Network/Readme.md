@@ -11,6 +11,7 @@ Steps | Comments
 [Useful commands](https://github.com/DanilJPG/nodes_testnets/blob/main/Lava%20Network/Useful%20commands.md) | Here are commands for the validator, for node management and for the wallet
 [State Sunc]() | Chain synchronization
 [Update](https://github.com/DanilJPG/nodes_testnets/blob/main/Lava%20Network/Update.md) | Stay tuned for the latest version
+
 ### 1.Подготовка сервера - Server Preparation 
 #### Обновление и установка зависимостей - Upgrade and install dependencies
 ```Shell
