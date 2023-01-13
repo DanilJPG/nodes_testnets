@@ -50,7 +50,7 @@ marsd config chain-id ares-1
 
 #### Download genesis and address book
 ```Shell
-curl -s https://testnet-rpc.marsprotocol.io/genesis | jq -r '.result.genesis' > $HOME/.mars/config/genesis.json
+wget -O $HOME/.mars/config/genesis.json "https://raw.githubusercontent.com/mars-protocol/networks/main/ares-1/genesis.json"
 ```
 
 
