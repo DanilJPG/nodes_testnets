@@ -61,7 +61,7 @@ sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:2
 
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025umars\"/;" ~/.mars/config/app.toml
 
-PEERS="6c855909a8bf1c12ef34baca059f5c0cdf82bc36@65.108.255.124:36656,e12bc490096d1b5f4026980f05a118c82e81df2a@85.17.6.142:26656w"
+PEERS="6c855909a8bf1c12ef34baca059f5c0cdf82bc36@65.108.255.124:36656,e12bc490096d1b5f4026980f05a118c82e81df2a@85.17.6.142:26656,14ba3b19424301a6bb58c27663a0323a81866d5d@134.122.82.186:26656,f3dceab155a74772595ae33ee6b72165c31fd888@62.171.166.106:26656,e12bc490096d1b5f4026980f05a118c82e81df2a@85.17.6.142:26656,7342199e80976b052d8506cc5a56d1f9a1cbb486@65.21.89.54:26653,5c2a752c9b1952dbed075c56c600c3a79b58c395@mars.testnet.peer.autostake.net:27056,0669f1d76ae4f91eaf11a0327c71a0ce909df2cd@134.122.82.186:26656,3084613c19f2a9fc7d46528702fb38a6c7eb5f7f@164.92.249.191:26656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.mars/config/config.toml
 
 seeds=""
