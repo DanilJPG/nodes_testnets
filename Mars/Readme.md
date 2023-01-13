@@ -36,7 +36,7 @@ go version
 ```Shell
 git clone https://github.com/mars-protocol/hub.git
 cd hub
-git checkou <...>
+git checkout <...>
 make install
 ```
 
