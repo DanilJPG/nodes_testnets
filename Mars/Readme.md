@@ -92,7 +92,7 @@ EOF
 ```Shell
 systemctl daemon-reload
 systemctl enable marsd
-systemctl restart marsd && journalctl -u marsd -f -o catw
+systemctl restart marsd && journalctl -u marsd -f -o cat
 ```
 
 ### 3.Создание валидатора и генерация кошелька - Creating a validator and generating a wallet
