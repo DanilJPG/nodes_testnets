@@ -1,4 +1,5 @@
 ## Snapshot 
+#### 15.01.23
 ```
 sudo systemctl stop marsd
 cp $HOME/.mars/data/priv_validator_state.json $HOME/.mars/priv_validator_state.json.backup
