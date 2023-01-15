@@ -1,5 +1,7 @@
 ## Snapshot 
 #### 15.01.23
+height 25731
+0.55 GB
 ```
 sudo systemctl stop marsd
 cp $HOME/.mars/data/priv_validator_state.json $HOME/.mars/priv_validator_state.json.backup
