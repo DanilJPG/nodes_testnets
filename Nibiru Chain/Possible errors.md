@@ -1,3 +1,14 @@
+Если количество блоков на 0 после запуска сервисного файла, то попробуйте следующих набор команд:
+If the number of blocks is at 0 after starting the service file, try the following set of commands:
+```
+systemctl stop nibid
+rm $HOME/.nibid/config/addrbook.json
+nibid tendermint unsafe-reset-all --home $HOME/.nibid
+```
+```
+systemctl restart nibid && journalctl -u nibid -f -o cat
+```
+
 #### Error: rpc error: code = NotFound desc = rpc error: code = NotFound desc = account <addr_wallet> not found: key not found
 ```Shell
 Ошибка связана с переменной,попробуйте проверить адрес в эксплорере,либо восстановить кошелек. Если ошибка связана с адресом валидатора,то проверьте синрхронизацию и правильность привязки кошелька к валидатору(проверьте имя оператора и имя кошелька при создании валдитора)
