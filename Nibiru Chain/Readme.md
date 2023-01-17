@@ -101,8 +101,8 @@ EOF
 #### Launch
 ```Shell
 systemctl daemon-reload
-systemctl start nibid
 systemctl enable nibid
+systemctl restart nibid
 sudo journalctl -u nibid -f --no-hostname -o cat
 ```
 
