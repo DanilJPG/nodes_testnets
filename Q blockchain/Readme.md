@@ -246,6 +246,7 @@ docker-compose up -d
 cd
 cd testnet-public-tools/omnibridge-alm/
 cp .env.testnet .env
+nano .env
 ```
 `COMMON_FOREIGN_RPC_URL` replace `https://rpc.ankr.com/eth_rinkeby`
 
