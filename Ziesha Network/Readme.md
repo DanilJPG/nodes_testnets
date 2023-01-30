@@ -30,7 +30,7 @@ cd bazuka && cargo install --path
 
 #### 5.Initialize a node
 ```Bash
-bazuka init --listen 0.0.0.0:8765 --db ~/.bazuka --network debug --external <IP>:8765 --bootstrap 23.34.12.45:8765 --bootstrap 34.56.78.23:8765 --mnemonic "<mnemonic>"
+bazuka init --listen 0.0.0.0:8765 --db ~/.bazuka --network pelmeni --external <IP>:8765 --bootstrap 23.34.12.45:8765 --bootstrap 34.56.78.23:8765 --mnemonic "<mnemonic>"
 ```
 
 #### 6.Create a service file
