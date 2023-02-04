@@ -111,23 +111,23 @@ systemctl restart lambdavm && journalctl -u lambdavm -f -o cat
 lambdavm tx staking create-validator \
 --amount 1000000000000000000ulamb \
 --pubkey $(lambdavm tendermint show-validator) \
---moniker "garfield" \
+--moniker "<name_moniker>" \
 --chain-id lambda_92000-1 \
 --commission-rate "0.05" \
 --min-self-delegation "1000000" \
 --commission-max-rate "0.20" \
 --commission-max-change-rate "0.01" \
---from garfield_wallet \
+--from <name_wallet> \
 --gas=auto \
 --fees 5000ulamb
 ```
 #### Wallet 
 ```Shell
 # create a wallet
-empowerd keys add $WALLET --keyring-backend os
+lambdavm keys add <name_wallet> --keyring-backend os
 
 # restore the wallet (after the command insert seed)
-empowerd keys add $WALLET --recover --keyring-backend os
+lambdavm keys add <name_wallet> --recover --keyring-backend os
 
 # export to metamask(view private key)
 lambdavm keys unsafe-export-eth-key garfield_wallet
