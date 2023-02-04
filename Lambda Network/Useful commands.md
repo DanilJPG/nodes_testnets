@@ -13,7 +13,7 @@ curl localhost:26657/status
 lambdavm q bank balances <address>
 
 # check the validator's pubkey
-empowerd tendermint show-validator
+lambdavm tendermint show-validator
 ```
 
 #### Transactions
