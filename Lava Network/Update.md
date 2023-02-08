@@ -29,3 +29,16 @@ systemctl restart lavad && journalctl -u lavad -f -o cat
 systemctl stop lavad
 mv $HOME/lava/build/lavad $(which lavad)
 ```
+
+#### 4 Update - at a height of 63760
+```
+cd $HOME/lava
+git pull
+git checkout v0.5.2
+make build
+
+systemctl stop lavad
+mv $HOME/lava/build/lavad $(which lavad)
+
+systemctl restart lavad && journalctl -u lavad -f -o cat
+```
