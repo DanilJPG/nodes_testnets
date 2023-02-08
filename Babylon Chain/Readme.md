@@ -5,7 +5,7 @@
 
 Steps | Comments
 --- | --- |
-[Server Preparation]() | Check the version, if necessary update to the appropriate height blocks,server setup, Go language is necessary to work with a binary file and unpack it
+[Server Preparation](https://github.com/DanilJPG/nodes_testnets/blob/main/Babylon%20Chain/Readme.md#:~:text=1.%D0%9F%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B0%20%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0%20%2D%20Server%20Preparation) | Check the version, if necessary update to the appropriate height blocks,server setup, Go language is necessary to work with a binary file and unpack it
 [Working with a binary file and setting up]() | Cloning the GitHub repository of a project,To generate configuration files,The genesis stores the state of the chain,Making changes to config.toml,Creating a service file
 [Creating a validator and generating a wallet]() | Creating and restoring a wallet,Creating your node operator
 [Useful commands]() | Here are commands for the validator, for node management and for the wallet
