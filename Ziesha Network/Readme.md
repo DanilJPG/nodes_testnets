@@ -30,7 +30,7 @@ cd bazuka && cargo install --path
 
 #### 5.Initialize a node
 ```Bash
-bazuka init --listen 0.0.0.0:8765 --db ~/.bazuka --network pelmeni --external <IP>:8765 --bootstrap 95.217.177.157:8765 --bootstrap 95.128.140.24:8765 --bootstrap 207.55.59.45:8765 --bootstrap 65.108.193.133:8765 --mnemonic "<mnemonic>"
+bazuka init --listen 0.0.0.0:8765 --db ~/.bazuka --network pelmeni-4 --external <IP>:8765 --bootstrap 95.217.177.157:8765 --bootstrap 95.128.140.24:8765 --bootstrap 207.55.59.45:8765 --bootstrap 65.108.193.133:8765 --mnemonic "<mnemonic>"
 ```
 
 #### 6.Create a service file
@@ -80,7 +80,7 @@ rm ~/.bazuka.yaml
 #### Update version 
 ```Bash
 rm ~/.bazuka.yaml
-rm -rf ~/.bazuka_wallet
+rm -rf ~/.bazuka_wallet.yaml
 sudo systemctl stop zeeka 
 cd bazuka
 git pull origin master
