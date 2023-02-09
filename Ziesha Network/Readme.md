@@ -80,6 +80,7 @@ rm ~/.bazuka.yaml
 #### Update version 
 ```Bash
 rm ~/.bazuka.yaml
+rm -rf ~/bazuka_wallet
 sudo systemctl stop zeeka 
 cd bazuka
 git pull origin master
