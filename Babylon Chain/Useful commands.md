@@ -1,7 +1,7 @@
 ### Useful Commands
 ```
 # проверить блоки
-lavad status 2>&1 | jq ."SyncInfo"."latest_block_height"
+babylond status 2>&1 | jq ."SyncInfo"."latest_block_height"
 
 # проверить логи
 journalctl -u babylond -f -o cat
