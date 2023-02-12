@@ -97,7 +97,7 @@ EOF
 ```Shell
 sudo systemctl daemon-reload
 sudo systemctl enable humansd
-sudo systemctl start humansd
+sudo systemctl restart humansd
 
 sudo journalctl -u humansd -f --no-hostname -o cat
 ```
