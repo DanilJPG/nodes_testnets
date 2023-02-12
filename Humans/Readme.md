@@ -1,4 +1,4 @@
-## Humans
+## Humans.ai
 
 [Discord](https://discord.gg/humansdotai) | [Docs](https://docs.humans.zone/) | [Twitter](https://twitter.com/humansdotai)
 --- | --- | ---
