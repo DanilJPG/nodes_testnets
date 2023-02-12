@@ -54,8 +54,6 @@ mv genesis.json ~/.babylond/config/genesis.json
 
 #### Correct the configuration file
 ```Shell
-wget -O $HOME/.babylond/config/addrbook.json "https://share2.utsa.tech/babylon/addrbook.json"
-
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.babylond/config/config.toml
 
