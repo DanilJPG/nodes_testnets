@@ -1,6 +1,6 @@
-## Babylon
+## Humans
 
-[Discord](https://discord.gg/babylonchain) | [Docs](https://docs.babylonchain.io/docs/testnet/setup-node) | [Twitter](https://twitter.com/babylon_chain)
+[Discord](https://discord.gg/humansdotai) | [Docs](https://docs.humans.zone/) | [Twitter](https://twitter.com/humansdotai)
 --- | --- | ---
 
 Steps | Comments
@@ -34,35 +34,36 @@ go version
 #### Cloning a repository 
 ```Shell
 # Download the installation setup configuration
-git clone https://github.com/babylonchain/babylon
-cd babylon
-git checkout v0.5.0
-make install
+git clone https://github.com/humansdotai/humans
+cd humans
+git checkout v1.0.0
+go build -o humansd cmd/humansd/main.go
+sudo cp humansd /usr/local/bin/humansd
 ```
 
 #### Initializing 
 ```Shell
-babylond init <name_moniker> --chain-id bbn-test-1
+humansd init <name_moniker> --chain-id testnet-1
+humansd config keyring-backend test
+humansd config chain-id testnet-1
 ```
 
 #### Download genesis
 ```Shell
-wget https://github.com/babylonchain/networks/raw/main/bbn-test-1/genesis.tar.bz2
-tar -xjf genesis.tar.bz2 && rm genesis.tar.bz2
-mv genesis.json ~/.babylond/config/genesis.json
+curl -s https://rpc-testnet.humans.zone/genesis | jq -r .result.genesis > $HOME/.humans/config/genesis.json
 ```
 
 #### Correct the configuration file
 ```Shell
 external_address=$(wget -qO- eth0.me)
-sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.babylond/config/config.toml
+sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.humans/config/config.toml
 
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025ubbn\"/;" ~/.babylond/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025uheart\"/;" ~/.humans/config/app.toml
 
-PEERS="88bed747abef320552d84d02947d0dd2b6d9c71c@babylon-testnet.nodejumper.io:44656,e4b3430b25eee1b46d5f9289b12eccdb6308b10b@168.119.124.130:30656,a4f76dddb6bdb195a0e49be82a3fd789d98631df@65.109.85.170:55656,af6104a6cc151aa645f933ea28cba1d5b0f7dbfd@213.239.216.252:41656,2c06e6d7ae970824dd3da1ac352c6f2fa6bb9f4b@38.242.241.126:26656,c48276582fbd884a57bd481d2b5c1503c7b73e92@54.224.66.12:26656,b531acac8945962606025db892d86bb0bf0872af@3.93.71.208:26656,ed9df3c70f5905307867d4817b95a1839fdf1655@154.53.56.176:27656,cd9d96f554e7298a8d1f1a94489f7a51520f01ff@142.132.152.46:47656,e3f9ccbfc86011bb2bd6c2756b2c8b8dc4c8eb97@54.81.138.3:26656,d54157138c8b26d8eabf4b0d9e01b2b5d9e38267@54.234.206.250:26656,617b10a9ea1c97b8230ccb70e1fb4ecef1b46601@18.212.224.149:26656,b53302c8887d4bd57799992592a2280987d3f213@95.217.144.107:20656,1400847b76e57c13e49ff1bfbcce7e71865dde7f@65.109.92.240:17896,ad3684076dc5c514bd4ba847203b2c1900d48ead@82.65.197.168:26656,a5fabac19c732bf7d814cf22e7ffc23113dc9606@34.238.169.221:26656,ca7bffa119704c7666a7ae10e7d17e5a2f857071@65.109.106.179:20656,03ce5e1b5be3c9a81517d415f65378943996c864@18.207.168.204:26656,1d0c78d6945ac4007dafef2a130e532c07b806d2@65.108.105.48:20656,01e9880fa946a378b2cd6a0432525812c295333e@89.58.59.75:60556,539bbebeb0d13ac22db640b102235f7e4f00856d@104.244.208.243:20656,42dd05c43fa9e51cfabc6a2ab0afa9044b123cc6@34.201.34.29:26656,b4ccb4af8c4e226e5844065197dfbe013690758b@65.108.233.220:14656,f136d7e7788c8e9c9c4784703f158029ffdb70b5@65.108.200.248:55706,5fd378bc1490dfd582fb6d32de3c02e743047811@195.14.6.2:26656,b10105846b4f9086b9f9245df4841a4bb7c6ba7b@65.108.197.169:14656,b15e490bcad4f02ad66c50ccd5dc5fa9c4006bcc@65.109.93.58:44656,ae5b89a8f1934e45ad3698671005a56623f04111@213.239.207.165:29056,c1406917c620090ae59f7301c7b3c9d1864d91cb@85.10.192.146:26656,5c2a752c9b1952dbed075c56c600c3a79b58c395@195.3.220.135:27116"
-sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.babylond/config/config.toml
+PEERS="e4234a5fba85b2c3d2ad157b6961ac3d115f4c49@humans-testnet.nodejumper.io:28656,fceabdb52e28e110b0c2e695b7295bd14af65f1f@195.201.59.194:26656,d5daa4f7089019fb845f18b0dd9ac9b47c3afe93@23.88.71.247:30656,d5e444638a236c6cf3e09167224f48b2f77a6611@185.198.27.109:2556,5c27e54b2b8a597cbbd1c43905d2c18a67637644@142.132.231.118:56656,dee3d7cbbb1ac884c008fefab23d53dc9d96b846@185.219.142.182:26656,e1fc3fd90808ff158102ef003ef7b6f056d7e27d@185.16.39.19:26656,198b1c1f136e5d24f33c218a027dd6394dab74ab@135.181.82.28:26656,636648f03fdda72d7caec67fcbf5e20a8a53d590@109.123.244.178:26656,01abf63cc2b799bb53d4d1a8c12f8713737e84ca@157.245.52.27:26656,17f4b40a52cb18293edc4f3c13e33efd09f446d4@65.109.53.60:26656,f88a461adb2db0ffdc9fed8d3caab08a4b327ce7@65.108.231.124:17656,327d518a106ac960f1d5ea78c228c244f0942562@82.65.197.168:26656,2f33b1312afcfffabae9f417bba0d29fe05f609d@65.108.78.101:26656,412888b64c840b879e34bd080dc233603bdd04b6@85.173.113.198:23656,049d4807acc00a42ed64a57b5f58c1c89d5be9db@65.109.88.180:15656,c2cf4e1d0da9ac1e8be5d5288d0bf8e8052b2d86@65.109.92.148:60856,4853c63022259d8c9f64c73353600249d905d227@212.90.121.121:13656,3f13ad6e8795479b051d147a5049bf4bd0a63817@65.109.87.88:22656,e0d59d2c5058552f536f4d21227f6d1050a16d57@65.109.106.91:22656,67826eb77eab91711f938132a9416dd1ec615b1b@65.109.88.254:39656,76c37181ddb27a9917a465d27be248891d85425d@162.248.224.186:26656,f9b186dffae34134d108e215b8d471c22f9f5b02@195.3.222.188:26656,dc4d6e5bc6a6a75f177d4d59ad584f9fbd3eb009@104.248.232.113:13656,d62cc03a547509ff40d7496c35471c3d640b9f61@34.68.218.99:26656,69822c67487d4907f162fdd6d42549e1df60c82d@65.21.224.248:26656,e8c875d2462e66ed5ee2671df4ba310cc9f8a4bf@95.214.55.62:60556,6aab8fbe8d8b8b61a17976f3b154282bec3a2d6c@176.9.22.117:12656,df698e4ff0e45324d67d312581574be8f3c1c4f1@144.76.27.79:46656,70adc2b27a27c69757d7399a21e1e80ee2703d94@65.109.84.215:60856,16e6bdd012b108e2a6ebe5fb26a31d0157238850@104.248.240.13:26656,f0a662bb16f6734f96c287d7012d8b004dc24c67@65.109.92.235:11026,96622dab2bebab9ff2ae2720feac5866215ad5b7@104.248.254.182:26656,28cee93eee4b0b800b362f8bba5a3edd25ff1030@195.201.83.166:48656,33f0ebee09c9420fbc56c61548eab66c5ebdbeb5@91.223.3.144:26756,c5d5a7b399867350c393f76988e2126012f2e064@75.119.133.212:26656,96fc064917274a80d43985a5c3440254dcae5dc9@65.108.134.208:36656,aec858a71cd3a57f7da8bcd5e80eca17d269af21@159.223.212.84:17656,739c605c870d8ef83a2e168fbaa77d6acfbe0de3@65.21.129.95:26656,184d6a0b185e263245810f6b8778aad49741c074@213.136.90.117:26656,c692c561c78549f4cfa8be220913189d5e35da30@164.90.221.176:26656,9d72348318e67750c9bb1e2a12c6a53fae7911eb@75.119.130.88:26656,a4f9fd8d76dd3fb4fc72b174be1e3bd6590a4d53@45.147.176.14:26656,54ca3e14e71fefb83ada327bcab7eed603907af3@65.109.165.99:26656,1e32e98f500f95ffde43236ec84153a051621130@15.235.80.84:26656,2685f8e77fec93c99a55f2adb13835a50124d04e@135.181.18.112:55686,958509db695a02e9cf514bb99793051bea11af45@65.109.88.251:11026,e42caa91e00da31258aa1b7b9a9e5d64062d6739@167.172.72.136:26656,f981952b0d46439b7bc1de9053865f72bcf662df@157.230.240.157:26656,f3d94eb33bad79e57af24743cea52cb3fbbbf45c@65.109.70.23:18456,7b0b40f045e66d83760859f42e8e95ce7ad93409@88.99.164.158:1166"
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.humans/config/config.toml
 
-SEEDS="03ce5e1b5be3c9a81517d415f65378943996c864@18.207.168.204:26656,a5fabac19c732bf7d814cf22e7ffc23113dc9606@34.238.169.221:26656"
+SEEDS=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.babylond/config/config.toml
 ```
 #### Prunning `app.toml'
@@ -77,13 +78,13 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 
 #### Create a service file
 ```Shell
-sudo tee /etc/systemd/system/babylond.service > /dev/null << EOF
+sudo tee /etc/systemd/system/humansd.service > /dev/null << EOF
 [Unit]
-Description=Babylon Node
+Description=Humans AI Node
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which babylond) start
+ExecStart=$(which humansd) start
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=10000
@@ -95,10 +96,10 @@ EOF
 #### Launch
 ```Shell
 sudo systemctl daemon-reload
-sudo systemctl enable babylond
-sudo systemctl start babylond
+sudo systemctl enable humansd
+sudo systemctl start humansd
 
-sudo journalctl -u babylond -f --no-hostname -o cat
+sudo journalctl -u humansd -f --no-hostname -o cat
 ```
 
 
@@ -106,24 +107,24 @@ sudo journalctl -u babylond -f --no-hostname -o cat
 #### Wallet 
 ```Shell
 # создать кошелек
-babylond  keys add <name_wallet> --keyring-backend os
+humansd  keys add <name_wallet> --keyring-backend os
 
 # восстановить кошелек (после команды вставить seed)
-babylond  keys add <name_wallet> --recover --keyring-backend os
+humansd  keys add <name_wallet> --recover --keyring-backend os
 ```
 
 #### Creating a validator 
 ```Shell
-babylond tx staking create-validator \
---amount=9000000ubbn \
---pubkey=$(babylond tendermint show-validator) \
+humansd tx staking create-validator \
+--amount=9000000uheart \
+--pubkey=$(humansd tendermint show-validator) \
 --moniker="$NODE_MONIKER" \
---chain-id=bbn-test1 \
+--chain-id=testnet-1 \
 --commission-rate=0.1 \
 --commission-max-rate=0.2 \
 --commission-max-change-rate=0.05 \
 --min-self-delegation=1 \
---fees=10000ubbn \
+--fees=10000uheart \
 --from=wallet \
 -y
 ```
@@ -131,10 +132,10 @@ babylond tx staking create-validator \
 ### 4. Удаление - Delete
 #### Deleting
 ```Shell
-systemctl stop babylond && \
-systemctl disable babylond && \
-rm /etc/systemd/system/babylond.service && \
+systemctl stop humansd && \
+systemctl disable humansd && \
+rm /etc/systemd/system/humansd.service && \
 systemctl daemon-reload && \
 cd $HOME && \
-rm -rf .babylond babylon && \
-rm -rf $(which babylond)
+rm -rf .humans humans && \
+rm -rf $(which humansd)
