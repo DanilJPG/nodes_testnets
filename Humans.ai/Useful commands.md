@@ -68,8 +68,8 @@ sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:3
 
 #### Modify Validator
 ```
-BINARY tx staking edit-validator \
-  --chain-id "CHAIN_NAME" \
+humansd tx staking edit-validator \
+  --chain-id "testnet-1" \
   --moniker "MONIKER" \
   --identity "IDENTITY" \
   --details "DETAILS" \
