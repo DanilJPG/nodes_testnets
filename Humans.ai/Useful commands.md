@@ -65,3 +65,13 @@ sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:3665
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:36656\"/" $HOME/.humans/config/config.toml
 ```
+
+#### Modify Validator
+```
+BINARY tx staking edit-validator \
+  --chain-id "CHAIN_NAME" \
+  --moniker "MONIKER" \
+  --identity "IDENTITY" \
+  --details "DETAILS" \
+  --from "WALLET_NAME"
+```  
