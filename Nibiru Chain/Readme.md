@@ -50,7 +50,7 @@ nibid config chain-id nibiru-testnet-2
 
 #### Download genesis and address book
 ```Shell
-curl -s https://rpc.testnet-2.nibiru.fi/genesis | jq -r .result.genesis > $HOME/.nibid/config/genesis.json
+curl -s https://networks.itn.nibiru.fi/$NETWORK/genesis > $HOME/.nibid/config/genesis.json
 ```
 
 
