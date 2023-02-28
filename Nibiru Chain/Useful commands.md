@@ -62,7 +62,7 @@ nibid tx gov deposit 1 1000000unibi --from <name_wallet> --fees 555unibi
   ```
 
 #### Change ports
-`
+```
 # config.toml
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:36658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:36657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:6061\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:36656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":36660\"%" $HOME/.nibid/config/config.toml
 
@@ -74,4 +74,4 @@ sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:3665
 
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:36656\"/" $HOME/.nibid/config/config.toml
-`
+```
