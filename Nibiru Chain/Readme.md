@@ -49,7 +49,7 @@ nibid config chain-id nibiru-testnet-2
 
 #### Download genesis and address book
 ```Shell
-wget -O https://raw.githubusercontent.com/Pa1amar/testnets/main/nibiru/nibiru-itn-1/genesis.json
+wget -O $HOME/.nibid/config/genesis.json "https://raw.githubusercontent.com/Pa1amar/testnets/main/nibiru/nibiru-itn-1/genesis.json"
 ```
 
 
