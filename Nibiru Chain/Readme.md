@@ -43,7 +43,7 @@ nibid version
 
 #### Initializing
 ```Shell
-nibid init <name_moniker> --chain-id nibiru-testnet-2 --home $HOME/.nibid \
+nibid init <name_moniker> --chain-id nibiru-itn-1 --home $HOME/.nibid \
 nibid config chain-id nibiru-testnet-2
 ```
 
@@ -120,7 +120,7 @@ nibid keys add <name_wallet> --recover --keyring-backend os
 #### Creating a validator
 ```Shell
 nibid tx staking create-validator \
---chain-id nibiru-testnet-2 \
+--chain-id nibiru-itn-1 \
 --commission-rate 0.05 \
 --commission-max-rate 0.2 \
 --commission-max-change-rate 0.1 \
