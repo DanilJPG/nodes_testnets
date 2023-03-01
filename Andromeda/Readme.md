@@ -133,3 +133,13 @@ cd $HOME && \
 rm -rf .andromedad andromedad && \
 rm -rf $(which andromedad)
 ```
+
+#### Edit validator
+```
+andromedad tx staking edit-validator \
+  --chain-id "CHAIN_NAME" \
+  --moniker "MONIKER" \
+  --identity "IDENTITY" \
+  --details "DETAILS" \
+  --from "WALLET_NAME"
+```
