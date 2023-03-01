@@ -7,7 +7,7 @@ andromedad status 2>&1 | jq ."SyncInfo"."latest_block_height"
 journalctl -u andromedad -f -o cat
 
 # проверить статус
-curl localhost:26657/status
+andromedad status 2>&1 | jq .SyncInfo.catching_up
 
 # проверить баланс
 andromedad q bank balances <address>
