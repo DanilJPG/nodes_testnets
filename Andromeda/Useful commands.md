@@ -16,25 +16,25 @@ andromedad q bank balances <address>
 #### Useful commands for validator and delegator
 ```
 # собрать реварды со всех валидаторов, которым делегировали (без комиссии)
-andromedad tx distribution withdraw-all-rewards --from <name_wallet> --fees 5000ulava -y
+andromedad tx distribution withdraw-all-rewards --from <name_wallet> --fees 5000uandr -y
 
 # собрать реварды c отдельного валидатора или реварды + комиссию со своего валидатора
-andromedad tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 5000ulava --commission -y
+andromedad tx distribution withdraw-rewards <valoper_address> --from <name_wallet> --fees 5000uandr --commission -y
 
 # заделегировать себе в стейк еще (так отправляется 1 монетa)
-andromedad tx staking delegate <valoper_address> 1000000ulava --from <name_wallet> --fees 5000ulava -y
+andromedad tx staking delegate <valoper_address> 1000000uandr --from <name_wallet> --fees 5000uandr -y
 
 # ределегирование на другого валидатора
-andromedad tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000ulava --from <name_wallet> --fees 5000ulava -y
+andromedad tx staking redelegate <src-validator-addr> <dst-validator-addr> 1000000uandr --from <name_wallet> --fees 5000uandr -y
 
 # unbond 
-andromedad tx staking unbond <addr_valoper> 1000000ulava --from <name_wallet> --fees 5000ulava -y
+andromedad tx staking unbond <addr_valoper> 1000000uandr --from <name_wallet> --fees 5000uandr -y
 
 # отправить монеты на другой адрес
-andromedad tx bank send <name_wallet> <address> 1000000ulava --fees 5000ulava -y
+andromedad tx bank send <name_wallet> <address> 1000000uandr --fees 5000uandr -y
 
 # выбраться из тюрьмы
-andromedad tx slashing unjail --from <name_wallet> --fees 5000ulava -y
+andromedad tx slashing unjail --from <name_wallet> --fees 5000uandr -y
 ```
 
 #### Proposal
@@ -46,10 +46,10 @@ andromedad q gov proposals
 andromedad q gov proposals --voter <ADDRESS>
 
 # проголосовать за предложение 
-andromedad tx gov vote 1 yes --from <name_wallet> --fees 555ulava
+andromedad tx gov vote 1 yes --from <name_wallet> --fees 555uandr
 
 # внести депозит в предложение
-andromedad tx gov deposit 1 1000000ulava --from <name_wallet> --fees 555ulava
+andromedad tx gov deposit 1 1000000uandr --from <name_wallet> --fees 555uandr
 ```
 #### Change ports
 ```
