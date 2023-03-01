@@ -1,4 +1,4 @@
-## EmpowerChain
+## Andromeda
 
 
 [Discord](https://discord.gg/KPtVcy3m) | [Website](https://empower.eco/) | [Faucet](https://discord.gg/T5N4V5qd)
