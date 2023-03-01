@@ -58,7 +58,7 @@ curl -s https://snapshots2-testnet.nodejumper.io/andromeda-testnet/addrbook.json
 external_address=$(wget -qO- eth0.me)
 sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.andromedad/config/config.toml
 
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025umpwr\"/;" ~/.andromedad/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025uandr\"/;" ~/.andromedad/config/app.toml
 
 SEEDS=""
 PEERS=""
