@@ -34,6 +34,7 @@ go version
 #### Cloning a repository 
 ```Shell
 git clone https://github.com/NibiruChain/nibiru && cd nibiru
+git checkout v0.19.2
 make install
 mv /root/go/bin/nibid /usr/bin/
 chmod +x /usr/bin/nibid
