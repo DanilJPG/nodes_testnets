@@ -46,10 +46,10 @@ sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:2
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025ufetf\"/;" /root/.defund/config/app.toml
 
 PEERS=``
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.lambdavm/config/config.toml
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" ~/.defund/config/config.toml
 
 SEEDS=``
-sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" ~/.lambdavm/config/config.toml
+sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" ~/.defund/config/config.toml
 ```
 
 #### Создаем сервисный файл
