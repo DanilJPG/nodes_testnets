@@ -105,13 +105,13 @@ defund tx staking create-validator \
 
 #### Delete 
  ```Shell
-sudo systemctl stop defund && \
-sudo systemctl disable defund && \
-rm /etc/systemd/system/defund.service && \
+sudo systemctl stop defundd && \
+sudo systemctl disable defundd && \
+rm /etc/systemd/system/defundd.service && \
 sudo systemctl daemon-reload && \
 cd $HOME && \
-rm -rf .defund defund && \
-rm -rf $(which defund)
+rm -rf .defund defundd && \
+rm -rf $(which defundd)
  ```
  
 #### Change ports
