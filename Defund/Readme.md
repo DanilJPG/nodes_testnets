@@ -74,7 +74,7 @@ EOF
 ```Shell
 systemctl daemon-reload && \
 systemctl enable defund && \
-systemctl restart defund && journalctl -u defund -f -o cat
+systemctl restart defundd && journalctl -u defundd -f -o cat
 ```
 #### Wallet
 ```Shell
