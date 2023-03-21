@@ -6,7 +6,7 @@ sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bs
 ```
 #### Установка Go
 ```Shell
-ver="1.19" && \
+ver="1.19.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
@@ -18,22 +18,24 @@ go version
 
 #### Клонируем репозиторий 
 ```Shell
-git clone https://github.com/defund-labs/defund
+cd $HOME
+rm -rf defund
+git clone https://github.com/defund-labs/defund.git
 cd defund
-git checkout v0.1.0-alpha
-make install
+git checkout v0.2.6
+make build
 ```
 
 #### Инициализируем 
 ```Shell
-defundd init <moniker> --chain-id defund-private-2 \
-defundd config chain-id defund-private-2
+defundd init <moniker> --chain-id orbit-alpha-1 \
+defundd config chain-id orbit-alpha-1
 ```
 
 #### Скачиваем Genesis и Addrbook
 ```Shell
-wget -O /root/.defund/config//genesis.json "https://github.com/defund-labs/testnet/blob/main/defund-private-2/pre-genesis.json"
-wget -O $HOME/.defund/config/addrbook.json https://raw.githubusercontent.com/sowell-owen/addrbooks/main/defund/addrbook.json
+curl -Ls https://snapshots.kjnodes.com/defund-testnet/genesis.json > $HOME/.defund/config/genesis.json
+curl -Ls https://snapshots.kjnodes.com/defund-testnet/addrbook.json > $HOME/.defund/config/addrbook.json
 ```
 #### Правим конфиг
 ```Shell
@@ -97,40 +99,9 @@ defund tx staking create-validator \
 --gas=auto \
 --identity "your keybase" \ 
 --details "Your validator motto" \
---fees 5000ulamb
+--fees 5000ufetf
 ```
-#### Gentx
-```Shell
-Add/recover keys
-To create new keypair - make sure you save the mnemonics!
 
-defundd keys add <key-name> 
-
- Instructions for Genesis Validators
-Create Gentx
-1. Add genesis account:
-
-defundd add-genesis-account <key-name> 100000000ufetf
-
-2. Create Gentx
-
-defundd gentx <key-name> 90000000ufetf \
---chain-id defund-private-2 \
---moniker="<moniker>" \
---commission-max-change-rate=0.01 \
---commission-max-rate=0.20 \
---commission-rate=0.05 \
---details="XXXXXXXX" \
---security-contact="XXXXXXXX" \
---website="XXXXXXXX"
-
-+ Submit PR with Gentx and peer id
-+ Copy the contents of ${HOME}/.defund/config/gentx/gentx-XXXXXXXX.json.
-+ Fork https://github.com/defund-labs/testnet
-+ Create a file gentx-{{VALIDATOR_NAME}}.json under the defund-private-2/gentx/ folder in the forked repo, paste the copied text into the file.
-+ Create a Pull Request to the main branch of the repository
-+ Await further instruction!
-```
 #### Delete 
  ```Shell
 sudo systemctl stop defund && \
