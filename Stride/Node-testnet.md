@@ -1,10 +1,5 @@
 ## STRIDE 
 
-Discord: https://discord.gg/stride-zone
-
-Website - https://stride.zone/
-
-Twitter - https://twitter.com/stride_zone
 #### Обновимся и установим зависимости
 ```
 sudo apt update && sudo apt upgrade -y
@@ -12,7 +7,7 @@ sudo apt install curl build-essential git wget jq make gcc tmux htop nvme-cli pk
 ```
 #### Установка Go:
 ```
-ver="1.18.1" && \
+ver="1.19.1" && \
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
 sudo rm -rf /usr/local/go && \
 sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
@@ -23,33 +18,28 @@ go version
 ```
 #### Установка бинарного файла
 ```
-git clone https://github.com/Stride-Labs/stride && cd stride
-git checkout cf4e7f2d4ffe2002997428dbb1c530614b85df1b
-#если не создана папка $HOME/go/bin, то создаем ее
-mkdir -p $HOME/go/bin
-go build -mod=readonly -trimpath -o $HOME/go/bin ./...
+git clone https://github.com/Stride-Labs/stride.git
+cd stride
+git checkout v8.0.0
+make install
 ```
 #### Инициализация ноды
 ```
-strided init <name_moniker> --chain-id STRIDE-TESTNET-4
+strided config chain-id stride-1
+strided init "$NODE_MONIKER" --chain-id stride-1
 ```
 #### Обновление Genesis
 ```
-wget -qO $HOME/.stride/config/genesis.json "https://raw.githubusercontent.com/Stride-Labs/testnet/main/poolparty/genesis.json"
+curl -s https://raw.githubusercontent.com/Stride-Labs/stride/main/genesis/genesis.json > $HOME/.stride/config/genesis.json
+curl -s https://snapshots1.nodejumper.io/stride/addrbook.json > $HOME/.stride/config/addrbook.json
 ```
 #### Обновление seeds/peers:
 ```
-SEEDS="d2ec8f968e7977311965c1dbef21647369327a29@seedv2.poolparty.stridenet.co:26656"
-PEERS="2771ec2eeac9224058d8075b21ad045711fe0ef0@34.135.129.186:26656,a3afae256ad780f873f85a0c377da5c8e9c28cb2@54.219.207.30:26656,328d459d21f82c759dda88b97ad56835c949d433@78.47.222.208:26639,bf57701e5e8a19c40a5135405d6757e5f0f9e6a3@143.244.186.222:16656,f93ce5616f45d6c20d061302519a5c2420e3475d@135.125.5.31:54356"
+SEEDS=""
+PEERS=""
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.stride/config/config.toml
 ```
-#### Обновляем конфиг файл
-```
-sed -i '/STRIDE_CHAIN_ID/d' ~/.bash_profile
-echo "export STRIDE_CHAIN_ID=STRIDE-TESTNET-4" >> $HOME/.bash_profile
-source $HOME/.bash_profile
-strided config chain-id $STRIDE_CHAIN_ID
-```
+
 #### Сбрасываем данные цепочки и отключаем синхронизацию состояний
 ```
 sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1false|" $HOME/.stride/config/config.toml
