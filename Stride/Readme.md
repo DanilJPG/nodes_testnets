@@ -36,56 +36,56 @@ go version
 #### Cloning a repository 
 ```Shell
 # Download the installation setup configuration
-git clone https://github.com/babylonchain/babylon
-cd babylon
-git checkout v0.5.0
+git clone https://github.com/Stride-Labs/stride.git
+cd stride
+git checkout v8.0.0
 make install
 ```
 
 #### Initializing 
 ```Shell
-babylond init <name_moniker> --chain-id bbn-test-1
+strided config chain-id stride-1
+strided init "$NODE_MONIKER" --chain-id stride-1
 ```
 
 #### Download genesis
 ```Shell
-wget https://github.com/babylonchain/networks/raw/main/bbn-test-1/genesis.tar.bz2
-tar -xjf genesis.tar.bz2 && rm genesis.tar.bz2
-mv genesis.json ~/.babylond/config/genesis.json
+curl -s https://raw.githubusercontent.com/Stride-Labs/stride/main/genesis/genesis.json > $HOME/.stride/config/genesis.json
+curl -s https://snapshots1.nodejumper.io/stride/addrbook.json > $HOME/.stride/config/addrbook.json
 ```
 
 #### Correct the configuration file
 ```Shell
 external_address=$(wget -qO- eth0.me)
-sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.babylond/config/config.toml
+sed -i.bak -e "s/^external_address *=.*/external_address = \"$external_address:26656\"/" $HOME/.stride/config/config.toml
 
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025ubbn\"/;" ~/.babylond/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025ubbn\"/;" ~/.stride/config/app.toml
 
-PEERS="88bed747abef320552d84d02947d0dd2b6d9c71c@babylon-testnet.nodejumper.io:44656,e4b3430b25eee1b46d5f9289b12eccdb6308b10b@168.119.124.130:30656,a4f76dddb6bdb195a0e49be82a3fd789d98631df@65.109.85.170:55656,af6104a6cc151aa645f933ea28cba1d5b0f7dbfd@213.239.216.252:41656,2c06e6d7ae970824dd3da1ac352c6f2fa6bb9f4b@38.242.241.126:26656,c48276582fbd884a57bd481d2b5c1503c7b73e92@54.224.66.12:26656,b531acac8945962606025db892d86bb0bf0872af@3.93.71.208:26656,ed9df3c70f5905307867d4817b95a1839fdf1655@154.53.56.176:27656,cd9d96f554e7298a8d1f1a94489f7a51520f01ff@142.132.152.46:47656,e3f9ccbfc86011bb2bd6c2756b2c8b8dc4c8eb97@54.81.138.3:26656,d54157138c8b26d8eabf4b0d9e01b2b5d9e38267@54.234.206.250:26656,617b10a9ea1c97b8230ccb70e1fb4ecef1b46601@18.212.224.149:26656,b53302c8887d4bd57799992592a2280987d3f213@95.217.144.107:20656,1400847b76e57c13e49ff1bfbcce7e71865dde7f@65.109.92.240:17896,ad3684076dc5c514bd4ba847203b2c1900d48ead@82.65.197.168:26656,a5fabac19c732bf7d814cf22e7ffc23113dc9606@34.238.169.221:26656,ca7bffa119704c7666a7ae10e7d17e5a2f857071@65.109.106.179:20656,03ce5e1b5be3c9a81517d415f65378943996c864@18.207.168.204:26656,1d0c78d6945ac4007dafef2a130e532c07b806d2@65.108.105.48:20656,01e9880fa946a378b2cd6a0432525812c295333e@89.58.59.75:60556,539bbebeb0d13ac22db640b102235f7e4f00856d@104.244.208.243:20656,42dd05c43fa9e51cfabc6a2ab0afa9044b123cc6@34.201.34.29:26656,b4ccb4af8c4e226e5844065197dfbe013690758b@65.108.233.220:14656,f136d7e7788c8e9c9c4784703f158029ffdb70b5@65.108.200.248:55706,5fd378bc1490dfd582fb6d32de3c02e743047811@195.14.6.2:26656,b10105846b4f9086b9f9245df4841a4bb7c6ba7b@65.108.197.169:14656,b15e490bcad4f02ad66c50ccd5dc5fa9c4006bcc@65.109.93.58:44656,ae5b89a8f1934e45ad3698671005a56623f04111@213.239.207.165:29056,c1406917c620090ae59f7301c7b3c9d1864d91cb@85.10.192.146:26656,5c2a752c9b1952dbed075c56c600c3a79b58c395@195.3.220.135:27116"
-sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.babylond/config/config.toml
+SEEDS=""
+PEERS="de048f413e6cceeba02139f581adb97d331651b8@stride.nodejumper.io:29656,a2128f5552cf4ae60a769999c7fddc5d9d44d149@15.235.42.151:26661,04b797b5a56fb939a97a3c7d9c3230d09b85e8d7@93.189.30.118:26656,c3467e5becb108e62f6a6051eb5551e9f256d096@174.83.6.129:26656,cc35475fe1f7c345af0ea8a692f3b4b41c8f12a2@116.202.36.240:10156,44e797771bff124693e63a8ec331d42873cf2ae2@95.217.202.49:35656,b212d5740b2e11e54f56b072dc13b6134650cfb5@164.152.160.97:26656,e2edd2fcc4b165374eafe381e54b6787ebc5bd67@162.55.245.149:2030,2254e6968e5c7ebc98ef5b79b388502fa44e10e1@5.161.134.44:26656,9ed4a1c80960ae933551283eb8aef52468f6cfc7@65.109.106.169:26656,463b1dc6903455575079572fb23407be586f2a4b@185.16.39.37:26656,fc305427390397f8c4eebe5bc22919c1cc5d4532@65.109.43.75:27007,ade7d4d0009c7725ee991b8c40a7f646f76bf1e3@149.102.140.108:26656,89757803f40da51678451735445ad40d5b15e059@169.155.168.67:26656,05eec003db41d7ff47a317ef59f83e31bdca23c3@78.107.234.44:26656,8a210f1bcfc9015a7bc18dcc5add29c0dce3f2dc@135.181.173.67:26656,8e4e1f1e087c76c71c64e477e95495833da82aa2@135.181.173.139:26656,28ca5fc2464e9494e8d5bd93955cde707e4e208e@34.29.90.236:26656,3fef899adcdeded56f6c69fe55c5da1624303367@163.172.101.208:4656,9ee75491e354965d8bfd8434aa093f8613bc1dce@65.108.238.103:12256,54672e848a31d2e7aeda35b8f2c320ad508c5550@128.199.141.132:26656,5093547fdf0430143ac66b4ee55d80e6542a6c10@217.174.247.163:26656,a77173bc4f4171fec0ac56b37c18e0ba6e5f80a4@65.108.226.44:31656,2c1f55e905c7425f995947e2d600ca5ac863b8c1@15.235.53.91:13456,51b83e27aee30e1900539cef37f18bddd4eab2d9@51.77.57.29:6000,abaf98731ce081fa2f32da7db0ff27b1db1c1c99@80.64.208.151:26656,cd680cc992983e5c8244b5529034a2e362e7a6d3@93.159.134.157:26656,82588f011491c6100d922d133f52fc23460b9231@135.181.67.235:26656,6831d67983cf5ebcb44da01737ccd6ccbd15c08e@193.70.47.90:12256,cb6ae22e1e89d029c55f2cb400b0caa19cbe5523@172.111.52.51:32661,446d388856dde233a206d8649fdc24efbde2b57c@34.71.33.155:26656,b549e0f88cbebe6cfd3f772937a70640b950fd98@66.172.36.133:28656,8fff37214fb0ef622f1c09dccb22d6321e004c3e@109.123.242.163:50056,9731c3365c772b3bc4580de5708a33f22c6174ec@208.102.87.76:26656,450d000d0d5c010cb2e7c45b72e6cda08a22fd04@35.224.198.112:26656,d36ac7580cc8907a00b0add8c3b047caea6df4ed@107.155.67.202:26636,7ab3bfcdbe618ed62317cbc40ef48aee783fb2b4@144.76.152.68:4656,1483ddbd1ba369c01d5496877314ed1b09bd9cc3@65.21.189.221:12256,6856de6f0c70a850db2b58deb43d568fced4a524@165.227.208.6:26656,ea6a7b2f366bc343f0670f1673fd86001dd08eb0@65.108.122.246:26636,0198f6d3ebe7bed4d176558a2ce8d341531f3e7b@74.80.183.130:26653,c7a30393c5cab01f5b497c4c094424e4e6271bac@65.108.201.154:5010,c4688bb34164eacacaa374bc7440b87986dd87ac@162.251.235.252:26656,978477aab55c2494ad486477f0793f21a83c937f@34.173.31.167:26656,cb0b38aa612e8ac05f704d9b2feb7526607afb77@66.94.117.176:26656,ebc272824924ea1a27ea3183dd0b9ba713494f83@185.16.39.158:26886,8ade90b45b991088c92e8583e8bc93589d6cd81e@84.244.95.247:26656,5383a21cf2d5e513aea2c3e430133f31aa2e5d00@138.201.32.103:26656,718ce477a62a14efe61571bd836fd3db9e43e6c1@38.105.232.61:26656,0393c19b176d1cf8bc560c5a8fa990301deb1a7e@95.217.126.187:26656,a1f479dc2e3322c6547a39c6c7eef5a191def57f@34.66.206.221:26656"
+sed -i 's|^seeds *=.*|seeds = "'$SEEDS'"|; s|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.stride/config/config.toml
 
-SEEDS="03ce5e1b5be3c9a81517d415f65378943996c864@18.207.168.204:26656,a5fabac19c732bf7d814cf22e7ffc23113dc9606@34.238.169.221:26656"
-sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.babylond/config/config.toml
 ```
 #### Prunning `app.toml'
 ```Shell
-pruning="custom"
-pruning_keep_recent="1000"
-pruning_interval="10"
-sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.babylond/config/app.toml
-sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.babylond/config/app.toml
-sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.babylond/config/app.toml
+sed -i 's|^pruning *=.*|pruning = "custom"|g' $HOME/.stride/config/app.toml
+sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $HOME/.stride/config/app.toml
+sed -i 's|^pruning-interval *=.*|pruning-interval = "10"|g' $HOME/.stride/config/app.toml
+sed -i 's|^snapshot-interval *=.*|snapshot-interval = 0|g' $HOME/.stride/config/app.toml
+
+sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.0001ustrd"|g' $HOME/.stride/config/app.toml
+sed -i 's|^prometheus *=.*|prometheus = true|' $HOME/.stride/config/config.toml
 ```
 
 #### Create a service file
 ```Shell
-sudo tee /etc/systemd/system/babylond.service > /dev/null << EOF
+sudo tee /etc/systemd/system/strided.service > /dev/null << EOF
 [Unit]
-Description=Babylon Node
+Description=Stride Node
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which babylond) start
+ExecStart=$(which strided) start
 Restart=on-failure
 RestartSec=10
 LimitNOFILE=10000
@@ -97,10 +97,10 @@ EOF
 #### Launch
 ```Shell
 sudo systemctl daemon-reload
-sudo systemctl enable babylond
-sudo systemctl start babylond
+sudo systemctl enable strided
+sudo systemctl start strided
 
-sudo journalctl -u babylond -f --no-hostname -o cat
+sudo journalctl -u strided -f --no-hostname -o cat
 ```
 
 
@@ -108,36 +108,40 @@ sudo journalctl -u babylond -f --no-hostname -o cat
 #### Wallet 
 ```Shell
 # создать кошелек
-babylond  keys add <name_wallet> --keyring-backend os
+strided  keys add <name_wallet> --keyring-backend os
 
 # восстановить кошелек (после команды вставить seed)
-babylond  keys add <name_wallet> --recover --keyring-backend os
+strided  keys add <name_wallet> --recover --keyring-backend os
 ```
 
 #### Creating a validator 
 ```Shell
-babylond tx staking create-validator \
---amount=9000000ubbn \
---pubkey=$(babylond tendermint show-validator) \
---moniker="$NODE_MONIKER" \
---chain-id=bbn-test1 \
---commission-rate=0.1 \
---commission-max-rate=0.2 \
---commission-max-change-rate=0.05 \
+strided tx staking create-validator \
+--amount=1000000ustrd \
+--pubkey=$(strided tendermint show-validator) \
+--moniker="Moniker" \
+--identity=FFB0AA51A2DF5955 \
+--details="I'm sexy and I know it😉" \
+--chain-id=stride-1 \
+--commission-rate=0.10 \
+--commission-max-rate=0.20 \
+--commission-max-change-rate=0.01 \
 --min-self-delegation=1 \
---fees=10000ubbn \
 --from=wallet \
--y
+--gas-prices=0.1ustrd \
+--gas-adjustment=1.5 \
+--gas=auto \
+-y 
 ```
 
 ### 4. Удаление - Delete
 #### Deleting
 ```Shell
-systemctl stop babylond && \
-systemctl disable babylond && \
-rm /etc/systemd/system/babylond.service && \
+systemctl stop strided && \
+systemctl disable strided && \
+rm /etc/systemd/system/strided.service && \
 systemctl daemon-reload && \
 cd $HOME && \
-rm -rf .babylond babylon && \
-rm -rf $(which babylond)
+rm -rf .strided stride && \
+rm -rf $(which strided)
 ```
