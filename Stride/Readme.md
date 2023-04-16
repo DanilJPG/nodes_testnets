@@ -1,7 +1,5 @@
 ## STRIDE 
 
-## Babylon
-
 [Discord](https://discord.gg/stride-988945059783278602) | [Twitter](https://twitter.com/babylon_chain)
 --- | --- | 
 
