@@ -44,7 +44,7 @@ nibid version
 #### Initializing
 ```Shell
 nibid init <name_moniker> --chain-id nibiru-itn-1 --home $HOME/.nibid \
-nibid config chain-id nibiru-testnet-2
+nibid config chain-id nibiru-itn-1
 ```
 
 
