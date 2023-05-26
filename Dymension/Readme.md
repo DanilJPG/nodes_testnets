@@ -9,7 +9,7 @@ Steps | Comments
 [Server Preparation]() | Check the version, if necessary update to the appropriate height blocks,server setup, Go language is necessary to work with a binary file and unpack it
 [Working with a binary file and setting up]() | Cloning the GitHub repository of a project,To generate configuration files,The genesis stores the state of the chain,Making changes to config.toml,Creating a service file
 [Creating a validator and generating a wallet]() | Creating and restoring a wallet,Creating your node operator
-[Useful commands]() | Here are commands for the validator, for node management and for the wallet
+[Useful commands](https://github.com/DanilJPG/nodes_testnets/blob/main/Dymension/Useful%20commands.md) | Here are commands for the validator, for node management and for the wallet
 [Possible Errors]() | Here are possible errors related to the node and the validator
 
 
