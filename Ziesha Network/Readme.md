@@ -20,7 +20,7 @@ git clone https://github.com/ziesha-network/bazuka
 ```
 #### 4.Перейти в папку bazuka,компиляция и установка
 ```Bash
-cd bazuka && cargo install --path
+cd bazuka && cargo install --path /root/bazuka/
 ```
 
 #### View software bazuka
@@ -30,7 +30,7 @@ cd bazuka && cargo install --path
 
 #### 5.Initialize a node
 ```Bash
-bazuka init --listen 0.0.0.0:8765 --db ~/.bazuka --network pelmeni-5 --external <IP>:8765 --bootstrap 167.235.195.23:8765 --bootstrap 49.12.229.114:8765 --mnemonic "<mnemonic>"
+bazuka init --listen 0.0.0.0:8765 --db ~/.bazuka --bootstrap 31.210.53.186:8765 --bootstrap 89.179.68.98:8765 --mnemonic "<mnemonic>"
 ```
 
 #### 6.Create a service file
