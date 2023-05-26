@@ -35,14 +35,14 @@ bazuka init --listen 0.0.0.0:8765 --db ~/.bazuka --bootstrap 31.210.53.186:8765 
 
 #### 6.Create a service file
 ```Bash
-sudo tee <<EOF >/dev/null /etc/systemd/system/zeeka.service
+sudo tee <<EOF >/dev/null /etc/systemd/system/ziesha.service
 [Unit]
 Description=Zeeka node
 After=network.target
 
 [Service]
 User=$USER
-ExecStart=`RUST_LOG=info which bazuka` node start --discord-handle <discord_handle> 
+ExecStart=`RUST_LOG=info which bazuka` node start --discord-handle "$ZEEKADISCORD"
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
@@ -54,20 +54,14 @@ EOF
 #### 7.Run the service
 ```Bash
 sudo systemctl daemon-reload
-sudo systemctl enable zeeka
-sudo systemctl restart zeeka
+sudo systemctl enable ziesha
+sudo systemctl restart ziesha
 ```
-Add a command to view the log of a node in the system as a variable
-```
-. <(wget -qO- https://raw.githubusercontent.com/AlexM-dev/Utils/main/commands/insert_variable.sh) -n zeeka_log -v "sudo journalctl -fn 100 -u zeeka" -a
-```
-#### View logs
-```Bash
-zeeka_log
-```
-![Screenshot_2](https://user-images.githubusercontent.com/57448493/203043786-13920c84-4b91-44f5-829e-d87fdac7d60f.png)
 
-Copy the data to a safe place!!!
+#### 8.Check
+```
+sudo journalctl -f -u ziesha
+```
 
 #### Delete a node 
 ```Bash
