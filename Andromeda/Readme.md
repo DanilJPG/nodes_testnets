@@ -1,7 +1,7 @@
 ## Andromeda
 
 
-[Discord](https://discord.gg/KPtVcy3m) | [Website](https://empower.eco/) | [Faucet](https://discord.gg/T5N4V5qd)
+[Discord](https://discord.gg/KPtVcy3m) | [Website](https://www.andromedaprotocol.io/) | [Docs](https://docs.andromedaprotocol.io/andromeda/)
 --- | --- | ---
 
 Steps | Comments
